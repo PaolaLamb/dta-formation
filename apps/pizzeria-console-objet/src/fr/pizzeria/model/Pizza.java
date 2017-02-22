@@ -7,16 +7,18 @@ public class Pizza {
 	public double prix ;
 	public static int nbPizzas ;
 	
-	
-	public Pizza(String code, String nom, double prix) {
-		this.code = code ;
-		this.nom = nom ;
-		this.prix = prix ;
+	public Pizza() {
 		
 	}
-	
-	public int compterPizzas() {
-		
-		return nbPizzas ;
+
+	public Pizza(int id, String code, String nom, double prix) {
+		super();
+		this.id = id;
+		this.code = code;
+		this.nom = nom;
+		this.prix = prix;
+		nbPizzas++ ;
 	}
+		
+
 }

@@ -1,166 +1,61 @@
 package fr.pizzeria.console;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
+import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.dao.PizzaDaoImpl;
+import fr.pizzeria.ihm.Menu;
+import fr.pizzeria.ihm.OptionAddPizza;
+import fr.pizzeria.ihm.OptionMajPizza;
+import fr.pizzeria.ihm.OptionListePizza;
+import fr.pizzeria.ihm.OptionMenu;
+import fr.pizzeria.ihm.OptionDelPizza;
 import fr.pizzeria.model.Pizza;
 
 public class PizzeriaAdminConsoleApp {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-
-		Pizza p1 = new Pizza("PEP", "pépéroni", 12.50);
-		Pizza p2 = new Pizza("MAR", "Margherita", 14.00);
-		Pizza p3 = new Pizza("REI", "La Reine", 11.50);
-		Pizza p4 = new Pizza("FRO", "La 4 fromages", 12.00);
-		Pizza p5 = new Pizza("CAN", "La Canibale", 12.50);
-		Pizza p6 = new Pizza("SAV", "La savoyarde", 13.00);
-		Pizza p7 = new Pizza("ORI", "L'orientale", 13.50);
-		Pizza p8 = new Pizza("IND", "L'indienne", 14.00);
-
-		ArrayList<Pizza> listPizzas = new ArrayList<Pizza>();
-
-		listPizzas.add(p1);
-		listPizzas.add(p2);
-		listPizzas.add(p3);
-		listPizzas.add(p4);
-		listPizzas.add(p5);
-		listPizzas.add(p6);
-		listPizzas.add(p7);
-		listPizzas.add(p8);
-
-		System.out.println("***** Pizzeria Administration *****");
-		System.out.println("1. Lister les pizzas");
-		System.out.println("2. Ajouter une nouvelle pizza");
-		System.out.println("3. Mettre à jour une pizza");
-		System.out.println("4. Supprimer une pizza");
-		System.out.println("99. Sortir");
-
-		int choix = scan.nextInt();
-		while (choix != 99) {
-
-			int nbPizzas = listPizzas.size();
-
-			if (choix == 1) {
-				for (int i = 1; i < listPizzas.size(); i++) {
-					System.out.println(listPizzas.get(i).code + " -> " + listPizzas.get(i).nom + " ("
-							+ listPizzas.get(i).prix + ") ");
-				}
-				System.out.println("-> " + nbPizzas + " pizzas créées depuis l'initialisation du programme");
-
-				System.out.println("***** Pizzeria Administration *****");
-				System.out.println("1. Lister les pizzas");
-				System.out.println("2. Ajouter une nouvelle pizza");
-				System.out.println("3. Mettre à jour une pizza");
-				System.out.println("4. Supprimer une pizza");
-				System.out.println("99. Sortir");
-				choix = scan.nextInt();
-			} else if (choix == 2) {
-
-				System.out.println("Veuillez saisir le code");
-				String code = scan.next();
-
-				System.out.println("Veuillez saisir le nom (sans espace)");
-				String nom = scan.next();
-
-				System.out.println("Veuillez saisir le prix");
-				double prix = scan.nextDouble();
-
-				Pizza pn = new Pizza(code, nom, prix);
-				listPizzas.add(pn);
-				nbPizzas+=1 ;
-				
-				System.out.println("***** Pizzeria Administration *****");
-				System.out.println("1. Lister les pizzas");
-				System.out.println("2. Ajouter une nouvelle pizza");
-				System.out.println("3. Mettre à jour une pizza");
-				System.out.println("4. Supprimer une pizza");
-				System.out.println("99. Sortir");
-				choix = scan.nextInt();
-
-			} else if (choix == 3) {
-				for (int i = 1; i < listPizzas.size(); i++) {
-					System.out.println(listPizzas.get(i).code + " -> " + listPizzas.get(i).nom + " ("
-							+ listPizzas.get(i).prix + ") ");
-				}
-				System.out.println("Veuillez choisir la pizza à modifier");
-				System.out.println("(99 pour abandonner)");
-				String pizzaModif = scan.next();
-
-				if (!pizzaModif.equals("99")) {
-					for (int ip = 0; ip < listPizzas.size(); ip++) {
-						if (pizzaModif.equals(listPizzas.get(ip).code)) {
-							System.out.println("Veuillez saisir le code");
-							String code = scan.next();
-
-							System.out.println("Veuillez saisir le nom (sans espace)");
-							String nom = scan.next();
-
-							System.out.println("Veuillez saisir le prix");
-							double prix = scan.nextDouble();
-
-							listPizzas.get(ip).code = code;
-							listPizzas.get(ip).nom = nom;
-							listPizzas.get(ip).prix = prix;
-
-						}
-					}
-					System.out.println("***** Pizzeria Administration *****");
-					System.out.println("1. Lister les pizzas");
-					System.out.println("2. Ajouter une nouvelle pizza");
-					System.out.println("3. Mettre à jour une pizza");
-					System.out.println("4. Supprimer une pizza");
-					System.out.println("99. Sortir");
-					choix = scan.nextInt();
-
-				} else {
-					System.out.println("***** Pizzeria Administration *****");
-					System.out.println("1. Lister les pizzas");
-					System.out.println("2. Ajouter une nouvelle pizza");
-					System.out.println("3. Mettre à jour une pizza");
-					System.out.println("4. Supprimer une pizza");
-					System.out.println("99. Sortir");
-					choix = scan.nextInt();
-				}
-			} else if (choix == 4) {
-				for (int i = 1; i < listPizzas.size(); i++) {
-					System.out.println(
-							listPizzas.get(i).code + " -> " + listPizzas.get(i).nom + " (" + listPizzas.get(i).prix + ") ");
-				}
-				System.out.println("Veuillez choisir la pizza à supprimer");
-				System.out.println("(99 pour abandonner)");
-				String pizzaSupp = scan.next();
-
-				if (!pizzaSupp.equals("99")) {
-					for (int jp = 0; jp < listPizzas.size(); jp++) {
-						if (pizzaSupp.equals(listPizzas.get(jp).code)) {
-							listPizzas.remove(jp) ;
-						}
-						
-						nbPizzas= nbPizzas - 1 ;
-						
-					}
-
-				} else {
-					System.out.println("***** Pizzeria Administration *****");
-					System.out.println("1. Lister les pizzas");
-					System.out.println("2. Ajouter une nouvelle pizza");
-					System.out.println("3. Mettre à jour une pizza");
-					System.out.println("4. Supprimer une pizza");
-					System.out.println("99. Sortir");
-					choix = scan.nextInt();
-				}
-
-				System.out.println("***** Pizzeria Administration *****");
-				System.out.println("1. Lister les pizzas");
-				System.out.println("2. Ajouter une nouvelle pizza");
-				System.out.println("3. Mettre à jour une pizza");
-				System.out.println("4. Supprimer une pizza");
-				System.out.println("99. Sortir");
-				choix = scan.nextInt();
+		Pizza pep = new Pizza(0, "PEP", "Pépéroni", 12.50);
+		Pizza mar = new Pizza(1, "MAR", "Margherita", 14.00);
+		Pizza rei = new Pizza(2, "REI", "La Reine", 11.50);
+		Pizza fro = new Pizza(3, "FRO", "La 4 fromage", 12.00);
+		Pizza can = new Pizza(4, "CAN", "La cannibale", 12.50);
+		Pizza sav = new Pizza(5, "SAV", "La savoyarde", 13.00);
+		Pizza ori = new Pizza(6, "ORI", "L'orientale", 13.50);
+		Pizza ind = new Pizza(7, "IND", "L'indienne", 14.00);
+		Pizza[] listePizzas = { pep, mar, rei, fro, can, sav, ori, ind };
+		
+		
+		IPizzaDao dao = new PizzaDaoImpl(listePizzas) ;
+		OptionMenu optionList = new OptionListePizza(dao, scan) ;
+		OptionMenu optionAdd = new OptionAddPizza(dao, scan) ;
+		OptionMenu optionChange = new OptionMajPizza(dao, scan) ;
+		OptionMenu optionDel = new OptionDelPizza(dao, scan) ;
+		
+		OptionMenu[] options = {optionList, optionAdd, optionChange, optionDel} ;
+		
+		Menu menu = new Menu("**** Pizzeria Administration ****", options) ;
+		
+		int choix = 0 ;
+		while (choix != 5) {
+			menu.demarrer();
+			choix = scan.nextInt() ;
+			scan.nextLine() ;
+			
+			while (choix > options.length + 1) {
+				System.out.println("\n!!! Valeur non autorisée !!!\n");
+				menu.demarrer();
+				choix = scan.nextInt() ;
+				scan.nextLine() ;
+			}
+			if (choix!=5) {
+				menu.executer(choix);
 			}
 		}
-		System.out.println("Au revoir");
+		System.out.println("Au revoir !");
+		scan.close() ;
 	}
+
 }

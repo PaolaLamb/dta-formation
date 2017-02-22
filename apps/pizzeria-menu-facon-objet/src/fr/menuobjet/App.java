@@ -2,10 +2,10 @@ package fr.menuobjet;
 
 import java.util.Scanner;
 
-import fr.menuobjet.menu.Menu;
 import fr.menuobjet.menu.item.MenuAdd;
 import fr.menuobjet.menu.item.MenuItem;
 import fr.menuobjet.menu.item.MenuList;
+import fr.pizzeria.ihm.Menu;
 
 public class App {
 
