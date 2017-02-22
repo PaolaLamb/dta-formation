@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <session version="1.0">
-<refactoring accessors="true" comment="Delete element from project &apos;pizzeria-console-imperative&apos;&#x0D;&#x0A;- Original project: &apos;pizzeria-console-imperative&apos;&#x0D;&#x0A;- Original element: &apos;pizzeria-console-imperative/src/(default package)&apos;" description="Delete element" element1="/src&lt;" elements="1" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1487675601955" subPackages="false" version="1.0"/>
+<refactoring accessors="true" comment="Delete element from project &apos;pizzeria-console-imperative&apos;&#x0D;&#x0A;- Original project: &apos;pizzeria-console-imperative&apos;&#x0D;&#x0A;- Original element: &apos;pizzeria-console-imperative/src/fr.pizzeria.model&apos;" description="Delete element" element1="/src&lt;fr.pizzeria.model" elements="1" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1487773357279" subPackages="false" version="1.0"/>
 </session>
