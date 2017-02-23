@@ -1,6 +1,10 @@
 package fr.pizzeria.dao;
 
 import java.util.Arrays;
+
+import fr.pizzeria.exception.DeletePizzaException;
+import fr.pizzeria.exception.SavePizzaException;
+import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoImpl implements IPizzaDao {
@@ -18,34 +22,38 @@ public class PizzaDaoImpl implements IPizzaDao {
 
 
 	@Override
-	public boolean saveNewPizza(Pizza pizza) {
-		int size = pizzas.length ;
-		Pizza[] newPizzas = Arrays.copyOf(pizzas, size+1) ;
-		newPizzas[size] = pizza ;
-		pizzas = newPizzas ;
-		Pizza.nbPizzas++ ;
-		return true ;
+	public void saveNewPizza(Pizza pizza) {
+		if(pizza.code.length()>3) {
+			throw new SavePizzaException() ;
+		} else {
+			int size = pizzas.length ;
+			Pizza[] newPizzas = Arrays.copyOf(pizzas, size+1) ; //copie du tableau précédent et insertion d'une ligne pour ajouter nouvelle pizza
+			newPizzas[size] = pizza ;
+			pizzas = newPizzas ;
+			Pizza.nbPizzas++ ;
+		}
 		
 	}
 
 
 	@Override
-	public boolean updatePizza(String codePizza, Pizza newPizza) {
+	public void updatePizza(String codePizza, Pizza newPizza) {
 		int index = 0;
 		for (Pizza pizza : pizzas ) {
 			if (codePizza.equals(pizza.code)){
 				pizzas[index] = newPizza ;
-				
-				return true ;
+			
+			} else {
+				throw new UpdatePizzaException() ;
 			}
 			index++ ;
 		}
-		return false;
+		
 	}
 
 
 	@Override
-	public boolean deletePizza(String codePizza) {
+	public void deletePizza(String codePizza) {
 		int index = 0 ;
 		int size = pizzas.length ;
 		for (Pizza pizza : pizzas) {
@@ -55,10 +63,10 @@ public class PizzaDaoImpl implements IPizzaDao {
 				System.arraycopy(pizzas, index +1, newPizzas, index, size - index - 1);
 				pizzas = newPizzas ;
 				Pizza.nbPizzas-- ;
-				return true ;
+			} else {
+				throw new DeletePizzaException() ;
 			}
 			index++ ;
 		}
-		return false;
 	}
 }

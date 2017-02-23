@@ -13,6 +13,6 @@ public abstract class OptionMenu {
 	}
 	
 	public abstract String getLibelle();
-	public abstract boolean execute() ;
+	public abstract void execute() ;
 
 }

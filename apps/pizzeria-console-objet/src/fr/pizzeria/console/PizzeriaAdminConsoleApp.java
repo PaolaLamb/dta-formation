@@ -1,6 +1,5 @@
 package fr.pizzeria.console;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
@@ -34,13 +33,13 @@ public class PizzeriaAdminConsoleApp {
 		OptionMenu optionChange = new OptionMajPizza(dao, scan) ;
 		OptionMenu optionDel = new OptionDelPizza(dao, scan) ;
 		
-		OptionMenu[] options = {optionList, optionAdd, optionChange, optionDel} ;
+		OptionMenu[] options = {optionList, optionAdd, optionChange, optionDel} ; //le choix de l'option permettra l'execute() approprié
 		
 		Menu menu = new Menu("**** Pizzeria Administration ****", options) ;
 		
 		int choix = 0 ;
 		while (choix != 5) {
-			menu.demarrer();
+			menu.demarrer();			//réaffiche menu tant qu'entrée != 5
 			choix = scan.nextInt() ;
 			scan.nextLine() ;
 			

@@ -9,7 +9,7 @@ public class Menu {
 		this.actions = actions ;
 	}
 	
-	public void demarrer() {
+	public void demarrer() {							//afficher menu
 		System.out.println(titre);
 		System.out.println("Veuillez choisir une action (99 pour abandonner)") ;
 		for (int i = 0 ; i < actions.length ; i++) {

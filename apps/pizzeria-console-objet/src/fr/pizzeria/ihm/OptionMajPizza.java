@@ -3,6 +3,7 @@ package fr.pizzeria.ihm;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.Pizza;
 
 public class OptionMajPizza extends OptionMenu {
@@ -16,7 +17,7 @@ public class OptionMajPizza extends OptionMenu {
 	}
 
 	@Override
-	public boolean execute() {
+	public void execute() {
 		Pizza newPizza = new Pizza() ;
 		System.out.println("Veuillez choisir le code de la pizza à modifier (99 pour quitter)");
 		String pizzaPick = scan.nextLine() ;
@@ -30,9 +31,12 @@ public class OptionMajPizza extends OptionMenu {
 			System.out.println("Veuillez saisir le prix");
 			newPizza.prix = scan.nextDouble() ;
 			
-			return dao.updatePizza(pizzaPick, newPizza) ;
+			try {
+				dao.updatePizza(pizzaPick, newPizza) ;
+			} catch (StockageException e) {
+				System.err.println(e.getMessage());
+			}
 		}
-		return true ;
 	}
 	
 }
