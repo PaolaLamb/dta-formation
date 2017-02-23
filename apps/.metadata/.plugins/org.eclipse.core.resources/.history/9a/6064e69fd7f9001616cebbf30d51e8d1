@@ -1,0 +1,22 @@
+package fr.pizzeria.exception;
+
+public class DeletePizzaException extends RuntimeException {
+
+	public DeletePizzaException() {
+		super();
+	}
+
+	public DeletePizzaException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
+	public DeletePizzaException(String message) {
+		super(message);
+	}
+
+	public DeletePizzaException(Throwable cause) {
+		super(cause);
+	}
+	
+
+}
