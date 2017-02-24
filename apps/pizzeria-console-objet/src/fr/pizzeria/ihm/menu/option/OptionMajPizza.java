@@ -1,13 +1,13 @@
-package fr.pizzeria.ihm;
+package fr.pizzeria.ihm.menu.option;
 
 import java.util.Scanner;
 
-import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.dao.IDao;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.Pizza;
 
 public class OptionMajPizza extends OptionMenu {
-	public OptionMajPizza(IPizzaDao dao, Scanner scan) {
+	public OptionMajPizza(IDao<Pizza, String> dao, Scanner scan) {
 		super(dao, scan) ;
 	}
 
@@ -32,7 +32,7 @@ public class OptionMajPizza extends OptionMenu {
 			newPizza.prix = scan.nextDouble() ;
 			
 			try {
-				dao.updatePizza(pizzaPick, newPizza) ;
+				dao.update(pizzaPick, newPizza) ;
 			} catch (StockageException e) {
 				System.err.println(e.getMessage());
 			}

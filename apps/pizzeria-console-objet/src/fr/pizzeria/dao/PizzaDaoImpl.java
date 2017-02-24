@@ -7,7 +7,7 @@ import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.Pizza;
 
-public class PizzaDaoImpl implements IPizzaDao {
+public class PizzaDaoImpl implements IDao<Pizza, String> {
 	private Pizza[] pizzas ; //tableau de pizza
 	
 	public PizzaDaoImpl(Pizza[] pizzas) { //constructeur
@@ -16,13 +16,13 @@ public class PizzaDaoImpl implements IPizzaDao {
 	
 	
 	@Override
-	public Pizza[] findAllPizzas() {
+	public Pizza[] findAll() {
 		return pizzas ;
 	}
 
 
 	@Override
-	public void saveNewPizza(Pizza pizza) {
+	public void saveNew(Pizza pizza)   {
 		if(pizza.code.length()>3) {
 			throw new SavePizzaException() ;
 		} else {
@@ -37,14 +37,14 @@ public class PizzaDaoImpl implements IPizzaDao {
 
 
 	@Override
-	public void updatePizza(String codePizza, Pizza newPizza) {
+	public void update(String codePizza, Pizza newPizza) {
 		int index = 0;
 		for (Pizza pizza : pizzas ) {
 			if (codePizza.equals(pizza.code)){
 				pizzas[index] = newPizza ;
 			
 			} else {
-				throw new UpdatePizzaException() ;
+				throw new UpdatePizzaException() ; ///PASBON
 			}
 			index++ ;
 		}
@@ -53,7 +53,7 @@ public class PizzaDaoImpl implements IPizzaDao {
 
 
 	@Override
-	public void deletePizza(String codePizza) {
+	public void delete(String codePizza) {
 		int index = 0 ;
 		int size = pizzas.length ;
 		for (Pizza pizza : pizzas) {
@@ -64,7 +64,7 @@ public class PizzaDaoImpl implements IPizzaDao {
 				pizzas = newPizzas ;
 				Pizza.nbPizzas-- ;
 			} else {
-				throw new DeletePizzaException() ;
+				throw new DeletePizzaException() ; /// PAS BON
 			}
 			index++ ;
 		}

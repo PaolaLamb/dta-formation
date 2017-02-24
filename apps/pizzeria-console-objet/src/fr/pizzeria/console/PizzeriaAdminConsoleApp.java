@@ -2,14 +2,14 @@ package fr.pizzeria.console;
 
 import java.util.Scanner;
 
-import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.dao.IDao;
 import fr.pizzeria.dao.PizzaDaoImpl;
-import fr.pizzeria.ihm.Menu;
-import fr.pizzeria.ihm.OptionAddPizza;
-import fr.pizzeria.ihm.OptionMajPizza;
-import fr.pizzeria.ihm.OptionListePizza;
-import fr.pizzeria.ihm.OptionMenu;
-import fr.pizzeria.ihm.OptionDelPizza;
+import fr.pizzeria.ihm.menu.Menu;
+import fr.pizzeria.ihm.menu.option.OptionAddPizza;
+import fr.pizzeria.ihm.menu.option.OptionDelPizza;
+import fr.pizzeria.ihm.menu.option.OptionListePizza;
+import fr.pizzeria.ihm.menu.option.OptionMajPizza;
+import fr.pizzeria.ihm.menu.option.OptionMenu;
 import fr.pizzeria.model.Pizza;
 
 public class PizzeriaAdminConsoleApp {
@@ -26,15 +26,13 @@ public class PizzeriaAdminConsoleApp {
 		Pizza ind = new Pizza(7, "IND", "L'indienne", 14.00);
 		Pizza[] listePizzas = { pep, mar, rei, fro, can, sav, ori, ind };
 		
+		IDao<Pizza, String> dao = new PizzaDaoImpl(listePizzas) ;
 		
-		IPizzaDao dao = new PizzaDaoImpl(listePizzas) ;
 		OptionMenu optionList = new OptionListePizza(dao, scan) ;
 		OptionMenu optionAdd = new OptionAddPizza(dao, scan) ;
 		OptionMenu optionChange = new OptionMajPizza(dao, scan) ;
 		OptionMenu optionDel = new OptionDelPizza(dao, scan) ;
-		
 		OptionMenu[] options = {optionList, optionAdd, optionChange, optionDel} ; //le choix de l'option permettra l'execute() approprié
-		
 		Menu menu = new Menu("**** Pizzeria Administration ****", options) ;
 		
 		int choix = 0 ;

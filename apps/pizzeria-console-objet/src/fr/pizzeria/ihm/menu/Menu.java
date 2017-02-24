@@ -1,4 +1,6 @@
-package fr.pizzeria.ihm;
+package fr.pizzeria.ihm.menu;
+
+import fr.pizzeria.ihm.menu.option.OptionMenu;
 
 public class Menu {
 	private String titre;
