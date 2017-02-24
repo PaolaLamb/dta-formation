@@ -18,8 +18,8 @@ public class OptionListePizza extends OptionMenu {
 	@Override
 	public void execute() {
 		Pizza[] listPizza = (Pizza[]) dao.findAll() ;
-		for (int i = 0; i < listPizza.length; i++) {
-			System.out.println(listPizza[i].code + " -> " + listPizza[i].nom + " (" + listPizza[i].prix + "€) ");
+		for (Pizza pizza : listPizza) {
+			System.out.println(pizza.code + " -> " + pizza.nom + " (" + pizza.prix + "€) ");
 		}
 		System.out.println(Pizza.nbPizzas + " pizzas ont été créées\n");
 	}

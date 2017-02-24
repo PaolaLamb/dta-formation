@@ -28,11 +28,12 @@ public class PizzeriaAdminConsoleApp {
 		
 		IDao<Pizza, String> dao = new PizzaDaoImpl(listePizzas) ;
 		
+		
 		OptionMenu optionList = new OptionListePizza(dao, scan) ;
 		OptionMenu optionAdd = new OptionAddPizza(dao, scan) ;
 		OptionMenu optionChange = new OptionMajPizza(dao, scan) ;
 		OptionMenu optionDel = new OptionDelPizza(dao, scan) ;
-		OptionMenu[] options = {optionList, optionAdd, optionChange, optionDel} ; //le choix de l'option permettra l'execute() approprié
+				OptionMenu[] options = {optionList, optionAdd, optionChange, optionDel} ; //le choix de l'option permettra l'execute() approprié
 		Menu menu = new Menu("**** Pizzeria Administration ****", options) ;
 		
 		int choix = 0 ;
