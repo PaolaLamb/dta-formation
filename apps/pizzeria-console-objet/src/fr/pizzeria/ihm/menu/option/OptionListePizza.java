@@ -1,5 +1,6 @@
 package fr.pizzeria.ihm.menu.option;
 
+import java.util.List;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.IDao;
@@ -17,9 +18,10 @@ public class OptionListePizza extends OptionMenu {
 
 	@Override
 	public void execute() {
-		Pizza[] listPizza = (Pizza[]) dao.findAll() ;
+		List<Pizza> listPizza = dao.findAll() ;
 		for (Pizza pizza : listPizza) {
-			System.out.println(pizza.code + " -> " + pizza.nom + " (" + pizza.prix + "€) ");
+			//System.out.println(pizza.code + " -> " + pizza.nom + " (" + pizza.prix + "€) " +  pizza.toString());
+			System.out.println(pizza);
 		}
 		System.out.println(Pizza.nbPizzas + " pizzas ont été créées\n");
 	}

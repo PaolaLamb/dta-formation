@@ -19,6 +19,7 @@ public class OperateursApp {
 		System.out.println(premier + " x " + second + " = " + (premier * second));
 		System.out.println(premier + " / " + second + " = " + (premier / second));
 		System.out.println(premier + " % " + second + " = " + (premier % second));
+		scan.close() ;
 
 	}
 

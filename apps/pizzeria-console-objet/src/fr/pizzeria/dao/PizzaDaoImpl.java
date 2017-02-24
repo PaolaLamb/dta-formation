@@ -1,6 +1,6 @@
 package fr.pizzeria.dao;
 
-import java.util.Arrays;
+import java.util.List;
 
 import fr.pizzeria.exception.DeletePizzaException;
 import fr.pizzeria.exception.SavePizzaException;
@@ -8,15 +8,15 @@ import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoImpl implements IDao<Pizza, String> {
-	private Pizza[] pizzas ; //tableau de pizza
+	private List<Pizza> pizzas ; //list de pizza
 	
-	public PizzaDaoImpl(Pizza[] pizzas) { //constructeur
+	public PizzaDaoImpl(List<Pizza> pizzas) { //constructeur
 		this.pizzas = pizzas ;
 	}
 	
 	
 	@Override
-	public Pizza[] findAll() {
+	public List<Pizza> findAll() {
 		return pizzas ;
 	}
 
@@ -26,12 +26,9 @@ public class PizzaDaoImpl implements IDao<Pizza, String> {
 		if(pizza.code.length()>3) {
 			throw new SavePizzaException() ;
 		} else {
-			int size = pizzas.length ;
-			Pizza[] newPizzas = Arrays.copyOf(pizzas, size+1) ; //copie du tableau précédent et insertion d'une ligne pour ajouter nouvelle pizza
-			newPizzas[size] = pizza ;
-			pizzas = newPizzas ;
-			Pizza.nbPizzas++ ;
+			pizzas.add(pizza) ;
 		}
+		Pizza.nbPizzas++ ;
 		
 	}
 
@@ -41,8 +38,7 @@ public class PizzaDaoImpl implements IDao<Pizza, String> {
 		int index = 0;
 		for (Pizza pizza : pizzas ) {
 			if (codePizza.equals(pizza.code)){
-				pizzas[index] = newPizza ;
-			
+				pizzas.set(index, pizza);
 			} else {
 				throw new UpdatePizzaException() ; ///PASBON
 			}
@@ -55,18 +51,14 @@ public class PizzaDaoImpl implements IDao<Pizza, String> {
 	@Override
 	public void delete(String codePizza) {
 		int index = 0 ;
-		int size = pizzas.length ;
 		for (Pizza pizza : pizzas) {
 			if (codePizza.equals(pizza.code)){
-				Pizza[] newPizzas = new Pizza[size-1] ;
-				System.arraycopy(pizzas, 0, newPizzas, 0, index);
-				System.arraycopy(pizzas, index +1, newPizzas, index, size - index - 1);
-				pizzas = newPizzas ;
-				Pizza.nbPizzas-- ;
+				pizzas.remove(index) ;
 			} else {
 				throw new DeletePizzaException() ; /// PAS BON
 			}
 			index++ ;
 		}
+		Pizza.nbPizzas-- ;
 	}
 }

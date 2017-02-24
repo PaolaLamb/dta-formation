@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import fr.pizzeria.dao.IDao;
 import fr.pizzeria.exception.StockageException;
+import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class OptionMajPizza extends OptionMenu {
@@ -30,6 +31,21 @@ public class OptionMajPizza extends OptionMenu {
 			
 			System.out.println("Veuillez saisir le prix");
 			newPizza.prix = scan.nextDouble() ;
+			
+			boolean arg = false ;
+			while(!arg) {
+				System.out.println("Veuillez saisir la catégorie de la pizza (Viande/Poisson/Sans_Viande)");
+				String categorie = scan.next() ;
+				try {
+					newPizza.categoriePizza = CategoriePizza.valueOf(categorie.toUpperCase()) ;
+					arg = true ;
+				} catch (IllegalArgumentException e) {
+					System.out.println("/!\\/!\\ Entrée non valide /!\\/!\\");
+				}
+				
+			}
+			
+			
 			
 			try {
 				dao.update(pizzaPick, newPizza) ;
