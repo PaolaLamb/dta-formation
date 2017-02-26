@@ -11,7 +11,7 @@ public class Pizza {
 	@ToString
 	private Double prix ;
 	public CategoriePizza categoriePizza ;
-	private static Integer nbPizza = 0 ;
+	private static Integer nbPizzas = 0 ;
 
 	
 	public Pizza() {
@@ -51,10 +51,10 @@ public class Pizza {
 		this.prix = prix;
 	}
 	public static Integer getNbPizza() {
-		return nbPizza;
+		return nbPizzas;
 	}
 	public static void setNbPizza(Integer nbPizza) {
-		Pizza.nbPizza = nbPizza;
+		Pizza.nbPizzas = nbPizza;
 	}
 	
 	

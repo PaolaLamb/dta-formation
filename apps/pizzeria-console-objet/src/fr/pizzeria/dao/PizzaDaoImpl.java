@@ -19,7 +19,7 @@ public class PizzaDaoImpl implements IPizzaDao<Pizza, String> {
 
 	@Override
 	public void saveNew(Pizza pizza) {
-		if(pizza.code.length()>3) {
+		if(pizza.getCode().length()>3) {
 			throw new SavePizzaException() ;
 		} else {
 			pizzasList.add(pizza) ;
@@ -37,6 +37,7 @@ public class PizzaDaoImpl implements IPizzaDao<Pizza, String> {
 				pizzasList.set(index, newPizza) ;
 			} else {
 				throw new UpdatePizzaException() ; ///PASBON
+			}
 			index++ ;
 		}
 	}
@@ -49,7 +50,7 @@ public class PizzaDaoImpl implements IPizzaDao<Pizza, String> {
 				pizzasList.remove(index) ; ;
 			} else {
 				throw new DeletePizzaException() ; /// PAS BON
-			}s
+			}
 			index++ ;
 		}
 		Pizza.setNbPizza(Pizza.getNbPizza()-1);

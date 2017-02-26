@@ -23,7 +23,7 @@ public class OptionDelPizza extends OptionMenu {
 		System.out.println("Veuillez saisir le code de la pizza à supprimer");
 		String codePizza = scan.next();
 		
-		if (pizzaPick != "99") {
+		if (codePizza != "99") {
 			try { 
 				dao.delete(codePizza);
 			} catch (StockageException e) {

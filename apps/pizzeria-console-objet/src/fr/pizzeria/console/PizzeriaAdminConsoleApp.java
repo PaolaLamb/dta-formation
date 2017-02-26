@@ -20,16 +20,16 @@ public class PizzeriaAdminConsoleApp {
 		Scanner scan = new Scanner(System.in) ;
 		
 		List<Pizza> pizzaList = new ArrayList<>() ;
-		pizzaList.add(new Pizza(0, "PEP", "Pépéroni", 12.50)) ;
-		pizzaList.add(new Pizza(1, "MAR", "Margherita", 14.00)) ;
-		pizzaList.add(new Pizza(2, "REI", "La Reine", 11.50)) ;
-		pizzaList.add(new Pizza(3, "FRO", "La 4 Fromage", 12.00)) ;
-		pizzaList.add(new Pizza(4, "CAN", "La Cannibale", 12.50)) ;
-		pizzaList.add(new Pizza(5, "SAV", "La Savoyarde", 13.00)) ;
-		pizzaList.add(new Pizza(6, "ORI", "L'orientale", 13.50)) ;
-		pizzaList.add(new Pizza(7, "IND", "L'indienne", 14.00)) ;
+		pizzaList.add(new Pizza(0, "PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE)) ;
+		pizzaList.add(new Pizza(1, "MAR", "Margherita", 14.00, CategoriePizza.POISSON)) ;
+		pizzaList.add(new Pizza(2, "REI", "La Reine", 11.50, CategoriePizza.SANS_VIANDE)) ;
+		pizzaList.add(new Pizza(3, "FRO", "La 4 Fromage", 12.00, CategoriePizza.SANS_VIANDE)) ;
+		pizzaList.add(new Pizza(4, "CAN", "La Cannibale", 12.50, CategoriePizza.VIANDE)) ;
+		pizzaList.add(new Pizza(5, "SAV", "La Savoyarde", 13.00, CategoriePizza.VIANDE)) ;
+		pizzaList.add(new Pizza(6, "ORI", "L'orientale", 13.50, CategoriePizza.POISSON)) ;
+		pizzaList.add(new Pizza(7, "IND", "L'indienne", 14.00, CategoriePizza.VIANDE)) ;
 		
-		IPizzaDao dao = new PizzaDaoImpl(pizzaList) ;
+		IPizzaDao<Pizza, String> dao = new PizzaDaoImpl(pizzaList) ;
 		
 		OptionListePizza optionListe = new OptionListePizza(dao, scan) ;
 		OptionAddPizza optionAdd = new OptionAddPizza(dao, scan) ;
@@ -49,10 +49,9 @@ public class PizzeriaAdminConsoleApp {
 
 		while(choix != 5) {
 			menu.demarrer();
-
+			System.out.println("Veuillez saisir une action");
 			choix = scan.nextInt() ;
 			
-
 			if(choix > options.size() + 1) {
 				System.out.println("Mauvaise Valeur");
 
@@ -60,8 +59,6 @@ public class PizzeriaAdminConsoleApp {
 			
 			if(choix!=5) {
 				menu.executer(choix);
-				menu.demarrer();
-				choix = scan.nextInt() ;
 			}
 		}
 		System.out.println("**** Au revoir ! ****");

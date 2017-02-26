@@ -9,7 +9,7 @@ public abstract class OptionMenu {
 	public Scanner scan ;
 	
 	
-	public OptionMenu(IPizzaDao<Pizza, String) dao, Scanner scan) {
+	public OptionMenu(IPizzaDao<Pizza, String> dao, Scanner scan) {
 		super();
 		this.dao = dao;
 		this.scan = scan;
