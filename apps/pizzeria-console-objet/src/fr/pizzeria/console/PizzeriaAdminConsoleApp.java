@@ -1,17 +1,17 @@
 package fr.pizzeria.console;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.ihm.menu.Menu;
 import fr.pizzeria.ihm.menu.option.*;
-import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.dao.PizzaDaoImpl;
+import fr.pizzeria.model.CategoriePizza;
 
 
 public class PizzeriaAdminConsoleApp {
@@ -49,10 +49,13 @@ public class PizzeriaAdminConsoleApp {
 
 		while(choix != 5) {
 			menu.demarrer();
+
 			choix = scan.nextInt() ;
 			
+
 			if(choix > options.size() + 1) {
 				System.out.println("Mauvaise Valeur");
+
 			}
 			
 			if(choix!=5) {

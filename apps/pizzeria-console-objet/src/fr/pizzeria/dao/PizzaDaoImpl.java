@@ -1,9 +1,10 @@
 package fr.pizzeria.dao;
 
 import java.util.List;
-
 import fr.pizzeria.model.Pizza;
-
+import fr.pizzeria.exception.DeletePizzaException;
+import fr.pizzeria.exception.SavePizzaException;
+import fr.pizzeria.exception.UpdatePizzaException;
 public class PizzaDaoImpl implements IPizzaDao<Pizza, String> {
 	private List<Pizza> pizzasList ;
 	
@@ -18,8 +19,12 @@ public class PizzaDaoImpl implements IPizzaDao<Pizza, String> {
 
 	@Override
 	public void saveNew(Pizza pizza) {
-		pizzasList.add(pizza) ;
-		Pizza.setNbPizza(Pizza.getNbPizza()+1);
+		if(pizza.code.length()>3) {
+			throw new SavePizzaException() ;
+		} else {
+			pizzasList.add(pizza) ;
+		}
+		Pizza.setNbPizza(Pizza.getNbPizza()+1);	
 	}
 
 	
@@ -30,7 +35,8 @@ public class PizzaDaoImpl implements IPizzaDao<Pizza, String> {
 		for(Pizza pizza : pizzasList) {
 			if(codePizza.equals(pizza.getCode())) {
 				pizzasList.set(index, newPizza) ;
-			}
+			} else {
+				throw new UpdatePizzaException() ; ///PASBON
 			index++ ;
 		}
 	}
@@ -40,12 +46,13 @@ public class PizzaDaoImpl implements IPizzaDao<Pizza, String> {
 		int index = 0 ;
 		for(Pizza pizza : pizzasList) {
 			if(codePizza.equals(pizza.getCode())) {
-				pizzasList.remove(index) ;
-			}
-			Pizza.setNbPizza(Pizza.getNbPizza()-1);
+				pizzasList.remove(index) ; ;
+			} else {
+				throw new DeletePizzaException() ; /// PAS BON
+			}s
 			index++ ;
 		}
-		
+		Pizza.setNbPizza(Pizza.getNbPizza()-1);
 	}
 	
 	

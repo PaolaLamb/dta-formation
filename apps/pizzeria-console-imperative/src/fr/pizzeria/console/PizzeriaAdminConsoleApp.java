@@ -151,6 +151,7 @@ public class PizzeriaAdminConsoleApp {
 
 		}
 		System.out.println("Au revoir");
+		scan.close() ;
 
 	}
 

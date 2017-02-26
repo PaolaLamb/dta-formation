@@ -10,7 +10,6 @@ public class Menu {
 	private Map<Integer, OptionMenu> options ;
 	
 	public Menu(String title, Map<Integer, OptionMenu> options) {
-		super();
 		this.title = title;
 		this.options = options;
 	}
@@ -23,11 +22,9 @@ public class Menu {
 			System.out.println(entrySet.getKey() + ". " + entrySet.getValue().getLibelle()) ;
 		}
 		System.out.println("5. Quitter");
-		
 	}
 	
 	public void executer(int choix) {
 		options.get(choix).execute() ;
 	}
-	
 }

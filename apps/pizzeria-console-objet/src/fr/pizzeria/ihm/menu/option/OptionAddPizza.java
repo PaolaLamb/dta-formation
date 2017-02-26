@@ -4,7 +4,7 @@ import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.model.Pizza;
 
 public class OptionAddPizza extends OptionMenu {
-	public OptionAddPizza(IPizzaDao dao, Scanner scan) {
+	public OptionAddPizza(IPizzaDao<Pizza, String> dao, Scanner scan) {
 		super(dao, scan) ;
 	}
 
@@ -23,8 +23,23 @@ public class OptionAddPizza extends OptionMenu {
 		System.out.println("Veuillez saisir le prix");
 		newPizza.setPrix(scan.nextDouble());
 				
+		boolean arg = false ;
+		while(!arg) {
+			System.out.println("Veuillez saisir la catégorie de la pizza (Viande/Poisson/Sans_Viande)");
+			String categorie = scan.next() ;
+			try {
+				newPizza.categoriePizza = CategoriePizza.valueOf(categorie.toUpperCase()) ;
+				arg = true ;
+			} catch (IllegalArgumentException e) {
+				System.out.println("/!\\/!\\ Entrée non valide /!\\/!\\");
+			}
 		
-		dao.saveNew(newPizza);
+		
+		try {
+			dao.saveNew(newPizza) ;
+		} catch (StockageException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	

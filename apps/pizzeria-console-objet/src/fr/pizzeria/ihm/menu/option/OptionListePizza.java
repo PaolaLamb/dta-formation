@@ -7,14 +7,13 @@ import fr.pizzeria.dao.IPizzaDao;
 
 public class OptionListePizza extends OptionMenu {
 
-	public OptionListePizza(IPizzaDao dao, Scanner scan) {
+	public OptionListePizza(IPizzaDao<Pizza, String> dao, Scanner scan) {
 		super(dao, scan);
 	}
 
 	@Override
 	public String getLibelle() {
 		return "Afficher la liste des pizzas" ;
-
 	}
 
 	@Override
@@ -25,7 +24,4 @@ public class OptionListePizza extends OptionMenu {
 		}
 		System.out.println(Pizza.getNbPizza() + " ont été créées lors de cette session");
 	}
-	
-	
-	
 }
