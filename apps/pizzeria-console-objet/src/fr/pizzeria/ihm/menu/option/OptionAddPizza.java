@@ -1,4 +1,4 @@
-package fr.pizzeria.ihm;
+package fr.pizzeria.ihm.menu.option;
 import java.util.Scanner;
 import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.model.Pizza;
@@ -14,21 +14,18 @@ public class OptionAddPizza extends OptionMenu {
 	}
 
 	@Override
-	public boolean execute() {
+	public void execute() {
 		Pizza newPizza = new Pizza() ;
 		System.out.println("Veuillez saisir le code");
-		newPizza.code = scan.nextLine();
-		
+		newPizza.setCode(scan.next());
 		System.out.println("Veuillez saisir le nom");
-		newPizza.nom = scan.nextLine() ;
-		
+		newPizza.setNom(scan.next());
 		System.out.println("Veuillez saisir le prix");
-		newPizza.prix = scan.nextDouble() ;
+		newPizza.setPrix(scan.nextDouble());
+				
 		
-		return dao.saveNewPizza(newPizza) ;
+		dao.saveNew(newPizza);
 	}
-	
-	
 	
 	
 	

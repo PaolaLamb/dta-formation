@@ -1,64 +1,52 @@
 package fr.pizzeria.dao;
 
-import java.util.Arrays;
+import java.util.List;
+
 import fr.pizzeria.model.Pizza;
 
-public class PizzaDaoImpl implements IPizzaDao {
-	private Pizza[] pizzas ; //tableau de pizza
+public class PizzaDaoImpl implements IPizzaDao<Pizza, String> {
+	private List<Pizza> pizzasList ;
 	
-	public PizzaDaoImpl(Pizza[] pizzas) { //constructeur
-		this.pizzas = pizzas ;
+	public PizzaDaoImpl(List<Pizza> pizzasList) {
+		this.pizzasList = pizzasList;
 	}
+
+	@Override
+	public List<Pizza> findAll() {
+		return pizzasList;
+	}
+
+	@Override
+	public void saveNew(Pizza pizza) {
+		pizzasList.add(pizza) ;
+		Pizza.setNbPizza(Pizza.getNbPizza()+1);
+	}
+
 	
 	
 	@Override
-	public Pizza[] findAllPizzas() {
-		return pizzas ;
+	public void update(String codePizza, Pizza newPizza) {
+		int index = 0 ;
+		for(Pizza pizza : pizzasList) {
+			if(codePizza.equals(pizza.getCode())) {
+				pizzasList.set(index, newPizza) ;
+			}
+			index++ ;
+		}
 	}
 
-
 	@Override
-	public boolean saveNewPizza(Pizza pizza) {
-		int size = pizzas.length ;
-		Pizza[] newPizzas = Arrays.copyOf(pizzas, size+1) ;
-		newPizzas[size] = pizza ;
-		pizzas = newPizzas ;
-		Pizza.nbPizzas++ ;
-		return true ;
+	public void delete(String codePizza) {
+		int index = 0 ;
+		for(Pizza pizza : pizzasList) {
+			if(codePizza.equals(pizza.getCode())) {
+				pizzasList.remove(index) ;
+			}
+			Pizza.setNbPizza(Pizza.getNbPizza()-1);
+			index++ ;
+		}
 		
 	}
-
-
-	@Override
-	public boolean updatePizza(String codePizza, Pizza newPizza) {
-		int index = 0;
-		for (Pizza pizza : pizzas ) {
-			if (codePizza.equals(pizza.code)){
-				pizzas[index] = newPizza ;
-				
-				return true ;
-			}
-			index++ ;
-		}
-		return false;
-	}
-
-
-	@Override
-	public boolean deletePizza(String codePizza) {
-		int index = 0 ;
-		int size = pizzas.length ;
-		for (Pizza pizza : pizzas) {
-			if (codePizza.equals(pizza.code)){
-				Pizza[] newPizzas = new Pizza[size-1] ;
-				System.arraycopy(pizzas, 0, newPizzas, 0, index);
-				System.arraycopy(pizzas, index +1, newPizzas, index, size - index - 1);
-				pizzas = newPizzas ;
-				Pizza.nbPizzas-- ;
-				return true ;
-			}
-			index++ ;
-		}
-		return false;
-	}
+	
+	
 }
