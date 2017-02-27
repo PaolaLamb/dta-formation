@@ -1,12 +1,12 @@
 package fr.pizzeria.ihm.menu.option;
 import java.util.Scanner;
-import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.dao.Dao;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.exception.StockageException;;
 
 public class OptionAddPizza extends OptionMenu {
-	public OptionAddPizza(IPizzaDao<Pizza, String, CategoriePizza> dao, Scanner scan) {
+	public OptionAddPizza(Dao<Pizza, String, CategoriePizza> dao, Scanner scan) {
 		super(dao, scan) ;
 	}
 

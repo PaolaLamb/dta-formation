@@ -6,12 +6,11 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import javax.swing.plaf.synth.SynthScrollBarUI;
+import fr.pizzeria.exception.SavePizzaException;
+import fr.pizzeria.model.CategoriePizza;
+import fr.pizzeria.model.Pizza;
 
-import fr.pizzeria.model.*;
-import fr.pizzeria.exception.*;
-
-public class PizzaDaoImpl implements IPizzaDao<Pizza, String, CategoriePizza> {
+public class PizzaDaoImpl implements Dao<Pizza, String, CategoriePizza> {
 	private List<Pizza> pizzasList;
 
 	public PizzaDaoImpl(List<Pizza> pizzasList) {
@@ -21,6 +20,12 @@ public class PizzaDaoImpl implements IPizzaDao<Pizza, String, CategoriePizza> {
 	@Override
 	public List<Pizza> findAll() {
 		return pizzasList;
+	}
+
+	@Override
+	public void createFiles() {
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
@@ -35,9 +40,9 @@ public class PizzaDaoImpl implements IPizzaDao<Pizza, String, CategoriePizza> {
 
 	@Override
 	public void update(String codePizza, Pizza newPizza) {
-		Optional<Pizza> resultat = pizzasList.stream().filter(p -> p.getCode().equals(codePizza)).findAny() ;
+		Optional<Pizza> resultat = pizzasList.stream().filter(p -> p.getCode().equals(codePizza)).findAny();
 		resultat.ifPresent(p -> pizzasList.set(p.getId(), newPizza));
-		
+
 		/*
 		 * int index = 0 ; for(Pizza pizza : pizzasList) {
 		 * if(codePizza.equals(pizza.getCode())) { pizzasList.set(index,
@@ -65,22 +70,18 @@ public class PizzaDaoImpl implements IPizzaDao<Pizza, String, CategoriePizza> {
 		 */
 	}
 
-
 	@Override
 	public Map<CategoriePizza, List<Pizza>> listByCat() {
-		Map<CategoriePizza, List<Pizza>> map = pizzasList.stream().collect(Collectors.groupingBy(Pizza::getCategoriePizza)) ;
-		return map ;
+		Map<CategoriePizza, List<Pizza>> map = pizzasList.stream()
+				.collect(Collectors.groupingBy(Pizza::getCategoriePizza));
+		return map;
 	}
 
 	@Override
 	public void showMostExp() {
-		pizzasList.stream().max(Comparator.comparing(Pizza::getPrix)).ifPresent(p -> System.out.println(p.getNom() + " est actuellement la plus chère pizza des pizzas disponibles avec " + p.getPrix() + "€ "));
-		
+		pizzasList.stream().max(Comparator.comparing(Pizza::getPrix)).ifPresent(p -> System.out.println(p.getNom()
+				+ " est actuellement la plus chère pizza des pizzas disponibles avec " + p.getPrix() + "€ "));
+
 	}
-	
-	
-	
-	
-	
 
 }

@@ -1,15 +1,13 @@
 package fr.pizzeria.ihm.menu.option;
 
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
-import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.dao.Dao;
 import fr.pizzeria.model.*;
 
 public class OptionListerParCategorie extends OptionMenu {
 	
-	public OptionListerParCategorie(IPizzaDao<Pizza, String, CategoriePizza> dao, Scanner scan) {
+	public OptionListerParCategorie(Dao<Pizza, String, CategoriePizza> dao, Scanner scan) {
 		super(dao, scan);
 	}
 

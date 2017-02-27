@@ -3,11 +3,11 @@ package fr.pizzeria.ihm.menu.option;
 import java.util.Scanner;
 
 import fr.pizzeria.model.*;
-import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.dao.Dao;
 
 public class OptionListePizza extends OptionMenu {
 
-	public OptionListePizza(IPizzaDao<Pizza, String, CategoriePizza> dao, Scanner scan) {
+	public OptionListePizza(Dao<Pizza, String, CategoriePizza> dao, Scanner scan) {
 		super(dao, scan);
 	}
 
