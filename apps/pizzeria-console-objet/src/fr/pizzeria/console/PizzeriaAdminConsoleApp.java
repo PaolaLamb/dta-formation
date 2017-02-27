@@ -1,7 +1,6 @@
 package fr.pizzeria.console;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,35 +28,41 @@ public class PizzeriaAdminConsoleApp {
 		pizzaList.add(new Pizza(6, "ORI", "L'orientale", 13.50, CategoriePizza.POISSON)) ;
 		pizzaList.add(new Pizza(7, "IND", "L'indienne", 14.00, CategoriePizza.VIANDE)) ;
 		
-		IPizzaDao<Pizza, String> dao = new PizzaDaoImpl(pizzaList) ;
+		IPizzaDao<Pizza, String, CategoriePizza> dao = new PizzaDaoImpl(pizzaList) ;
 		
 		OptionListePizza optionListe = new OptionListePizza(dao, scan) ;
 		OptionAddPizza optionAdd = new OptionAddPizza(dao, scan) ;
 		OptionMajPizza optionMaj = new OptionMajPizza(dao, scan) ;
 		OptionDelPizza optionDel = new OptionDelPizza(dao, scan) ;
+		OptionListerParCategorie optionCat = new OptionListerParCategorie(dao, scan) ;
+		OptionMostExpensivePizza optionExp = new OptionMostExpensivePizza(dao, scan) ;
 		
 		Map<Integer, OptionMenu> options = new HashMap<>() ;
 		options.put(1, optionListe) ;
 		options.put(2, optionAdd) ;
 		options.put(3, optionMaj) ;
 		options.put(4, optionDel) ;
+		options.put(5, optionCat) ;
+		options.put(6, optionExp) ;
+		
 		
 	
 		Menu menu = new Menu("**** Pizzeria Administration ****", options) ;
 		
 		Integer choix = 0 ;
 
-		while(choix != 5) {
+		while(choix != options.size()+1) {
 			menu.demarrer();
 			System.out.println("Veuillez saisir une action");
 			choix = scan.nextInt() ;
 			
 			if(choix > options.size() + 1) {
 				System.out.println("Mauvaise Valeur");
-
+				menu.demarrer();
+				choix = scan.nextInt() ;
 			}
 			
-			if(choix!=5) {
+			if(choix!= options.size()+1) {
 				menu.executer(choix);
 			}
 		}

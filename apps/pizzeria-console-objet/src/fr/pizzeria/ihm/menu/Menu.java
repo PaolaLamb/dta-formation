@@ -1,7 +1,7 @@
 package fr.pizzeria.ihm.menu;
 
 import java.util.Map;
-import java.util.Map.Entry;
+// import java.util.Map.Entry;
 
 import fr.pizzeria.ihm.menu.option.OptionMenu;
 
@@ -18,10 +18,12 @@ public class Menu {
 		System.out.println(title);
 		System.out.println("Veuillez choisir une action (99 pour abandonner)");
 
-		for(Entry<Integer, OptionMenu> entrySet : options.entrySet()) {
-			System.out.println(entrySet.getKey() + ". " + entrySet.getValue().getLibelle()) ;
-		}
-		System.out.println("5. Quitter");
+		options.forEach((key, value) -> System.out.println(key + ". " + value.getLibelle()));
+		
+		/*for(Entry<Integer, OptionMenu> entrySet : options.entrySet()) {
+			*System.out.println(entrySet.getKey() + ". " + entrySet.getValue().getLibelle()) ;
+		} */
+		System.out.println(options.size()+1 + ". Quitter");
 	}
 	
 	public void executer(int choix) {

@@ -10,7 +10,7 @@ public class Pizza {
 	private String nom ;
 	@ToString
 	private Double prix ;
-	public CategoriePizza categoriePizza ;
+	private CategoriePizza categoriePizza ;
 	private static Integer nbPizzas = 0 ;
 
 	
@@ -56,8 +56,15 @@ public class Pizza {
 	public static void setNbPizza(Integer nbPizza) {
 		Pizza.nbPizzas = nbPizza;
 	}
+	public CategoriePizza getCategoriePizza() {
+		return categoriePizza;
+	}
+
+	public void setCategoriePizza(CategoriePizza categoriePizza) {
+		this.categoriePizza = categoriePizza;
+	}
 	
-	
+	@Override
 	public String toString() {
 		
 		StringBuilder sb = new StringBuilder() ;
@@ -78,6 +85,8 @@ public class Pizza {
 		
 		// return categoriePizza.getCategorie() ;
 	}
+
+
 
 }
 

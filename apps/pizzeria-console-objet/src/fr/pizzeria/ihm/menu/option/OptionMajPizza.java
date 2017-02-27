@@ -9,7 +9,7 @@ import fr.pizzeria.model.CategoriePizza;
 
 public class OptionMajPizza extends OptionMenu {
 
-	public OptionMajPizza(IPizzaDao<Pizza, String> dao, Scanner scan) {
+	public OptionMajPizza(IPizzaDao<Pizza, String, CategoriePizza> dao, Scanner scan) {
 		super(dao, scan);
 	}
 
@@ -37,7 +37,7 @@ public class OptionMajPizza extends OptionMenu {
 				System.out.println("Veuillez saisir la catégorie de la pizza (Viande/Poisson/Sans_Viande)");
 				String categorie = scan.next() ;
 				try {
-					newPizza.categoriePizza = CategoriePizza.valueOf(categorie.toUpperCase()) ;
+					newPizza.setCategoriePizza(CategoriePizza.valueOf(categorie.toUpperCase())) ;
 					arg = true ;
 				} catch (IllegalArgumentException e) {
 					System.out.println("/!\\/!\\ Entrée non valide /!\\/!\\");
