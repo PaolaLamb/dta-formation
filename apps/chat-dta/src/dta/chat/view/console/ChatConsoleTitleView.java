@@ -1,7 +1,7 @@
 package dta.chat.view.console;
 
 public class ChatConsoleTitleView extends ViewComposite {
-	private String title = "= CHAT APP =";
+	private static final String TITLE = "= CHAT APP =";
 
 	public ChatConsoleTitleView() {
 
@@ -9,7 +9,7 @@ public class ChatConsoleTitleView extends ViewComposite {
 
 	@Override
 	public void print() {
-		System.out.println(title);
+		System.out.println(TITLE);
 	}
 
 }

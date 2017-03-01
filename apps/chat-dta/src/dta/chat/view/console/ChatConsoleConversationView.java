@@ -1,14 +1,14 @@
 package dta.chat.view.console;
 
 public class ChatConsoleConversationView extends ViewComposite {
-	private String conversation = "== Conversation ==";
+	private static final String CONVERSATION_TITLE = "== Conversation ==";
 
 	public ChatConsoleConversationView() {
 	}
 
 	@Override
 	public void print() {
-		System.out.println(conversation);
+		System.out.println(CONVERSATION_TITLE);
 	}
 
 }

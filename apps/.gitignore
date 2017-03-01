@@ -3,5 +3,6 @@
 /.recommenders/
 /RemoteSystemsTempFiles/
 /Servers/
-/.project
-/.classpath
+.project
+.classpath
+.settings/
