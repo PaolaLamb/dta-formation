@@ -2,6 +2,8 @@ package dta.chat;
 
 import java.util.Scanner;
 
+import dta.chat.controller.ChatAuthController;
+import dta.chat.controller.ChatAuthControllerImpl;
 import dta.chat.view.console.ChatConsoleView;
 import dta.chat.view.console.ViewComposite;
 
@@ -12,8 +14,9 @@ public class ChatClientApp {
 
 			ViewComposite view = new ChatConsoleView(scan);
 
+			ChatAuthController dao = new ChatAuthControllerImpl(view);
+			view.setAuthController(dao);
 			view.print();
 		}
-
 	}
 }

@@ -3,9 +3,12 @@ package dta.chat.view.console;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ViewComposite {
+import dta.chat.controller.ChatAuthController;
 
+public abstract class ViewComposite {
 	private List<ViewComposite> children = new ArrayList<>();
+	protected ChatAuthController authController;
+	protected String user;
 
 	public void print() {
 		for (ViewComposite view : children) {
@@ -16,4 +19,15 @@ public abstract class ViewComposite {
 	public void add(ViewComposite view) {
 		children.add(view);
 	}
+
+	public void setAuthController(ChatAuthController authController) {
+		this.authController = authController;
+		this.children.forEach(view -> view.setAuthController(authController));
+	}
+
+	public void setLogin(String login) {
+		this.user = login;
+		this.children.forEach(view -> view.setLogin(login));
+	}
+
 }
