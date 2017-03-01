@@ -2,3 +2,7 @@ apps/.metadata
 apps/.recommenders
 apps/Servers
 apps/RemoteSystemsTempFiles
+apps/*/.settings/
+apps/*/.classpath
+apps/*/.project
+apps/*/*.jar
