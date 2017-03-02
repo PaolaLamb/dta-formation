@@ -16,10 +16,4 @@ public class ChatConsoleView extends ViewComposite {
 
 	}
 
-	@Override
-	public void setLogin(String login) {
-		super.setLogin(login);
-
-	}
-
 }
