@@ -3,14 +3,14 @@ package fr.pizzeria.ihm.tools;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.Dao;
-import fr.pizzeria.dao.PizzaDaoFichier;
+import fr.pizzeria.dao.PizzaDaoImpl;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class IhmTools {
 
 	Scanner scanner = new Scanner(System.in);
-	Dao<Pizza, String, CategoriePizza> iPizza = new PizzaDaoFichier();
+	Dao<Pizza, String, CategoriePizza> iPizza = new PizzaDaoImpl();
 
 	public Scanner getScanner() {
 		return scanner;

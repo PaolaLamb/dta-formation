@@ -13,6 +13,10 @@ import fr.pizzeria.model.Pizza;
 public class PizzaDaoImpl implements Dao<Pizza, String, CategoriePizza> {
 	private List<Pizza> pizzasList;
 
+	public PizzaDaoImpl() {
+		super();
+	}
+
 	public PizzaDaoImpl(List<Pizza> pizzasList) {
 		this.pizzasList = pizzasList;
 	}
@@ -30,7 +34,7 @@ public class PizzaDaoImpl implements Dao<Pizza, String, CategoriePizza> {
 
 	@Override
 	public void saveNew(Pizza pizza) {
-		if (pizza.getCode().length() > 3) {
+		if (pizza.getCode() == null || pizza.getCode().length() > 3) {
 			throw new SavePizzaException();
 		} else {
 			pizzasList.add(pizza);
@@ -66,7 +70,7 @@ public class PizzaDaoImpl implements Dao<Pizza, String, CategoriePizza> {
 		 * DeletePizzaException() ; /// PAS BON } index++ ;
 		 * 
 		 * } //FAIRE UNE FONCTION QUI RETURN SI LA PIZZA EXISTE POUR EVITER LE
-		 * BREAK (boolean) + gérer exception pizzasList.remove(index) ;
+		 * BREAK (boolean) + gï¿½rer exception pizzasList.remove(index) ;
 		 */
 	}
 
@@ -80,7 +84,7 @@ public class PizzaDaoImpl implements Dao<Pizza, String, CategoriePizza> {
 	@Override
 	public void showMostExp() {
 		pizzasList.stream().max(Comparator.comparing(Pizza::getPrix)).ifPresent(p -> System.out.println(p.getNom()
-				+ " est actuellement la plus chère pizza des pizzas disponibles avec " + p.getPrix() + "€ "));
+				+ " est actuellement la plus chï¿½re pizza des pizzas disponibles avec " + p.getPrix() + "ï¿½ "));
 
 	}
 

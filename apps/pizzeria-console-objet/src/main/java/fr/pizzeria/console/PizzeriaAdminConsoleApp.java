@@ -20,10 +20,12 @@ import fr.pizzeria.model.Pizza;
 public class PizzeriaAdminConsoleApp {
 
 	public static void main(String[] args) {
+		new Pizza().equals(new Pizza());
+
 		IhmTools ihm = new IhmTools();
 
 		List<Pizza> pizzaList = new ArrayList<>();
-		pizzaList.add(new Pizza(0, "PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE));
+		pizzaList.add(new Pizza(0, "PEP", "Pï¿½pï¿½roni", 12.50, CategoriePizza.VIANDE));
 		pizzaList.add(new Pizza(1, "MAR", "Margherita", 14.00, CategoriePizza.POISSON));
 		pizzaList.add(new Pizza(2, "REI", "La Reine", 11.50, CategoriePizza.SANS_VIANDE));
 		pizzaList.add(new Pizza(3, "FRO", "La 4 Fromage", 12.00, CategoriePizza.SANS_VIANDE));
