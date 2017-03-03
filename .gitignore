@@ -6,3 +6,4 @@ apps/*/.settings/
 apps/*/.classpath
 apps/*/.project
 apps/*/*.jar
+apps/*/bin/
