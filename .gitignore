@@ -11,3 +11,8 @@ apps/.classpath
 apps/*/target/
 apps/*/bin/
 apps/*/.settings/
+
+apps/pizzeria-console-objet/*/.settings/
+apps/pizzeria-console-objet/*/.classpath
+apps/pizzeria-console-objet/*/.project
+apps/pizzeria-console-objet/*/target/
