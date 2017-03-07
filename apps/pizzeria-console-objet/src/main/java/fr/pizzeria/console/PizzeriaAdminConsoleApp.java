@@ -24,7 +24,7 @@ public class PizzeriaAdminConsoleApp {
 
 		IhmTools ihm = new IhmTools();
 
-		List<Pizza> pizzaList = new ArrayList<>();
+		List<Pizza> pizzaList = new ArrayList<>()
 		pizzaList.add(new Pizza(0, "PEP", "P�p�roni", 12.50, CategoriePizza.VIANDE));
 		pizzaList.add(new Pizza(1, "MAR", "Margherita", 14.00, CategoriePizza.POISSON));
 		pizzaList.add(new Pizza(2, "REI", "La Reine", 11.50, CategoriePizza.SANS_VIANDE));
