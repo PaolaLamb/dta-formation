@@ -28,7 +28,6 @@ public class PizzaDaoImpl implements Dao<Pizza, String, CategoriePizza> {
 
 	@Override
 	public void createFiles() {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -76,9 +75,8 @@ public class PizzaDaoImpl implements Dao<Pizza, String, CategoriePizza> {
 
 	@Override
 	public Map<CategoriePizza, List<Pizza>> listByCat() {
-		Map<CategoriePizza, List<Pizza>> map = pizzasList.stream()
-				.collect(Collectors.groupingBy(Pizza::getCategoriePizza));
-		return map;
+		return pizzasList.stream().collect(Collectors.groupingBy(Pizza::getCategoriePizza));
+
 	}
 
 	@Override

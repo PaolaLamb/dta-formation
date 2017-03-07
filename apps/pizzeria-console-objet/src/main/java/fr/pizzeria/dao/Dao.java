@@ -3,7 +3,7 @@ package fr.pizzeria.dao;
 import java.util.List;
 import java.util.Map;
 
-public interface Dao<S, C, CP> {
+public interface Dao<S, C, R> {
 	List<S> findAll();
 
 	void saveNew(S plat);
@@ -12,7 +12,7 @@ public interface Dao<S, C, CP> {
 
 	void delete(C codePizza);
 
-	Map<CP, List<S>> listByCat();
+	Map<R, List<S>> listByCat();
 
 	void showMostExp();
 
