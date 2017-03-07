@@ -95,7 +95,6 @@ public class Pizza {
 
 		return sb.toString();
 
-		// return categoriePizza.getCategorie() ;
 	}
 
 	@Override

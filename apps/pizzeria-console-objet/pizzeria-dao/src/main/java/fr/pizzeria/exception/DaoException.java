@@ -5,7 +5,7 @@ import java.io.IOException;
 public class DaoException extends IOException {
 
 	public DaoException() {
-		super("ca marche paaaas !");
+		super();
 	}
 
 	public DaoException(String message, Throwable cause) {

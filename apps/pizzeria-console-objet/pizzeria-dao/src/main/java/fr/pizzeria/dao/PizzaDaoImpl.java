@@ -46,12 +46,6 @@ public class PizzaDaoImpl implements Dao<Pizza, String, CategoriePizza> {
 		Optional<Pizza> resultat = pizzasList.stream().filter(p -> p.getCode().equals(codePizza)).findAny();
 		resultat.ifPresent(p -> pizzasList.set(p.getId(), newPizza));
 
-		/*
-		 * int index = 0 ; for(Pizza pizza : pizzasList) {
-		 * if(codePizza.equals(pizza.getCode())) { pizzasList.set(index,
-		 * newPizza) ; }// else { //throw new UpdatePizzaException() ; ///PASBON
-		 * //} index++ ; }
-		 */
 	}
 
 	@Override
@@ -63,14 +57,6 @@ public class PizzaDaoImpl implements Dao<Pizza, String, CategoriePizza> {
 			Pizza.setNbPizza(Pizza.getNbPizza() - 1);
 		});
 
-		/*
-		 * int index = 0 ; for(Pizza pizza : pizzasList) {
-		 * if(codePizza.equals(pizza.getCode())) { break ; } //else { throw new
-		 * DeletePizzaException() ; /// PAS BON } index++ ;
-		 * 
-		 * } //FAIRE UNE FONCTION QUI RETURN SI LA PIZZA EXISTE POUR EVITER LE
-		 * BREAK (boolean) + g�rer exception pizzasList.remove(index) ;
-		 */
 	}
 
 	@Override

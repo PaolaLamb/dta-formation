@@ -1,47 +1,50 @@
 package fr.pizzeria.ihm.menu.option;
+
 import java.util.Scanner;
+import java.util.logging.Logger;
+
 import fr.pizzeria.dao.Dao;
-import fr.pizzeria.model.Pizza;
+import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.CategoriePizza;
-import fr.pizzeria.exception.StockageException;;
+import fr.pizzeria.model.Pizza;;
 
 public class OptionAddPizza extends OptionMenu {
 	public OptionAddPizza(Dao<Pizza, String, CategoriePizza> dao, Scanner scan) {
-		super(dao, scan) ;
+		super(dao, scan);
 	}
 
 	@Override
 	public String getLibelle() {
-		return "Ajouter une pizza" ;
+		return "Ajouter une pizza";
 	}
 
 	@Override
 	public void execute() {
-		Pizza newPizza = new Pizza() ;
+		Pizza newPizza = new Pizza();
 		System.out.println("Veuillez saisir le code");
 		newPizza.setCode(scan.next());
 		System.out.println("Veuillez saisir le nom");
 		newPizza.setNom(scan.next());
 		System.out.println("Veuillez saisir le prix");
 		newPizza.setPrix(scan.nextDouble());
-				
-		boolean arg = false ;
-		while(!arg) {
-			System.out.println("Veuillez saisir la catégorie de la pizza (Viande/Poisson/Sans_Viande)");
-			String categorie = scan.next() ;
+
+		boolean arg = false;
+		while (!arg) {
+			System.out.println("Veuillez saisir la catÃ©gorie de la pizza (Viande/Poisson/Sans_Viande)");
+			String categorie = scan.next();
 			try {
-				newPizza.setCategoriePizza(CategoriePizza.valueOf(categorie.toUpperCase())); 
-				arg = true ;
+				newPizza.setCategoriePizza(CategoriePizza.valueOf(categorie.toUpperCase()));
+				arg = true;
 			} catch (IllegalArgumentException e) {
-				System.out.println("/!\\/!\\ Entrée non valide /!\\/!\\");
+				Logger.getAnonymousLogger().info(e.getMessage());
+				System.out.println("/!\\/!\\ EntrÃ©e non valide /!\\/!\\");
 			}
-		
-		
+
 			try {
-				dao.saveNew(newPizza) ;
+				dao.saveNew(newPizza);
 			} catch (StockageException e) {
-				System.out.println(e.getMessage());
+				Logger.getAnonymousLogger().info(e.getMessage());
 			}
-		}	
-	}	
+		}
+	}
 }

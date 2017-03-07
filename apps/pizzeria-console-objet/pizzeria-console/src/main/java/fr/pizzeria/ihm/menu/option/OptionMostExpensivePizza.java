@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import fr.pizzeria.dao.Dao;
 import fr.pizzeria.model.CategoriePizza;
-import fr.pizzeria.model.*;
+import fr.pizzeria.model.Pizza;
 
 public class OptionMostExpensivePizza extends OptionMenu {
 
@@ -14,14 +14,12 @@ public class OptionMostExpensivePizza extends OptionMenu {
 
 	@Override
 	public String getLibelle() {
-		return "Afficher la pizza au tarif le plus élevé" ;
+		return "Afficher la pizza au tarif le plus Ã©levÃ©";
 	}
 
 	@Override
 	public void execute() {
 		dao.showMostExp();
 	}
-	
-	
-	
+
 }
