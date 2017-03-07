@@ -1,3 +1,4 @@
+[![Build Status](http://ns377570.ip-5-196-89.eu:8080/job/paola-pizzeria-build/badge/icon)](http://ns377570.ip-5-196-89.eu:8080/job/paola-pizzeria-build)
 # dta-formation
 
 Mise en place des différents projets Java vus lors de la formation avec DTA-Ingénierie/Digitalent
