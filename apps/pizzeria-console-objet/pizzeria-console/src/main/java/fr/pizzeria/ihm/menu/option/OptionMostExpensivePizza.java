@@ -19,7 +19,8 @@ public class OptionMostExpensivePizza extends OptionMenu {
 
 	@Override
 	public void execute() {
-		dao.showMostExp();
+		dao.findAll().stream().max(Comparator.comparing(Pizza::getPrix)).ifPresent(p -> System.out.println(p.getNom()
+				+ " est actuellement la plus chère pizza des pizzas disponibles avec " + p.getPrix() + "€ "));
 	}
 
 }

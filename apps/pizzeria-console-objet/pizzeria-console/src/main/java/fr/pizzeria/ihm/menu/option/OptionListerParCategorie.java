@@ -19,7 +19,7 @@ public class OptionListerParCategorie extends OptionMenu {
 
 	@Override
 	public void execute() {
-		dao.listByCat().forEach((key, value) -> System.out.println(key + " : " + value));
+		dao.findAll().stream().collect(Collectors.groupingBy(Pizza::getCategoriePizza)).forEach((key, value) -> System.out.println(key + " : " + value));
 	}
 
 }

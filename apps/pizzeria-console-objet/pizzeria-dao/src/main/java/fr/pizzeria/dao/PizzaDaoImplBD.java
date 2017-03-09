@@ -31,7 +31,7 @@ public class PizzaDaoImplBD implements Dao<Pizza, String, CategoriePizza> {
 			Class.forName(bundle.getString("driver"));
 			co = DriverManager.getConnection(url, user, password);
 		} catch (ClassNotFoundException | SQLException e) {
-			Logger.getAnonymousLogger().log(Level.SEVERE, "driver getting exception", e);
+			Logger.getAnonymousLogger().log(Level.SEVERE, "Connexion exception", e);
 
 		}
 		return co;
@@ -48,9 +48,10 @@ public class PizzaDaoImplBD implements Dao<Pizza, String, CategoriePizza> {
 				String nom = resultats.getString("libelle");
 				String code = resultats.getString("reference");
 				double prix = resultats.getDouble("prix");
-				String categorieString = resultats.getString("categorie_pizza");
-				CategoriePizza cat = CategoriePizza.valueOf(categorieString.toUpperCase());
-				listPizzas.add(new Pizza(id, code, nom, prix, cat));
+				String categorie = resultats.getString("categorie");
+				Pizza pizza = new Pizza(code, nom, prix) ;
+				pizza.setCategoriePizza(CategoriePizza.valueOf(categorie))
+				listPizzas.add(pizza) ;
 			}
 			resultats.close();
 			statement.close();
@@ -64,12 +65,11 @@ public class PizzaDaoImplBD implements Dao<Pizza, String, CategoriePizza> {
 	public void saveNew(Pizza pizza) throws SavePizzaException {
 		try (Connection connection = initializeConnection();
 				PreparedStatement prepStatement = connection.prepareStatement(
-						"INSERT INTO pizza (id, libelle, reference, prix, url_image, categorie_pizza) VALUES (null, ?, ?, ?, ?, ?)");) {
+						"INSERT INTO pizza (libelle, reference, prix,  categorie) VALUES (null, ?, ?, ?, ?)");) {
 			prepStatement.setString(1, pizza.getNom());
 			prepStatement.setString(2, pizza.getCode());
 			prepStatement.setDouble(3, pizza.getPrix());
-			prepStatement.setString(4, (pizza.getNom() + ".png").replaceAll("\\s", ""));
-			prepStatement.setString(5, pizza.getCategoriePizza().name());
+			prepStatement.setString(4, pizza.getCategoriePizza().name());
 			prepStatement.executeUpdate();
 		} catch (SQLException e) {
 			throw new SavePizzaException(e);
@@ -80,13 +80,12 @@ public class PizzaDaoImplBD implements Dao<Pizza, String, CategoriePizza> {
 	public void update(String codePizza, Pizza pizza) throws UpdatePizzaException {
 		try (Connection connection = initializeConnection();
 				PreparedStatement prepStatement = connection.prepareStatement(
-						"UPDATE pizza SET id=?, libelle=?, reference=?, prix=?, url_image=?, categorie_pizza=? WHERE reference=?");) {
+						"UPDATE pizza SET libelle=?, reference=?, prix=?, categorie=? WHERE reference=?");) {
 			prepStatement.setString(1, pizza.getNom());
 			prepStatement.setString(2, pizza.getCode());
 			prepStatement.setDouble(3, pizza.getPrix());
-			prepStatement.setString(4, (pizza.getNom() + ".png").replaceAll("\\s", ""));
-			prepStatement.setString(5, pizza.getCategoriePizza().name());
-			prepStatement.setString(6, pizza.getCode());
+			prepStatement.setString(4, pizza.getCategoriePizza().name());
+			prepStatement.setString(5, codePizza);
 			prepStatement.executeUpdate();
 			prepStatement.close();
 		} catch (SQLException e) {
