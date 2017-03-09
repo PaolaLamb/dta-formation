@@ -20,7 +20,7 @@ public class OptionListePizza extends OptionMenu {
 	@Override
 	public void execute() {
 		dao.findAll().forEach(pizza -> System.out.println(pizza.getCode() + " -> " + pizza.getNom() + " ("
-				+ pizza.getPrix() + "�) " + pizza.getCategoriePizza()));
+				+ pizza.getPrix() + "€ ) " + pizza.getCategoriePizza()));
 
 		System.out.println(Pizza.getNbPizza() + " ont été créées lors de cette session");
 	}

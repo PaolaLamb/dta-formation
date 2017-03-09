@@ -14,27 +14,16 @@ import fr.pizzeria.ihm.menu.option.OptionMajPizza;
 import fr.pizzeria.ihm.menu.option.OptionMenu;
 import fr.pizzeria.ihm.menu.option.OptionMostExpensivePizza;
 import fr.pizzeria.ihm.menu.tools.IhmTools;
-import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class PizzeriaAdminConsoleApp {
 
 	public static void main(String[] args) {
-		new Pizza().equals(new Pizza());
 
 		IhmTools ihm = new IhmTools();
 
-		List<Pizza> pizzaList = new ArrayList<>();
-		pizzaList.add(new Pizza(0, "PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE));
-		pizzaList.add(new Pizza(1, "MAR", "Margherita", 14.00, CategoriePizza.POISSON));
-		pizzaList.add(new Pizza(2, "REI", "La Reine", 11.50, CategoriePizza.SANS_VIANDE));
-		pizzaList.add(new Pizza(3, "FRO", "La 4 Fromage", 12.00, CategoriePizza.SANS_VIANDE));
-		pizzaList.add(new Pizza(4, "CAN", "La Cannibale", 12.50, CategoriePizza.VIANDE));
-		pizzaList.add(new Pizza(5, "SAV", "La Savoyarde", 13.00, CategoriePizza.VIANDE));
-		pizzaList.add(new Pizza(6, "ORI", "L'orientale", 13.50, CategoriePizza.POISSON));
-		pizzaList.add(new Pizza(7, "IND", "L'indienne", 14.00, CategoriePizza.VIANDE));
+		List<Pizza> pizzasList = new ArrayList<>();
 
-		ihm.getiPizza().createFiles();
 		OptionListePizza optionListe = new OptionListePizza(ihm.getiPizza(), ihm.getScanner());
 		OptionAddPizza optionAdd = new OptionAddPizza(ihm.getiPizza(), ihm.getScanner());
 		OptionMajPizza optionMaj = new OptionMajPizza(ihm.getiPizza(), ihm.getScanner());

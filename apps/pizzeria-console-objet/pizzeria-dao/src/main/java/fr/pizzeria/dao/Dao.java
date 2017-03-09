@@ -16,6 +16,4 @@ public interface Dao<S, C, R> {
 
 	void showMostExp();
 
-	void createFiles();
-
 }
