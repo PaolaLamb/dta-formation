@@ -2,6 +2,8 @@ apps/.metadata
 apps/.recommenders
 apps/Servers
 apps/RemoteSystemsTempFiles
+apps/.sonarlint
+
 apps/*/.settings/
 apps/*/.classpath
 apps/*/.project
