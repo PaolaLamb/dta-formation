@@ -27,6 +27,10 @@ public class PizzaDaoImpl implements Dao<Pizza, String, CategoriePizza> {
 		pizzasList.add(new Pizza(7, "IND", "L'indienne", 14.00, CategoriePizza.VIANDE));
 	}
 
+	public PizzaDaoImpl(List<Pizza> pizzaList) {
+		this.pizzasList = pizzaList;
+	}
+
 	@Override
 	public List<Pizza> findAll() {
 		return pizzasList;
