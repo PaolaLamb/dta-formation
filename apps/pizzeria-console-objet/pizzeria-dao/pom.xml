@@ -7,12 +7,12 @@
 		<version>1.0.0</version>
 		<relativePath>../</relativePath>
 	</parent>
-	<artifactId>pizzeria-dao</artifactId>
+	<artifactId>paola-pizzeria-dao</artifactId>
 
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>pizzeria-model</artifactId>
+			<artifactId>paola-pizzeria-model</artifactId>
 		</dependency>
 		  <dependency>
             <groupId>junit</groupId>
