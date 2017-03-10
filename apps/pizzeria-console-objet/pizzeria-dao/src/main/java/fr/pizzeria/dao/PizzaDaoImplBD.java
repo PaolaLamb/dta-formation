@@ -19,17 +19,16 @@ import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoImplBD implements Dao<Pizza, String, CategoriePizza> {
-	private String url;
-	private String user;
-	private String password;
 	ResourceBundle bundle = ResourceBundle.getBundle("jdbc");
+
 	Connection co;
 
 	public Connection initializeConnection() {
 
 		try {
 			Class.forName(bundle.getString("driver"));
-			co = DriverManager.getConnection(url, user, password);
+			co = DriverManager.getConnection(bundle.getString("url"), bundle.getString("user"),
+					bundle.getString("password"));
 		} catch (ClassNotFoundException | SQLException e) {
 			Logger.getAnonymousLogger().log(Level.SEVERE, "Connexion exception", e);
 
@@ -49,9 +48,9 @@ public class PizzaDaoImplBD implements Dao<Pizza, String, CategoriePizza> {
 				String code = resultats.getString("reference");
 				double prix = resultats.getDouble("prix");
 				String categorie = resultats.getString("categorie");
-				Pizza pizza = new Pizza(code, nom, prix) ;
-				pizza.setCategoriePizza(CategoriePizza.valueOf(categorie))
-				listPizzas.add(pizza) ;
+				Pizza pizza = new Pizza(code, nom, prix);
+				pizza.setCategoriePizza(CategoriePizza.valueOf(categorie));
+				listPizzas.add(pizza);
 			}
 			resultats.close();
 			statement.close();
@@ -65,7 +64,7 @@ public class PizzaDaoImplBD implements Dao<Pizza, String, CategoriePizza> {
 	public void saveNew(Pizza pizza) throws SavePizzaException {
 		try (Connection connection = initializeConnection();
 				PreparedStatement prepStatement = connection.prepareStatement(
-						"INSERT INTO pizza (libelle, reference, prix,  categorie) VALUES (null, ?, ?, ?, ?)");) {
+						"INSERT INTO pizza (id, libelle, reference, prix,  categorie) VALUES (null, ?, ?, ?, ?)");) {
 			prepStatement.setString(1, pizza.getNom());
 			prepStatement.setString(2, pizza.getCode());
 			prepStatement.setDouble(3, pizza.getPrix());

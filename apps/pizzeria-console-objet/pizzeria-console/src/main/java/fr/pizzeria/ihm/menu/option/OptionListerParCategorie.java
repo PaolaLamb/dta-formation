@@ -1,6 +1,7 @@
 package fr.pizzeria.ihm.menu.option;
 
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import fr.pizzeria.dao.Dao;
 import fr.pizzeria.model.CategoriePizza;
@@ -19,7 +20,8 @@ public class OptionListerParCategorie extends OptionMenu {
 
 	@Override
 	public void execute() {
-		dao.findAll().stream().collect(Collectors.groupingBy(Pizza::getCategoriePizza)).forEach((key, value) -> System.out.println(key + " : " + value));
+		dao.findAll().stream().collect(Collectors.groupingBy(Pizza::getCategoriePizza))
+				.forEach((key, value) -> System.out.println(key + " : " + value));
 	}
 
 }

@@ -28,6 +28,14 @@ public class Pizza {
 		nbPizzas++;
 	}
 
+	public Pizza(String code, String nom, double prix) {
+		this.code = code;
+		this.nom = nom;
+		this.prix = prix;
+		nbPizzas++;
+
+	}
+
 	public Integer getId() {
 		return id;
 	}
