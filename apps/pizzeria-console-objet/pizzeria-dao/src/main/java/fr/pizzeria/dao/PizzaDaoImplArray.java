@@ -8,10 +8,10 @@ import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
-public class PizzaDaoImpl implements Dao<Pizza, String, CategoriePizza> {
+public class PizzaDaoImplArray implements Dao<Pizza, String> {
 	private List<Pizza> pizzasList;
 
-	public PizzaDaoImpl() {
+	public PizzaDaoImplArray() {
 		super();
 		this.pizzasList = new ArrayList<>();
 		pizzasList.add(new Pizza(0, "PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE));
@@ -24,7 +24,7 @@ public class PizzaDaoImpl implements Dao<Pizza, String, CategoriePizza> {
 		pizzasList.add(new Pizza(7, "IND", "L'indienne", 14.00, CategoriePizza.VIANDE));
 	}
 
-	public PizzaDaoImpl(List<Pizza> pizzaList) {
+	public PizzaDaoImplArray(List<Pizza> pizzaList) {
 		this.pizzasList = pizzaList;
 	}
 

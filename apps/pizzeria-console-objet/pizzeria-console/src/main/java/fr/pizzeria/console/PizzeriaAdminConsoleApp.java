@@ -4,8 +4,16 @@ import fr.pizzeria.ihm.menu.Menu;
 import fr.pizzeria.ihm.menu.tools.IhmTools;
 
 public class PizzeriaAdminConsoleApp {
+	/**
+	 * @param value
+	 *            Application
+	 */
 
 	public static void main(String[] args) {
+		/**
+		 * @param value
+		 *            Main Method...
+		 */
 
 		IhmTools ihm = new IhmTools();
 

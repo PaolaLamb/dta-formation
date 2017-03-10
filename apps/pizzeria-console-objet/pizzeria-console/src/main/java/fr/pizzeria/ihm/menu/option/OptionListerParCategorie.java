@@ -4,12 +4,11 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import fr.pizzeria.dao.Dao;
-import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class OptionListerParCategorie extends OptionMenu {
 
-	public OptionListerParCategorie(Dao<Pizza, String, CategoriePizza> dao, Scanner scan) {
+	public OptionListerParCategorie(Dao<Pizza, String> dao, Scanner scan) {
 		super(dao, scan);
 	}
 

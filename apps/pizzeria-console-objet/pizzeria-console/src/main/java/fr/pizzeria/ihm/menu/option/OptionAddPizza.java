@@ -6,10 +6,10 @@ import java.util.logging.Logger;
 import fr.pizzeria.dao.Dao;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.CategoriePizza;
-import fr.pizzeria.model.Pizza;;
+import fr.pizzeria.model.Pizza;
 
 public class OptionAddPizza extends OptionMenu {
-	public OptionAddPizza(Dao<Pizza, String, CategoriePizza> dao, Scanner scan) {
+	public OptionAddPizza(Dao<Pizza, String> dao, Scanner scan) {
 		super(dao, scan);
 	}
 

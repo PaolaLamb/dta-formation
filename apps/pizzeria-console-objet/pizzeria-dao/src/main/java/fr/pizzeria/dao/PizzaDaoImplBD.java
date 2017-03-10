@@ -18,7 +18,7 @@ import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
-public class PizzaDaoImplBD implements Dao<Pizza, String, CategoriePizza> {
+public class PizzaDaoImplBD implements Dao<Pizza, String> {
 	ResourceBundle bundle = ResourceBundle.getBundle("jdbc");
 
 	Connection co;

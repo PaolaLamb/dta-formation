@@ -14,5 +14,9 @@
 			<groupId>${project.groupId}</groupId>
 			<artifactId>pizzeria-model</artifactId>
 		</dependency>
+		  <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
 	</dependencies>
 </project>

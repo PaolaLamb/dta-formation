@@ -9,7 +9,7 @@ import fr.pizzeria.model.Pizza;
 
 public class OptionMajPizza extends OptionMenu {
 
-	public OptionMajPizza(Dao<Pizza, String, CategoriePizza> dao, Scanner scan) {
+	public OptionMajPizza(Dao<Pizza, String> dao, Scanner scan) {
 		super(dao, scan);
 	}
 

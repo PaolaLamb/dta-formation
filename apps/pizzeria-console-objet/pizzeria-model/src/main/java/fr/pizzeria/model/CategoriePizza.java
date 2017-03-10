@@ -3,7 +3,7 @@ package fr.pizzeria.model;
 public enum CategoriePizza {
 	VIANDE("Viande"), POISSON("Poisson"), SANS_VIANDE("Sans Viande");
 
-	private String categoriePizza;
+	private String pizzaCategory;
 	private String libelle;
 
 	public String getLibelle() {
@@ -11,11 +11,12 @@ public enum CategoriePizza {
 	}
 
 	private CategoriePizza(String categoriePizza) {
-		this.categoriePizza = categoriePizza;
+		this.pizzaCategory = categoriePizza;
 	}
 
+	@Override
 	public String toString() {
-		return categoriePizza;
+		return pizzaCategory;
 	}
 
 	public static CategoriePizza getEnum(String value) {
