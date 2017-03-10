@@ -69,12 +69,12 @@
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
-				<artifactId>pizzeria-model</artifactId>
+				<artifactId>paola-pizzeria-model</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
-				<artifactId>pizzeria-dao</artifactId>
+				<artifactId>paola-pizzeria-dao</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
