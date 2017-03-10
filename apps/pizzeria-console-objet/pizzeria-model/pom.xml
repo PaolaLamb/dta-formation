@@ -7,7 +7,7 @@
 		<version>1.0.0</version>
 		<relativePath>../</relativePath>
 	</parent>
-	<artifactId>pizzeria-model</artifactId>
+	<artifactId>paola-pizzeria-model</artifactId>
 
 	<dependencies>
 		<dependency>
