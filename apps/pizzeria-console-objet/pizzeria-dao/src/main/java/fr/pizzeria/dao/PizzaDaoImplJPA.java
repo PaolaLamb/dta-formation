@@ -84,7 +84,22 @@ public class PizzaDaoImplJPA implements Dao<Pizza, String> {
 
 	@Override
 	public void delete(String codePizza) {
-		// TODO Auto-generated method stub
+		List<Pizza> listPizzas = new ArrayList<>();
+		Query query = em.createQuery("SELECT p FROM Pizza p	WHERE p.code=:codePizza").setParameter("codePizza",
+				codePizza);
+		for (Object obj : query.getResultList()) {
+			listPizzas.add((Pizza) obj);
+		}
+		Pizza p = listPizzas.get(0);
 
+		EntityTransaction et = em.getTransaction();
+		try {
+			et.begin();
+			em.remove(p);
+			et.commit();
+		} catch (RollbackException e) {
+			et.rollback();
+			throw new SavePizzaException(e);
+		}
 	}
 }
