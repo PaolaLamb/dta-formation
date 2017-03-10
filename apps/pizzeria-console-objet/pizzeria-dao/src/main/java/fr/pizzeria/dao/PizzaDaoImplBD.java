@@ -43,7 +43,6 @@ public class PizzaDaoImplBD implements Dao<Pizza, String> {
 				Statement statement = connection.createStatement();
 				ResultSet resultats = statement.executeQuery("SELECT * FROM pizza");) {
 			while (resultats.next()) {
-				Integer id = resultats.getInt("id");
 				String nom = resultats.getString("libelle");
 				String code = resultats.getString("reference");
 				double prix = resultats.getDouble("prix");
