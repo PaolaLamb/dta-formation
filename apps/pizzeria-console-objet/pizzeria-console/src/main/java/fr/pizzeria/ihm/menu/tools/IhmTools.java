@@ -3,6 +3,7 @@ package fr.pizzeria.ihm.menu.tools;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.Dao;
+import fr.pizzeria.dao.PizzaDaoImplArray;
 import fr.pizzeria.dao.PizzaDaoImplJPA;
 import fr.pizzeria.model.Pizza;
 

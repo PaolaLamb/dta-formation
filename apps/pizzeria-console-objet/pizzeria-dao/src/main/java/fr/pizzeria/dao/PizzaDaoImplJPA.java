@@ -26,17 +26,18 @@ public class PizzaDaoImplJPA implements Dao<Pizza, String> {
 		this.em = entityMF.createEntityManager();
 
 	}
+	
+	
 
 	@Override
 	public List<Pizza> findAll() {
-		List<Pizza> listPizzas = new ArrayList<>();
-		Query query = em.createQuery("SELECT p FROM Pizza p");
-		for (Object obj : query.getResultList()) {
-			listPizzas.add((Pizza) obj);
-
+		List<Pizza> pizzaList = new ArrayList<>() ;
+		Query pizzas = em.createNamedQuery("Pizza.findAll") ;
+		for(Object obj : pizzas.getResultList()) {
+			pizzaList.add((Pizza) obj) ;
 		}
-		Pizza.setNbPizza(listPizzas.size());
-		return listPizzas;
+		Pizza.setNbPizza(Pizza.getNbPizza()+1);
+		return pizzaList ;
 	}
 
 	@Override
@@ -55,26 +56,21 @@ public class PizzaDaoImplJPA implements Dao<Pizza, String> {
 	@Override
 	public void update(String codePizza, Pizza newPizza) {
 		List<Pizza> listPizzas = new ArrayList<>();
-		Query query = em.createQuery("SELECT p FROM Pizza p	WHERE p.code=:codePizza").setParameter("codePizza",
-				codePizza);
-		for (Object obj : query.getResultList()) {
-			listPizzas.add((Pizza) obj);
-		}
-		Pizza p = listPizzas.get(0);
+		Pizza pizza = (Pizza) em.createNamedQuery("Pizza.findByCode").setParameter("codePizza", codePizza).getSingleResult();
+		
+		if (pizza != null) {
 
-		if (p != null) {
-
-			listPizzas.get(0).setCode(newPizza.getCode());
-			listPizzas.get(0).setNom(newPizza.getNom());
-			listPizzas.get(0).setPrix(newPizza.getPrix());
-			listPizzas.get(0).setCategoriePizza(newPizza.getCategoriePizza());
+			pizza.setCode(newPizza.getCode());
+			pizza.setNom(newPizza.getNom());
+			pizza.setPrix(newPizza.getPrix());
+			pizza.setCategoriePizza(newPizza.getCategoriePizza());
 
 		}
 
 		EntityTransaction et = em.getTransaction();
 		try {
 			et.begin();
-			em.merge(listPizzas.get(0));
+			em.merge(pizza);
 			et.commit();
 		} catch (RollbackException e) {
 			et.rollback();
@@ -85,8 +81,7 @@ public class PizzaDaoImplJPA implements Dao<Pizza, String> {
 	@Override
 	public void delete(String codePizza) {
 		List<Pizza> listPizzas = new ArrayList<>();
-		Query query = em.createQuery("SELECT p FROM Pizza p	WHERE p.code=:codePizza").setParameter("codePizza",
-				codePizza);
+		Query query = em.createNamedQuery("Pizza.findByCode").setParameter("codePizza", codePizza);
 		for (Object obj : query.getResultList()) {
 			listPizzas.add((Pizza) obj);
 		}
