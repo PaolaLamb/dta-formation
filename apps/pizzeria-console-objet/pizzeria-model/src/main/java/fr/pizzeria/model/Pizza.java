@@ -2,21 +2,46 @@ package fr.pizzeria.model;
 
 import java.lang.reflect.Field;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+@Entity
+
 public class Pizza {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
 	@ToString
+	@Column(name = "reference", length = 10, nullable = false, unique = false)
 	private String code;
+
 	@ToString
+	@Column(name = "libelle", length = 255, nullable = false, unique = false)
 	private String nom;
+
 	@ToString
+	@Column(name = "prix", nullable = true, unique = false)
 	private Double prix;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "categorie", nullable = true, unique = false)
 	private CategoriePizza categoriePizza;
 	private static Integer nbPizzas = 0;
 
+	/**
+	 * Pizza empty constructor
+	 */
 	public Pizza() {
+		// Empty method to use with JPA
 	}
 
 	public Pizza(Integer id, String code, String nom, Double prix, CategoriePizza categoriePizza) {
@@ -26,6 +51,14 @@ public class Pizza {
 		this.prix = prix;
 		this.categoriePizza = categoriePizza;
 		nbPizzas++;
+	}
+
+	public Pizza(String code, String nom, double prix) {
+		this.code = code;
+		this.nom = nom;
+		this.prix = prix;
+		nbPizzas++;
+
 	}
 
 	public Integer getId() {

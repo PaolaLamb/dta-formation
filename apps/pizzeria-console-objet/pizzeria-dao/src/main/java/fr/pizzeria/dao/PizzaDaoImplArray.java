@@ -1,20 +1,17 @@
 package fr.pizzeria.dao;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
-public class PizzaDaoImpl implements Dao<Pizza, String, CategoriePizza> {
+public class PizzaDaoImplArray implements Dao<Pizza, String> {
 	private List<Pizza> pizzasList;
 
-	public PizzaDaoImpl() {
+	public PizzaDaoImplArray() {
 		super();
 		this.pizzasList = new ArrayList<>();
 		pizzasList.add(new Pizza(0, "PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE));
@@ -27,7 +24,7 @@ public class PizzaDaoImpl implements Dao<Pizza, String, CategoriePizza> {
 		pizzasList.add(new Pizza(7, "IND", "L'indienne", 14.00, CategoriePizza.VIANDE));
 	}
 
-	public PizzaDaoImpl(List<Pizza> pizzaList) {
+	public PizzaDaoImplArray(List<Pizza> pizzaList) {
 		this.pizzasList = pizzaList;
 	}
 
@@ -61,19 +58,6 @@ public class PizzaDaoImpl implements Dao<Pizza, String, CategoriePizza> {
 			pizzasList.remove(p);
 			Pizza.setNbPizza(Pizza.getNbPizza() - 1);
 		});
-
-	}
-
-	@Override
-	public Map<CategoriePizza, List<Pizza>> listByCat() {
-		return pizzasList.stream().collect(Collectors.groupingBy(Pizza::getCategoriePizza));
-
-	}
-
-	@Override
-	public void showMostExp() {
-		pizzasList.stream().max(Comparator.comparing(Pizza::getPrix)).ifPresent(p -> System.out.println(p.getNom()
-				+ " est actuellement la plus ch�re pizza des pizzas disponibles avec " + p.getPrix() + "� "));
 
 	}
 

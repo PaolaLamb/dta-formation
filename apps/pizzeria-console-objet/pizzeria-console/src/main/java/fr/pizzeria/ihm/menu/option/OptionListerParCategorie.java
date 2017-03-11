@@ -1,14 +1,14 @@
 package fr.pizzeria.ihm.menu.option;
 
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import fr.pizzeria.dao.Dao;
-import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class OptionListerParCategorie extends OptionMenu {
 
-	public OptionListerParCategorie(Dao<Pizza, String, CategoriePizza> dao, Scanner scan) {
+	public OptionListerParCategorie(Dao<Pizza, String> dao, Scanner scan) {
 		super(dao, scan);
 	}
 
@@ -19,7 +19,8 @@ public class OptionListerParCategorie extends OptionMenu {
 
 	@Override
 	public void execute() {
-		dao.findAll().stream().collect(Collectors.groupingBy(Pizza::getCategoriePizza)).forEach((key, value) -> System.out.println(key + " : " + value));
+		dao.findAll().stream().collect(Collectors.groupingBy(Pizza::getCategoriePizza))
+				.forEach((key, value) -> System.out.println(key + " : " + value));
 	}
 
 }

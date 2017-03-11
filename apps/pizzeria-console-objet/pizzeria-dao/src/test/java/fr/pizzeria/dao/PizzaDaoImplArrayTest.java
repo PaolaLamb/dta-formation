@@ -15,9 +15,9 @@ import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
-public class PizzaDaoImplTest {
+public class PizzaDaoImplArrayTest {
 
-	private PizzaDaoImpl pizzaDao;
+	private PizzaDaoImplArray pizzaDao;
 
 	@Before
 	public void setUp() {
@@ -31,7 +31,7 @@ public class PizzaDaoImplTest {
 		pizzaList.add(new Pizza(6, "ORI", "L'orientale", 13.50, CategoriePizza.POISSON));
 		pizzaList.add(new Pizza(7, "IND", "L'indienne", 14.00, CategoriePizza.VIANDE));
 
-		pizzaDao = new PizzaDaoImpl(pizzaList);
+		pizzaDao = new PizzaDaoImplArray(pizzaList);
 	}
 
 	@Test

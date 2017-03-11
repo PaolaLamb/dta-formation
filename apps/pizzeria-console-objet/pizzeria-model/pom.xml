@@ -7,12 +7,20 @@
 		<version>1.0.0</version>
 		<relativePath>../</relativePath>
 	</parent>
-	<artifactId>pizzeria-model</artifactId>
+	<artifactId>paola-pizzeria-model</artifactId>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>	
+		<dependency>
+				<groupId>org.hibernate.javax.persistence</groupId>
+				<artifactId>hibernate-jpa-2.1-api</artifactId>
+			</dependency>
 	</dependencies>
 </project>

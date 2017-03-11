@@ -33,12 +33,12 @@ public class Menu {
 		OptionMostExpensivePizza optionExp = new OptionMostExpensivePizza(ihm.getiPizza(), ihm.getScanner());
 
 		Map<Integer, OptionMenu> option = new HashMap<>();
-		options.put(1, optionListe);
-		options.put(2, optionAdd);
-		options.put(3, optionMaj);
-		options.put(4, optionDel);
-		options.put(5, optionCat);
-		options.put(6, optionExp);
+		option.put(1, optionListe);
+		option.put(2, optionAdd);
+		option.put(3, optionMaj);
+		option.put(4, optionDel);
+		option.put(5, optionCat);
+		option.put(6, optionExp);
 		this.options = option;
 
 	}

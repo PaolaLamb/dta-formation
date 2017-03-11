@@ -7,7 +7,7 @@
 		<version>1.0.0</version>
 		<relativePath>../</relativePath>
 	</parent>
-	<artifactId>pizzeria-console</artifactId>
+	<artifactId>paola-pizzeria-console</artifactId>
 
 	<build>
 		<plugins>
@@ -24,27 +24,45 @@
 				</executions>
 			</plugin>
 			<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>fr.pizzeria.ihm.App</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>fr.pizzeria.console.PizzeriaAdminConsoleApp</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>pizzeria-model</artifactId>
+			<artifactId>paola-pizzeria-model</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>pizzeria-dao</artifactId>
+			<artifactId>paola-pizzeria-dao</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+		</dependency>
+
 	</dependencies>
 </project>

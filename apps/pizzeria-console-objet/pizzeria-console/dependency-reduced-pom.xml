@@ -25,7 +25,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>fr.pizzeria.ihm.App</mainClass>
+              <mainClass>fr.pizzeria.console.PizzeriaAdminConsoleApp</mainClass>
             </manifest>
           </archive>
         </configuration>

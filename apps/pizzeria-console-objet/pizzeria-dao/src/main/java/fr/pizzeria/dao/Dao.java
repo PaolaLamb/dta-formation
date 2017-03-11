@@ -2,13 +2,13 @@ package fr.pizzeria.dao;
 
 import java.util.List;
 
-public interface Dao<S, C, R> {
+public interface Dao<S, C> {
 	List<S> findAll();
 
 	void saveNew(S plat);
 
-	void update(C codePlat, S pizza);
+	void update(C codePlat, S plat);
 
-	void delete(C codePizza);
+	void delete(C codePlat);
 
 }

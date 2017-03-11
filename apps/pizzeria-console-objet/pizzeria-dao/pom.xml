@@ -7,16 +7,20 @@
 		<version>1.0.0</version>
 		<relativePath>../</relativePath>
 	</parent>
-	<artifactId>pizzeria-dao</artifactId>
+	<artifactId>paola-pizzeria-dao</artifactId>
 
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>pizzeria-model</artifactId>
+			<artifactId>paola-pizzeria-model</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.mariadb.jdbc</groupId>
-			<artifactId>mariadb-java-client</artifactId>
-		</dependency>
+		  <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+				<groupId>org.hibernate.javax.persistence</groupId>
+				<artifactId>hibernate-jpa-2.1-api</artifactId>
+			</dependency>
 	</dependencies>
 </project>

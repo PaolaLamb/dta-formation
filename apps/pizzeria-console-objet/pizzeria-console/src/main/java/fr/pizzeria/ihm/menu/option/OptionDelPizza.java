@@ -4,12 +4,11 @@ import java.util.Scanner;
 
 import fr.pizzeria.dao.Dao;
 import fr.pizzeria.exception.StockageException;
-import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class OptionDelPizza extends OptionMenu {
 
-	public OptionDelPizza(Dao<Pizza, String, CategoriePizza> dao, Scanner scan) {
+	public OptionDelPizza(Dao<Pizza, String> dao, Scanner scan) {
 		super(dao, scan);
 	}
 
