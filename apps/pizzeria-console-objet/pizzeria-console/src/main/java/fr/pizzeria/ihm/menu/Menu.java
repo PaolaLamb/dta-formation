@@ -49,7 +49,6 @@ public class Menu {
 
 	public void demarrer() {
 		System.out.println(title);
-		System.out.println("Veuillez choisir une action (99 pour abandonner)");
 
 		options.forEach((key, value) -> System.out.println(key + ". " + value.getLibelle()));
 

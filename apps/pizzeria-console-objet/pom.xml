@@ -87,6 +87,7 @@
 				<version>${mariadb.version}</version>
 			</dependency>
 
+
 		</dependencies>
 	</dependencyManagement>
 
