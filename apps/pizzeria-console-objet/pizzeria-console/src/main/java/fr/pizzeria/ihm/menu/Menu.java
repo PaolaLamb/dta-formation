@@ -6,6 +6,7 @@ import java.util.Map;
 import fr.pizzeria.ihm.menu.optionClient.OptionCrediterCompte;
 import fr.pizzeria.ihm.menu.optionClient.OptionDebiterCompte;
 import fr.pizzeria.ihm.menu.optionClient.OptionListClient;
+import fr.pizzeria.ihm.menu.optionClient.OptionListLivreur;
 import fr.pizzeria.ihm.menu.optionPizza.OptionAddPizza;
 import fr.pizzeria.ihm.menu.optionPizza.OptionDelPizza;
 import fr.pizzeria.ihm.menu.optionPizza.OptionListePizza;
@@ -39,6 +40,7 @@ public class Menu {
 		OptionMenu optionListeClient = new OptionListClient(ihm) ;
 		OptionMenu optionCrediter = new OptionCrediterCompte(ihm) ;
 		OptionMenu optionDebiter = new OptionDebiterCompte(ihm) ;
+		OptionMenu optionListeLivreur = new OptionListLivreur(ihm) ;
 		Map<Integer, OptionMenu> option = new HashMap<>();
 		option.put(1, optionListe);
 		option.put(2, optionAdd);
@@ -48,7 +50,8 @@ public class Menu {
 		option.put(6, optionExp);
 		option.put(7, optionListeClient) ;
 		option.put(8, optionCrediter) ;
-		option.put(8, optionDebiter) ;
+		option.put(9, optionDebiter) ;
+		option.put(10, optionListeLivreur) ;
 		this.options = option;
 
 	}
@@ -70,9 +73,27 @@ public class Menu {
 
 	/**
 	 * @param choix
-	 * Lancement de l'option choisie
+	 * Lancement du menu, choix de l'option et execution de l'option choisie
 	 */
-	public void executer(int choix) {
-		options.get(choix).execute();
+	public void executer() {
+		int choix = 0 ;
+		while (choix != getOptions().size() + 1) {
+			demarrer();
+			System.out.println("Veuillez saisir une action");
+			choix = ihm.getScanner().nextInt();
+
+			if (choix > getOptions().size() + 1) {
+				System.out.println("Mauvaise Valeur");
+				demarrer();
+				choix = ihm.getScanner().nextInt();
+			}
+
+			if (choix != getOptions().size() + 1) {
+				options.get(choix).execute();
+			}
+		}
+		System.out.println("**** Au revoir ! ****");
+
+		
 	}
 }

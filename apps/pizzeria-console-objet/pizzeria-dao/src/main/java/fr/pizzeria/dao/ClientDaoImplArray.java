@@ -4,13 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.pizzeria.model.Client;
+import fr.pizzeria.model.Livreur;
+import fr.pizzeria.model.MangeurDePizzas;
 
 /**
  * @author PaolaLamb
  * Implémentation de l'interface dao client
  */
 public class ClientDaoImplArray implements DaoClient{
-	private List<Client> clientList = new ArrayList<>() ;
+	private List<MangeurDePizzas> clientList = new ArrayList<>() ;
+	private List<Livreur> deliverList = new ArrayList<>() ;
 	
 	
 
@@ -21,12 +24,17 @@ public class ClientDaoImplArray implements DaoClient{
 		this.clientList.add(new Client(1, "Jacques", "Pierre", 100.00)) ;
 		this.clientList.add(new Client(2, "Mars", "Roger", 0.00)) ;
 		this.clientList.add(new Client(3, "Clark", "Sydney", 55.00)) ;
-		this.clientList.add(new Client(4, "Yorv", "Viktor", 150.00)) ;
+		this.clientList.add(new Livreur(4, "Yorv", "Viktor", 150.00)) ;
+		
+		this.deliverList.add(new Livreur(1, "Yorv", "Viktor", 150.00)) ;
 	}
 
 
 
-	public ClientDaoImplArray(List<Client> clientList) {
+	/**
+	 * @param clientList
+	 */
+	public ClientDaoImplArray(List<MangeurDePizzas> clientList) {
 		super();
 		this.clientList = clientList;
 	}
@@ -34,8 +42,15 @@ public class ClientDaoImplArray implements DaoClient{
 
 
 	@Override
-	public List<Client> findAll() {
+	public List<MangeurDePizzas> findAll() {
 		return clientList ;		
+	}
+	
+	
+
+	@Override
+	public List<Livreur> findAllLivreur() {
+		return deliverList;
 	}
 
 
