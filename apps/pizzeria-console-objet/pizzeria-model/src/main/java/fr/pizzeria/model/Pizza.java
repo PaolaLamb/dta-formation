@@ -137,7 +137,7 @@ public class Pizza {
 				}
 			}
 		} catch (IllegalArgumentException | IllegalAccessException e) {
-			Logger.getAnonymousLogger().log(Level.SEVERE,"/!\\/!\\ Arguments, accès non valide(s) /!\\/!\\" );
+			Logger.getAnonymousLogger().log(Level.SEVERE,"/!\\/!\\ Arguments, accès non valide(s) /!\\/!\\", e );
 		}
 
 		return sb.toString();

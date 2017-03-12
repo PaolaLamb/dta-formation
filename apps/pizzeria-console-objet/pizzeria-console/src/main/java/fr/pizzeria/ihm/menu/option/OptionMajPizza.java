@@ -43,7 +43,7 @@ public class OptionMajPizza extends OptionMenu {
 					newPizza.setCategoriePizza(CategoriePizza.valueOf(categorie.toUpperCase()));
 					arg = true;
 				} catch (IllegalArgumentException e) {
-					Logger.getAnonymousLogger().log(Level.INFO,"/!\\/!\\ Entrée non valide /!\\/!\\" );
+					Logger.getAnonymousLogger().log(Level.SEVERE,"/!\\/!\\ Entrée non valide /!\\/!\\", e );
 				}
 
 			}
