@@ -11,15 +11,28 @@ public class Livreur extends MangeurDePizzas {
 	private double decouvertAutorise = 200.00 ;
 
 
+	/**
+	 * @param id
+	 * @param nom
+	 * @param prenom
+	 * @param solde
+	 */
 	public Livreur(int id, String nom, String prenom, Double solde) {
 		super(id, nom, prenom, solde);
 	}
 	
 
+	/**
+	 * @return le découvert autorisé du livreur
+	 */
 	public double getDECOUVERT() {
 		return decouvertAutorise;
 	}
 
+	/**
+	 * @param decouvert
+	 * change le découvert autorisé du livreur
+	 */
 	public void setDECOUVERT(double decouvert) {
 		this.decouvertAutorise = decouvert;
 	}

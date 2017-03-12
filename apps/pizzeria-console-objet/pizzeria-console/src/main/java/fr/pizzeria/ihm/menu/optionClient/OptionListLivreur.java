@@ -3,8 +3,15 @@ package fr.pizzeria.ihm.menu.optionClient;
 import fr.pizzeria.ihm.menu.OptionMenu;
 import fr.pizzeria.ihm.menu.tools.IhmTools;
 
+/**
+ * @author Paola
+ * Action du menu afficher la liste des livreurs
+ */
 public class OptionListLivreur extends OptionMenu{
 
+	/**
+	 * @param ihm
+	 */
 	public OptionListLivreur(IhmTools ihm) {
 		super(ihm);
 	}

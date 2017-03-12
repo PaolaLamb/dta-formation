@@ -16,7 +16,7 @@ import fr.pizzeria.model.Pizza;
 public class IhmTools {
 
 	private Scanner scanner = new Scanner(System.in);
-	private DaoPizza<Pizza, String> iPizza = new PizzaDaoImplFiles();
+	private DaoPizza<Pizza, String> iPizza ;
 	private DaoClient iClient = new ClientDaoImplArray();
 
 
