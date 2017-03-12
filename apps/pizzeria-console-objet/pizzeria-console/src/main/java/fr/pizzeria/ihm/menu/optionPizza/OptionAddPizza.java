@@ -3,7 +3,7 @@ package fr.pizzeria.ihm.menu.optionPizza;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import fr.pizzeria.exception.SavePizzaException;
+import fr.pizzeria.exception.SaveException;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.menu.OptionMenu;
 import fr.pizzeria.ihm.menu.tools.IhmTools;
@@ -53,7 +53,7 @@ public class OptionAddPizza extends OptionMenu {
 			try {
 				ihm.getiPizza().saveNew(newPizza);
 			} catch (StockageException e) {
-				throw new SavePizzaException("Ajout de la nouvelle pizza échoué",e);
+				throw new SaveException("Ajout de la nouvelle pizza échoué",e);
 			}
 		}
 	}

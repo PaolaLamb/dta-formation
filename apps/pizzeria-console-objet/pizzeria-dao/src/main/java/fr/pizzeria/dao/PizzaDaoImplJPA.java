@@ -11,7 +11,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.RollbackException;
 
-import fr.pizzeria.exception.SavePizzaException;
+import fr.pizzeria.exception.SaveException;
 import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.Pizza;
 
@@ -56,7 +56,7 @@ public class PizzaDaoImplJPA implements DaoPizza<Pizza, String> {
 			et.commit();
 		} catch (RollbackException e) {
 			et.rollback();
-			throw new SavePizzaException(e);
+			throw new SaveException(e);
 		}
 	}
 
@@ -100,7 +100,7 @@ public class PizzaDaoImplJPA implements DaoPizza<Pizza, String> {
 			et.commit();
 		} catch (RollbackException e) {
 			et.rollback();
-			throw new SavePizzaException(e);
+			throw new SaveException(e);
 		}
 	}
 }

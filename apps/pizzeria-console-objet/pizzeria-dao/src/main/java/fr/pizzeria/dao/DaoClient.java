@@ -2,6 +2,7 @@ package fr.pizzeria.dao;
 
 import java.util.List;
 
+import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Livreur;
 import fr.pizzeria.model.MangeurDePizzas;
 
@@ -25,6 +26,14 @@ public interface DaoClient {
 	 * @return la liste des livreurs
 	 */
 	List<Livreur> findAllLivreur() ;
+	
+	
+
+	/**
+	 * @param personne
+	 * ajoute un nouveau client
+	 */
+	void ajouterNouveauClient(Client personne, String livreur) ;
 	
 	/**
 	 * @param choix

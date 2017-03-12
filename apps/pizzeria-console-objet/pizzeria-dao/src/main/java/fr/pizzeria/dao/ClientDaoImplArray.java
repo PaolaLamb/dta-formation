@@ -52,6 +52,15 @@ public class ClientDaoImplArray implements DaoClient{
 	public List<Livreur> findAllLivreur() {
 		return deliverList;
 	}
+	
+	
+	@Override
+	public void ajouterNouveauClient(Client personne, String livreur) {
+		clientList.add(personne);
+		if(livreur.equals("oui")) {
+			deliverList.add(new Livreur(deliverList.size()+1, personne.getNom(), personne.getPrenom(), personne.getSolde())) ;
+		}
+	}
 
 
 

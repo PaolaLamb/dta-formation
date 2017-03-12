@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.pizzeria.exception.DeletePizzaException;
-import fr.pizzeria.exception.SavePizzaException;
+import fr.pizzeria.exception.SaveException;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -48,7 +48,7 @@ public class PizzaDaoImplFiles implements DaoPizza<Pizza, String> {
 		try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("data", newPizza.getCode() + ".txt"))) {
 			writer.write(newPizza.getCode() + ";" + newPizza.getNom() + ";" + newPizza.getPrix() + ";" + newPizza.getCategoriePizza().toString());
 		} catch (IOException e) {
-			throw new SavePizzaException(e);
+			throw new SaveException(e);
 		}
 
 	}

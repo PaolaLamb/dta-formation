@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import fr.pizzeria.exception.SavePizzaException;
+import fr.pizzeria.exception.SaveException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -46,7 +46,7 @@ public class PizzaDaoImplArray implements DaoPizza<Pizza, String> {
 	@Override
 	public void saveNew(Pizza pizza) {
 		if (pizza.getCode() == null || pizza.getCode().length() > 3) {
-			throw new SavePizzaException();
+			throw new SaveException();
 		} else {
 			pizzasList.add(pizza);
 		}

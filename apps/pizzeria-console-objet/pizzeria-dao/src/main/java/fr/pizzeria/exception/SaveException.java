@@ -4,14 +4,14 @@ package fr.pizzeria.exception;
  * @author PaolaLamb
  *
  */
-public class SavePizzaException extends StockageException {
+public class SaveException extends StockageException {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * 
 	 */
-	public SavePizzaException() {
+	public SaveException() {
 		super("\n /!\\/!\\ Le nom de code est invalide /!\\/!\\ \n");
 	}
 
@@ -19,21 +19,21 @@ public class SavePizzaException extends StockageException {
 	 * @param message
 	 * @param cause
 	 */
-	public SavePizzaException(String message, Throwable cause) {
+	public SaveException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
 	/**
 	 * @param message
 	 */
-	public SavePizzaException(String message) {
+	public SaveException(String message) {
 		super(message);
 	}
 
 	/**
 	 * @param cause
 	 */
-	public SavePizzaException(Throwable cause) {
+	public SaveException(Throwable cause) {
 		super(cause);
 	}
 	

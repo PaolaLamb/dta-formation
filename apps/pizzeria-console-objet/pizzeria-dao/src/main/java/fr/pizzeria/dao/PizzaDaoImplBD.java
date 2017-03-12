@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import fr.pizzeria.exception.DeletePizzaException;
-import fr.pizzeria.exception.SavePizzaException;
+import fr.pizzeria.exception.SaveException;
 import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -77,7 +77,7 @@ public class PizzaDaoImplBD implements DaoPizza<Pizza, String> {
 			prepStatement.setString(4, pizza.getCategoriePizza().name());
 			prepStatement.executeUpdate();
 		} catch (SQLException e) {
-			throw new SavePizzaException(e);
+			throw new SaveException(e);
 		}
 	}
 

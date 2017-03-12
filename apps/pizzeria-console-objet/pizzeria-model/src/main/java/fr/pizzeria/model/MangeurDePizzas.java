@@ -26,6 +26,23 @@ public abstract class MangeurDePizzas {
 			this.solde = solde;
 		}
 		
+		
+		public int getId() {
+			return id;
+		}
+
+		public String getNom() {
+			return nom;
+		}
+
+		public String getPrenom() {
+			return prenom;
+		}
+
+		public Double getSolde() {
+			return solde;
+		}
+
 
 		/**
 		 * @param montant
