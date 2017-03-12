@@ -64,6 +64,15 @@ public class Pizza {
 
 	}
 
+	public Pizza(String code, String nom, double prix, CategoriePizza categorie) {
+		this.code = code;
+		this.nom = nom;
+		this.prix = prix;
+		this.categoriePizza = categorie;
+		nbPizzas++;
+	}
+
+
 	public Integer getId() {
 		return id;
 	}

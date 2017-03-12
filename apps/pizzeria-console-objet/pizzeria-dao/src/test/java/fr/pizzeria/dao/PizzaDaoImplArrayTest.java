@@ -22,7 +22,7 @@ public class PizzaDaoImplArrayTest {
 	@Before
 	public void setUp() {
 		List<Pizza> pizzaList = new ArrayList<>();
-		pizzaList.add(new Pizza(0, "PEP", "P�p�roni", 12.50, CategoriePizza.VIANDE));
+		pizzaList.add(new Pizza(0, "PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE));
 		pizzaList.add(new Pizza(1, "MAR", "Margherita", 14.00, CategoriePizza.POISSON));
 		pizzaList.add(new Pizza(2, "REI", "La Reine", 11.50, CategoriePizza.SANS_VIANDE));
 		pizzaList.add(new Pizza(3, "FRO", "La 4 Fromage", 12.00, CategoriePizza.SANS_VIANDE));
