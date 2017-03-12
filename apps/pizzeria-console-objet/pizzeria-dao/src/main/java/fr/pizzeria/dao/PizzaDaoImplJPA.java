@@ -55,7 +55,6 @@ public class PizzaDaoImplJPA implements Dao<Pizza, String> {
 
 	@Override
 	public void update(String codePizza, Pizza newPizza) {
-		List<Pizza> listPizzas = new ArrayList<>();
 		Pizza pizza = (Pizza) em.createNamedQuery("Pizza.findByCode").setParameter("codePizza", codePizza).getSingleResult();
 		
 		if (pizza != null) {

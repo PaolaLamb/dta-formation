@@ -2,6 +2,8 @@ package fr.pizzeria.exception;
 
 public class UpdatePizzaException extends StockageException {
 
+	private static final long serialVersionUID = 1L;
+
 	public UpdatePizzaException() {
 		super("\n /!\\/!\\ la pizza n'existe pas /!\\/!\\ \n");
 	}

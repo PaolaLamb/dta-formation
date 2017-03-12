@@ -1,9 +1,12 @@
 package fr.pizzeria.ihm.menu.option;
 
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import fr.pizzeria.dao.Dao;
 import fr.pizzeria.exception.StockageException;
+import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -40,7 +43,7 @@ public class OptionMajPizza extends OptionMenu {
 					newPizza.setCategoriePizza(CategoriePizza.valueOf(categorie.toUpperCase()));
 					arg = true;
 				} catch (IllegalArgumentException e) {
-					System.out.println("/!\\/!\\ Entrée non valide /!\\/!\\");
+					Logger.getAnonymousLogger().log(Level.INFO,"/!\\/!\\ Entrée non valide /!\\/!\\" );
 				}
 
 			}
@@ -48,7 +51,7 @@ public class OptionMajPizza extends OptionMenu {
 			try {
 				dao.update(codePizza, newPizza);
 			} catch (StockageException e) {
-				System.out.println(e.getMessage());
+				throw new UpdatePizzaException("Modification(s) de la pizza échouée(s)",e);
 			}
 		}
 	}

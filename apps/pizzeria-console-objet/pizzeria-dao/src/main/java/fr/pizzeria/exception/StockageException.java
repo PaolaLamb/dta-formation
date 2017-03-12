@@ -2,6 +2,8 @@ package fr.pizzeria.exception;
 
 public class StockageException extends RuntimeException {
 
+	private static final long serialVersionUID = 1L;
+
 	public StockageException() {
 		super();
 	}

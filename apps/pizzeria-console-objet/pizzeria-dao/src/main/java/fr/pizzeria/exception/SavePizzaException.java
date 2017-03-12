@@ -2,6 +2,8 @@ package fr.pizzeria.exception;
 
 public class SavePizzaException extends StockageException {
 
+	private static final long serialVersionUID = 1L;
+
 	public SavePizzaException() {
 		super("\n /!\\/!\\ Le nom de code est invalide /!\\/!\\ \n");
 	}

@@ -3,6 +3,7 @@ package fr.pizzeria.ihm.menu.option;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.Dao;
+import fr.pizzeria.exception.DeletePizzaException;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.Pizza;
 
@@ -27,7 +28,7 @@ public class OptionDelPizza extends OptionMenu {
 			try {
 				dao.delete(codePizza);
 			} catch (StockageException e) {
-				System.out.println(e.getMessage());
+				throw new DeletePizzaException("Modification(s) de la pizza échouée(s)",e);
 			}
 		}
 	}

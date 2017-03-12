@@ -1,9 +1,11 @@
 package fr.pizzeria.ihm.menu.option;
 
 import java.util.Scanner;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import fr.pizzeria.dao.Dao;
+import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -36,14 +38,13 @@ public class OptionAddPizza extends OptionMenu {
 				newPizza.setCategoriePizza(CategoriePizza.valueOf(categorie.toUpperCase()));
 				arg = true;
 			} catch (IllegalArgumentException e) {
-				Logger.getAnonymousLogger().info(e.getMessage());
-				System.out.println("/!\\/!\\ Entrée non valide /!\\/!\\");
+				Logger.getAnonymousLogger().log(Level.INFO,"/!\\/!\\ Entrée non valide /!\\/!\\" );
 			}
 
 			try {
 				dao.saveNew(newPizza);
 			} catch (StockageException e) {
-				Logger.getAnonymousLogger().info(e.getMessage());
+				throw new SavePizzaException("Ajout de la nouvelle pizza échoué",e);
 			}
 		}
 	}

@@ -1,6 +1,8 @@
 package fr.pizzeria.model;
 
 import java.lang.reflect.Field;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -135,7 +137,7 @@ public class Pizza {
 				}
 			}
 		} catch (IllegalArgumentException | IllegalAccessException e) {
-			e.printStackTrace();
+			Logger.getAnonymousLogger().log(Level.SEVERE,"/!\\/!\\ Arguments, accès non valide(s) /!\\/!\\" );
 		}
 
 		return sb.toString();
