@@ -17,6 +17,10 @@ import javax.persistence.NamedQuery;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+/**
+ * @author PaolaLamb
+ *
+ */
 @Entity
 @NamedQueries({ @NamedQuery(name = "Pizza.findAll", query = "SELECT p FROM Pizza p"),
 		@NamedQuery(name = "Pizza.findByCode", query = "SELECT p FROM Pizza p WHERE p.code = :codePizza") })
@@ -49,6 +53,13 @@ public class Pizza {
 		// Empty method to use with JPA
 	}
 
+	/**
+	 * @param id
+	 * @param code
+	 * @param nom
+	 * @param prix
+	 * @param categoriePizza
+	 */
 	public Pizza(Integer id, String code, String nom, Double prix, CategoriePizza categoriePizza) {
 		this.id = id;
 		this.code = code;
@@ -58,14 +69,24 @@ public class Pizza {
 		nbPizzas++;
 	}
 
+	/**
+	 * @param code
+	 * @param nom
+	 * @param prix
+	 */
 	public Pizza(String code, String nom, double prix) {
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;
 		nbPizzas++;
-
 	}
 
+	/**
+	 * @param code
+	 * @param nom
+	 * @param prix
+	 * @param categorie
+	 */
 	public Pizza(String code, String nom, double prix, CategoriePizza categorie) {
 		this.code = code;
 		this.nom = nom;

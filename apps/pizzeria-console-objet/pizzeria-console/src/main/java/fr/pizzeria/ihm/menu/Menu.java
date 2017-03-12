@@ -12,17 +12,28 @@ import fr.pizzeria.ihm.menu.option.OptionMenu;
 import fr.pizzeria.ihm.menu.option.OptionMostExpensivePizza;
 import fr.pizzeria.ihm.menu.tools.IhmTools;
 
+/**
+ * @author PaolaLamb
+ *
+ */
 public class Menu {
 	private String title = "**** Pizzeria Administration ****";
 	private Map<Integer, OptionMenu> options;
 	IhmTools ihm = new IhmTools();
 
+	/**
+	 * @param title
+	 * @param options
+	 */
 	public Menu(String title, Map<Integer, OptionMenu> options) {
 		this.title = title;
 		this.options = options;
 
 	}
 
+	/**
+	 * 
+	 */
 	public Menu() {
 
 		OptionListePizza optionListe = new OptionListePizza(ihm.getiPizza(), ihm.getScanner());
@@ -47,6 +58,9 @@ public class Menu {
 		return options;
 	}
 
+	/**
+	 * Lancement du menu
+	 */
 	public void demarrer() {
 		System.out.println(title);
 
@@ -55,6 +69,10 @@ public class Menu {
 		System.out.println(options.size() + 1 + ". Quitter");
 	}
 
+	/**
+	 * @param choix
+	 * Lancement de l'option choisie
+	 */
 	public void executer(int choix) {
 		options.get(choix).execute();
 	}

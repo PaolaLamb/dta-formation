@@ -10,8 +10,16 @@ import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * @author PaolaLamb
+ *
+ */
 public class OptionMajPizza extends OptionMenu {
 
+	/**
+	 * @param dao
+	 * @param scan
+	 */
 	public OptionMajPizza(Dao<Pizza, String> dao, Scanner scan) {
 		super(dao, scan);
 	}

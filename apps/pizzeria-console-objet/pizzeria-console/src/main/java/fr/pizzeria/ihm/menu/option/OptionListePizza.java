@@ -5,8 +5,16 @@ import java.util.Scanner;
 import fr.pizzeria.dao.Dao;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * @author PaolaLamb
+ *
+ */
 public class OptionListePizza extends OptionMenu {
 
+	/**
+	 * @param dao
+	 * @param scan
+	 */
 	public OptionListePizza(Dao<Pizza, String> dao, Scanner scan) {
 		super(dao, scan);
 	}

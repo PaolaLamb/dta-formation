@@ -14,6 +14,10 @@ import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * @author PaolaLamb
+ *
+ */
 public class PizzaDaoImplFiles implements Dao<Pizza, String> {
 
 

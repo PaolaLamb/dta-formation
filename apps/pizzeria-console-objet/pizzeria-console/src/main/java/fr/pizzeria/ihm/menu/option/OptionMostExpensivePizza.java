@@ -6,8 +6,16 @@ import java.util.Scanner;
 import fr.pizzeria.dao.Dao;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * @author PaolaLamb
+ *
+ */
 public class OptionMostExpensivePizza extends OptionMenu {
 
+	/**
+	 * @param dao
+	 * @param scan
+	 */
 	public OptionMostExpensivePizza(Dao<Pizza, String> dao, Scanner scan) {
 		super(dao, scan);
 	}

@@ -10,13 +10,22 @@ import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * @author PaolaLamb
+ *
+ */
 public class OptionAddPizza extends OptionMenu {
+	
+	/**
+	 * @param dao
+	 * @param scan
+	 */
 	public OptionAddPizza(Dao<Pizza, String> dao, Scanner scan) {
 		super(dao, scan);
 	}
 
 	@Override
-	public String getLibelle() {
+	public String getLibelle() {	
 		return "Ajouter une pizza";
 	}
 

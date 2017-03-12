@@ -7,8 +7,16 @@ import fr.pizzeria.exception.DeletePizzaException;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * @author PaolaLamb
+ *
+ */
 public class OptionDelPizza extends OptionMenu {
 
+	/**
+	 * @param dao
+	 * @param scan
+	 */
 	public OptionDelPizza(Dao<Pizza, String> dao, Scanner scan) {
 		super(dao, scan);
 	}

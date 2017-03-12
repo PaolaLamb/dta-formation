@@ -15,11 +15,18 @@ import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * @author PaolaLamb
+ *
+ */
 public class PizzaDaoImplJPA implements Dao<Pizza, String> {
 	private EntityManagerFactory entityMF;
 	private static final String PERSISTENCE_UNIT = "pizzeria-console";
 	EntityManager em;
 
+	/**
+	 * Constructeur sans paramètre
+	 */
 	public PizzaDaoImplJPA() {
 		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 		this.entityMF = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT);

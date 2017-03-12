@@ -18,11 +18,18 @@ import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * @author PaolaLamb
+ *
+ */
 public class PizzaDaoImplBD implements Dao<Pizza, String> {
 	ResourceBundle bundle = ResourceBundle.getBundle("jdbc");
 
 	Connection co;
 
+	/**
+	 * @return une connexion à la base de données
+	 */
 	public Connection initializeConnection() {
 
 		try {
@@ -60,7 +67,7 @@ public class PizzaDaoImplBD implements Dao<Pizza, String> {
 	}
 
 	@Override
-	public void saveNew(Pizza pizza) throws SavePizzaException {
+	public void saveNew(Pizza pizza) {
 		try (Connection connection = initializeConnection();
 				PreparedStatement prepStatement = connection.prepareStatement(
 						"INSERT INTO pizza (id, libelle, reference, prix,  categorie) VALUES (null, ?, ?, ?, ?)");) {
@@ -75,7 +82,7 @@ public class PizzaDaoImplBD implements Dao<Pizza, String> {
 	}
 
 	@Override
-	public void update(String codePizza, Pizza pizza) throws UpdatePizzaException {
+	public void update(String codePizza, Pizza pizza)  {
 		try (Connection connection = initializeConnection();
 				PreparedStatement prepStatement = connection.prepareStatement(
 						"UPDATE pizza SET libelle=?, reference=?, prix=?, categorie=? WHERE reference=?");) {
@@ -92,7 +99,7 @@ public class PizzaDaoImplBD implements Dao<Pizza, String> {
 	}
 
 	@Override
-	public void delete(String codePizza) throws DeletePizzaException {
+	public void delete(String codePizza)  {
 
 		try (Connection connection = initializeConnection();
 				PreparedStatement prepStatement = connection.prepareStatement("DELETE FROM pizza WHERE reference=?");) {
