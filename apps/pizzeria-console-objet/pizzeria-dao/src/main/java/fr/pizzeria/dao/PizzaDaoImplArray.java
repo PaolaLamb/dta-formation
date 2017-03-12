@@ -12,7 +12,7 @@ import fr.pizzeria.model.Pizza;
  * @author PaolaLamb
  *
  */
-public class PizzaDaoImplArray implements Dao<Pizza, String> {
+public class PizzaDaoImplArray implements DaoPizza<Pizza, String> {
 	private List<Pizza> pizzasList;
 
 	/**

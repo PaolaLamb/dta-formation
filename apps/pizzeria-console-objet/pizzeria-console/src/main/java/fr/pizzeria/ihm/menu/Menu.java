@@ -3,13 +3,15 @@ package fr.pizzeria.ihm.menu;
 import java.util.HashMap;
 import java.util.Map;
 
-import fr.pizzeria.ihm.menu.option.OptionAddPizza;
-import fr.pizzeria.ihm.menu.option.OptionDelPizza;
-import fr.pizzeria.ihm.menu.option.OptionListePizza;
-import fr.pizzeria.ihm.menu.option.OptionListerParCategorie;
-import fr.pizzeria.ihm.menu.option.OptionMajPizza;
-import fr.pizzeria.ihm.menu.option.OptionMenu;
-import fr.pizzeria.ihm.menu.option.OptionMostExpensivePizza;
+import fr.pizzeria.ihm.menu.optionClient.OptionCrediterCompte;
+import fr.pizzeria.ihm.menu.optionClient.OptionDebiterCompte;
+import fr.pizzeria.ihm.menu.optionClient.OptionListClient;
+import fr.pizzeria.ihm.menu.optionPizza.OptionAddPizza;
+import fr.pizzeria.ihm.menu.optionPizza.OptionDelPizza;
+import fr.pizzeria.ihm.menu.optionPizza.OptionListePizza;
+import fr.pizzeria.ihm.menu.optionPizza.OptionListerParCategorie;
+import fr.pizzeria.ihm.menu.optionPizza.OptionMajPizza;
+import fr.pizzeria.ihm.menu.optionPizza.OptionMostExpensivePizza;
 import fr.pizzeria.ihm.menu.tools.IhmTools;
 
 /**
@@ -19,30 +21,24 @@ import fr.pizzeria.ihm.menu.tools.IhmTools;
 public class Menu {
 	private String title = "**** Pizzeria Administration ****";
 	private Map<Integer, OptionMenu> options;
-	IhmTools ihm = new IhmTools();
+	private IhmTools ihm ;
 
 	/**
 	 * @param title
 	 * @param options
 	 */
-	public Menu(String title, Map<Integer, OptionMenu> options) {
-		this.title = title;
-		this.options = options;
-
-	}
-
-	/**
-	 * 
-	 */
-	public Menu() {
-
-		OptionListePizza optionListe = new OptionListePizza(ihm.getiPizza(), ihm.getScanner());
-		OptionAddPizza optionAdd = new OptionAddPizza(ihm.getiPizza(), ihm.getScanner());
-		OptionMajPizza optionMaj = new OptionMajPizza(ihm.getiPizza(), ihm.getScanner());
-		OptionDelPizza optionDel = new OptionDelPizza(ihm.getiPizza(), ihm.getScanner());
-		OptionListerParCategorie optionCat = new OptionListerParCategorie(ihm.getiPizza(), ihm.getScanner());
-		OptionMostExpensivePizza optionExp = new OptionMostExpensivePizza(ihm.getiPizza(), ihm.getScanner());
-
+	public Menu(IhmTools ihmTool) {
+		this.ihm = ihmTool ;
+		
+		OptionMenu optionListe = new OptionListePizza(ihm);
+		OptionMenu optionAdd = new OptionAddPizza(ihm);
+		OptionMenu optionMaj = new OptionMajPizza(ihm);
+		OptionMenu optionDel = new OptionDelPizza(ihm);
+		OptionMenu optionCat = new OptionListerParCategorie(ihm);
+		OptionMenu optionExp = new OptionMostExpensivePizza(ihm);
+		OptionMenu optionListeClient = new OptionListClient(ihm) ;
+		OptionMenu optionCrediter = new OptionCrediterCompte(ihm) ;
+		OptionMenu optionDebiter = new OptionDebiterCompte(ihm) ;
 		Map<Integer, OptionMenu> option = new HashMap<>();
 		option.put(1, optionListe);
 		option.put(2, optionAdd);
@@ -50,6 +46,9 @@ public class Menu {
 		option.put(4, optionDel);
 		option.put(5, optionCat);
 		option.put(6, optionExp);
+		option.put(7, optionListeClient) ;
+		option.put(8, optionCrediter) ;
+		option.put(8, optionDebiter) ;
 		this.options = option;
 
 	}

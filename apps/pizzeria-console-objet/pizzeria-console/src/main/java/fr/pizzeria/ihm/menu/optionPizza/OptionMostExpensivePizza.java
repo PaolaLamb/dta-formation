@@ -1,9 +1,9 @@
-package fr.pizzeria.ihm.menu.option;
+package fr.pizzeria.ihm.menu.optionPizza;
 
 import java.util.Comparator;
-import java.util.Scanner;
 
-import fr.pizzeria.dao.Dao;
+import fr.pizzeria.ihm.menu.OptionMenu;
+import fr.pizzeria.ihm.menu.tools.IhmTools;
 import fr.pizzeria.model.Pizza;
 
 /**
@@ -16,8 +16,8 @@ public class OptionMostExpensivePizza extends OptionMenu {
 	 * @param dao
 	 * @param scan
 	 */
-	public OptionMostExpensivePizza(Dao<Pizza, String> dao, Scanner scan) {
-		super(dao, scan);
+	public OptionMostExpensivePizza(IhmTools ihm) {
+		super(ihm);
 	}
 
 	@Override
@@ -27,7 +27,7 @@ public class OptionMostExpensivePizza extends OptionMenu {
 
 	@Override
 	public void execute() {
-		dao.findAll().stream().max(Comparator.comparing(Pizza::getPrix)).ifPresent(p -> System.out.println(
+		ihm.getiPizza().findAll().stream().max(Comparator.comparing(Pizza::getPrix)).ifPresent(p -> System.out.println(
 				p.getNom() + " est actuellement la plus chère des pizzas disponibles avec " + p.getPrix() + "€ "));
 	}
 

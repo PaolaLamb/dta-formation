@@ -2,21 +2,52 @@ package fr.pizzeria.ihm.menu.tools;
 
 import java.util.Scanner;
 
-import fr.pizzeria.dao.Dao;
+import fr.pizzeria.dao.ClientDaoImplArray;
+import fr.pizzeria.dao.DaoClient;
+import fr.pizzeria.dao.DaoPizza;
 import fr.pizzeria.dao.PizzaDaoImplFiles;
 import fr.pizzeria.model.Pizza;
 
+
+/**
+ * @author PaolaLamb
+ *
+ */
 public class IhmTools {
 
-	Scanner scanner = new Scanner(System.in);
-	Dao<Pizza, String> iPizza = new PizzaDaoImplFiles();
+	private Scanner scanner = new Scanner(System.in);
+	private DaoPizza<Pizza, String> iPizza = new PizzaDaoImplFiles();
+	private DaoClient iClient = new ClientDaoImplArray();
 
+
+	/**
+	 * @param iPizza
+	 * @param iClient
+	 */
+	public IhmTools(DaoPizza<Pizza, String> iPizza) {
+		super();
+		this.iPizza = iPizza;
+	}
+
+	/**
+	 * @return dao pizza
+	 */
+	public DaoPizza<Pizza, String> getiPizza() {
+		return iPizza;
+	}
+
+	/**
+	 * @return scanner
+	 */
 	public Scanner getScanner() {
 		return scanner;
 	}
 
-	public Dao<Pizza, String> getiPizza() {
-		return iPizza;
+	/**
+	 * @return dao client
+	 */
+	public DaoClient getiClient() {
+		return iClient;
 	}
 
 }

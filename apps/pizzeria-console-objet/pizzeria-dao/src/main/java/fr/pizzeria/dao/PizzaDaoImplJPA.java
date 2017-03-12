@@ -19,7 +19,7 @@ import fr.pizzeria.model.Pizza;
  * @author PaolaLamb
  *
  */
-public class PizzaDaoImplJPA implements Dao<Pizza, String> {
+public class PizzaDaoImplJPA implements DaoPizza<Pizza, String> {
 	private EntityManagerFactory entityMF;
 	private static final String PERSISTENCE_UNIT = "pizzeria-console";
 	EntityManager em;

@@ -1,9 +1,9 @@
-package fr.pizzeria.ihm.menu.option;
+package fr.pizzeria.ihm.menu.optionPizza;
 
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import fr.pizzeria.dao.Dao;
+import fr.pizzeria.ihm.menu.OptionMenu;
+import fr.pizzeria.ihm.menu.tools.IhmTools;
 import fr.pizzeria.model.Pizza;
 
 /**
@@ -16,8 +16,8 @@ public class OptionListerParCategorie extends OptionMenu {
 	 * @param dao
 	 * @param scan
 	 */
-	public OptionListerParCategorie(Dao<Pizza, String> dao, Scanner scan) {
-		super(dao, scan);
+	public OptionListerParCategorie(IhmTools ihm) {
+		super(ihm);
 	}
 
 	@Override
@@ -27,7 +27,7 @@ public class OptionListerParCategorie extends OptionMenu {
 
 	@Override
 	public void execute() {
-		dao.findAll().stream().collect(Collectors.groupingBy(Pizza::getCategoriePizza))
+		ihm.getiPizza().findAll().stream().collect(Collectors.groupingBy(Pizza::getCategoriePizza))
 				.forEach((key, value) -> System.out.println(key + " : " + value));
 	}
 

@@ -22,7 +22,7 @@ import fr.pizzeria.model.Pizza;
  * @author PaolaLamb
  *
  */
-public class PizzaDaoImplBD implements Dao<Pizza, String> {
+public class PizzaDaoImplBD implements DaoPizza<Pizza, String> {
 	ResourceBundle bundle = ResourceBundle.getBundle("jdbc");
 
 	Connection co;

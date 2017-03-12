@@ -41,6 +41,7 @@ public class Pizza {
 	@Column(name = "prix", nullable = true, unique = false)
 	private Double prix;
 
+	@ToString
 	@Enumerated(EnumType.STRING)
 	@Column(name = "categorie", nullable = true, unique = false)
 	private CategoriePizza categoriePizza;

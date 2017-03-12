@@ -18,7 +18,7 @@ import fr.pizzeria.model.Pizza;
  * @author PaolaLamb
  *
  */
-public class PizzaDaoImplFiles implements Dao<Pizza, String> {
+public class PizzaDaoImplFiles implements DaoPizza<Pizza, String> {
 
 
 

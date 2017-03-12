@@ -8,7 +8,7 @@ import java.util.List;
  * @param <S>
  * @param <C>
  */
-public interface Dao<S, C> {
+public interface DaoPizza<S, C> {
 	/**
 	 * @return la liste des pizza
 	 */

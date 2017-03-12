@@ -1,12 +1,12 @@
-package fr.pizzeria.ihm.menu.option;
+package fr.pizzeria.ihm.menu.optionPizza;
 
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import fr.pizzeria.dao.Dao;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.exception.UpdatePizzaException;
+import fr.pizzeria.ihm.menu.OptionMenu;
+import fr.pizzeria.ihm.menu.tools.IhmTools;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -20,8 +20,8 @@ public class OptionMajPizza extends OptionMenu {
 	 * @param dao
 	 * @param scan
 	 */
-	public OptionMajPizza(Dao<Pizza, String> dao, Scanner scan) {
-		super(dao, scan);
+	public OptionMajPizza(IhmTools ihm) {
+		super(ihm);
 	}
 
 	@Override
@@ -32,21 +32,21 @@ public class OptionMajPizza extends OptionMenu {
 	@Override
 	public void execute() {
 		System.out.println("Veuillez saisir le code de la pizza à modifier");
-		String codePizza = scan.next();
+		String codePizza = ihm.getScanner().next();
 
 		if (codePizza != "99") {
 			Pizza newPizza = new Pizza();
 			System.out.println("Veuillez saisir le code");
-			newPizza.setCode(scan.next());
+			newPizza.setCode(ihm.getScanner().next());
 			System.out.println("Veuillez saisir le nom");
-			newPizza.setNom(scan.next());
+			newPizza.setNom(ihm.getScanner().next());
 			System.out.println("Veuillez saisir le prix");
-			newPizza.setPrix(scan.nextDouble());
+			newPizza.setPrix(ihm.getScanner().nextDouble());
 
 			boolean arg = false;
 			while (!arg) {
 				System.out.println("Veuillez saisir la catégorie de la pizza (Viande/Poisson/Sans_Viande)");
-				String categorie = scan.next();
+				String categorie = ihm.getScanner().next();
 				try {
 					newPizza.setCategoriePizza(CategoriePizza.valueOf(categorie.toUpperCase()));
 					arg = true;
@@ -57,7 +57,7 @@ public class OptionMajPizza extends OptionMenu {
 			}
 
 			try {
-				dao.update(codePizza, newPizza);
+				ihm.getiPizza().update(codePizza, newPizza);
 			} catch (StockageException e) {
 				throw new UpdatePizzaException("Modification(s) de la pizza échouée(s)",e);
 			}

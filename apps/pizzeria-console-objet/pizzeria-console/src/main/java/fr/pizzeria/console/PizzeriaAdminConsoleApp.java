@@ -1,7 +1,12 @@
 package fr.pizzeria.console;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import fr.pizzeria.dao.PizzaDaoImplArray;
 import fr.pizzeria.ihm.menu.Menu;
 import fr.pizzeria.ihm.menu.tools.IhmTools;
+import fr.pizzeria.model.Client;
 
 /**
  * @author PaolaLamb
@@ -21,9 +26,11 @@ public class PizzeriaAdminConsoleApp {
 	 */
 	public static void main(String[] args) {
 
-		IhmTools ihm = new IhmTools();
+		IhmTools ihm = new IhmTools(new PizzaDaoImplArray());
+		
+	
 
-		Menu menu = new Menu();
+		Menu menu = new Menu(ihm);
 
 		Integer choix = 0;
 
