@@ -1,13 +1,16 @@
 package fr.pizzeria.dao;
 
 import java.util.List;
-import java.util.logging.Level;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
+
+
+import javax.persistence.RollbackException;
+
 import javax.persistence.TypedQuery;
 
 import fr.pizzeria.exception.SaveException;
@@ -20,22 +23,20 @@ import fr.pizzeria.model.Pizza;
  */
 public class PizzaDaoImplJPA implements DaoPizza<Pizza, String> {
 	private EntityManagerFactory entityMF;
-	private static final String PERSISTENCE_UNIT = "pizzeria-console";
+	private static final String PERSISTENCE_UNIT = "pu-pizzeria-console";
 	EntityManager em;
 
 	/**
 	 * Constructeur sans paramètre
 	 */
 	public PizzaDaoImplJPA() {
-		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 		this.entityMF = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT);
 	}
-	
-	
 
 	@Override
 	public List<Pizza> findAll() {
-		em = entityMF.createEntityManager();
+
+		this.em = entityMF.createEntityManager();
 		TypedQuery<Pizza> pizzas = em.createNamedQuery("Pizza.findAll", Pizza.class) ;
 		em.close();
 		return pizzas.getResultList();
@@ -43,7 +44,9 @@ public class PizzaDaoImplJPA implements DaoPizza<Pizza, String> {
 
 	@Override
 	public void saveNew(Pizza pizza) {
-		em = entityMF.createEntityManager();
+
+		this.em = entityMF.createEntityManager();
+
 		EntityTransaction et = em.getTransaction();
 		try {
 			et.begin();
@@ -58,9 +61,12 @@ public class PizzaDaoImplJPA implements DaoPizza<Pizza, String> {
 
 	@Override
 	public void update(String codePizza, Pizza newPizza) {
-		em = entityMF.createEntityManager();
-		Pizza pizza = (Pizza) em.createNamedQuery("Pizza.findByCode").setParameter("codePizza", codePizza).getSingleResult();
-		
+
+		this.em = entityMF.createEntityManager();
+
+		Pizza pizza = (Pizza) em.createNamedQuery("Pizza.findByCode").setParameter("codePizza", codePizza)
+				.getSingleResult();
+
 		if (pizza != null) {
 
 			pizza.setCode(newPizza.getCode());
@@ -84,9 +90,12 @@ public class PizzaDaoImplJPA implements DaoPizza<Pizza, String> {
 
 	@Override
 	public void delete(String codePizza) {
-		em = entityMF.createEntityManager();
-		Pizza pizza = (Pizza) em.createNamedQuery("Pizza.findByCode").setParameter("codePizza", codePizza).getSingleResult();
-		
+		this.em = entityMF.createEntityManager();
+
+		Pizza pizza = (Pizza) em.createNamedQuery("Pizza.findByCode").setParameter("codePizza", codePizza)
+				.getSingleResult();
+
+
 		EntityTransaction et = em.getTransaction();
 		try {
 			et.begin();
@@ -97,5 +106,6 @@ public class PizzaDaoImplJPA implements DaoPizza<Pizza, String> {
 			throw new SaveException(e);
 		}
 		em.close();
+
 	}
 }

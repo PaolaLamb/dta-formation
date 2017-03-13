@@ -1,15 +1,40 @@
 package fr.pizzeria.model;
 
+
 import fr.pizzeria.exception.CrediterException;
 import fr.pizzeria.exception.DebiterException;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+
 /**
- * @author PaolaLamb 
- * Création du modèle client qui étend la classe abstraite mangeur de pizzas
+ * @author PaolaLamb Création du modèle client qui étend la classe abstraite
+ *         mangeur de pizzas
  */
+@Entity
 public class Client extends MangeurDePizzas {
+
 	private Double solde ;
 	
+	@Column(name = "email", length = 50, nullable = false, unique = true)
+	private String email;
+
+	@Column(name = "password", length = 20, nullable = false, unique = true)
+	private String password;
+
+	@OneToMany(mappedBy = "client")
+	private Set<Commande> commandes;
+
+	public Client() {
+		commandes = new HashSet<>();
+	}
+
+
 	/**
 	 * @param id
 	 * @param nom
@@ -54,7 +79,6 @@ public class Client extends MangeurDePizzas {
 	public String toString() {
 		return this.id + " -> " + this.prenom + " " + this.nom + " (" + this.solde + " €)" ;
 	}
-
 
 
 }

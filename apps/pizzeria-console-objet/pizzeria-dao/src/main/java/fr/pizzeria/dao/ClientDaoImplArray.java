@@ -10,6 +10,7 @@ import fr.pizzeria.model.Livreur;
  * @author PaolaLamb Implémentation de l'interface dao client
  */
 public class ClientDaoImplArray implements DaoClient {
+
 	private List<Client> clientList = new ArrayList<>();
 	private List<Livreur> deliverList = new ArrayList<>();
 
@@ -24,6 +25,7 @@ public class ClientDaoImplArray implements DaoClient {
 		this.clientList.add(new Client(4, "Yorv", "Viktor", 150.00)) ;
 		
 		this.deliverList.add(new Livreur(1, "Yorv", "Viktor"));
+
 	}
 
 	/**
@@ -35,10 +37,11 @@ public class ClientDaoImplArray implements DaoClient {
 	}
 
 	@Override
+
 	public List<Client> findAll() {
 		return clientList;
 	}
-	
+
 
 	@Override
 	public List<Livreur> findAllLivreur() {
@@ -55,6 +58,7 @@ public class ClientDaoImplArray implements DaoClient {
 	public void ajouterNouveauLivreur(Livreur livreur) {
 		deliverList.add(livreur);
 	}
+
 
 	@Override
 	public void crediterCompteClient(int choix, double montant) {

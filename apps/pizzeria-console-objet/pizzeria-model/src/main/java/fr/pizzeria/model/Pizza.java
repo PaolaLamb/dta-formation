@@ -30,7 +30,7 @@ public class Pizza {
 	private Integer id;
 
 	@ToString
-	@Column(name = "reference", length = 10, nullable = false, unique = false)
+	@Column(name = "reference", length = 10, nullable = false, unique = true)
 	private String code;
 
 	@ToString
@@ -45,7 +45,11 @@ public class Pizza {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "categorie", nullable = true, unique = false)
 	private CategoriePizza categoriePizza;
+
 	private static Integer nbPizzas = 0;
+
+	@Column(name = "url_image", nullable = true, unique = false)
+	private String urlImage;
 
 	/**
 	 * Pizza empty constructor
@@ -95,7 +99,6 @@ public class Pizza {
 		this.categoriePizza = categorie;
 		nbPizzas++;
 	}
-
 
 	public Integer getId() {
 		return id;
@@ -159,7 +162,7 @@ public class Pizza {
 				}
 			}
 		} catch (IllegalArgumentException | IllegalAccessException e) {
-			Logger.getAnonymousLogger().log(Level.SEVERE,"/!\\/!\\ Arguments, accès non valide(s) /!\\/!\\", e );
+			Logger.getAnonymousLogger().log(Level.SEVERE, "/!\\/!\\ Arguments, accès non valide(s) /!\\/!\\", e);
 		}
 
 		return sb.toString();

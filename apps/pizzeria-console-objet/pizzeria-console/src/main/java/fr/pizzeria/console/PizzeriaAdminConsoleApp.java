@@ -1,6 +1,7 @@
 package fr.pizzeria.console;
 
 import fr.pizzeria.dao.PizzaDaoImplArray;
+
 import fr.pizzeria.ihm.menu.Menu;
 import fr.pizzeria.ihm.menu.tools.IhmTools;
 
@@ -21,12 +22,10 @@ public class PizzeriaAdminConsoleApp {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
+		IhmTools ihm = new IhmTools(new PizzaDaoImplJPA());
 
-		IhmTools ihm = new IhmTools(new PizzaDaoImplArray());
-		
-	
 		new Menu(ihm).executer();
-
 
 	}
 
