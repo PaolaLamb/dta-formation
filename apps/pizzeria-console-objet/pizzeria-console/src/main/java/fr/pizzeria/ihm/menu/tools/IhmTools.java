@@ -3,9 +3,9 @@ package fr.pizzeria.ihm.menu.tools;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.ClientDaoImplArray;
-import fr.pizzeria.dao.DaoClient;
 import fr.pizzeria.dao.DaoPizza;
-import fr.pizzeria.dao.PizzaDaoImplFiles;
+import fr.pizzeria.dao.DaoClient;
+import fr.pizzeria.model.MangeurDePizzas;
 import fr.pizzeria.model.Pizza;
 
 
@@ -46,7 +46,7 @@ public class IhmTools {
 	/**
 	 * @return dao client
 	 */
-	public DaoClient getiClient() {
+	public DaoClient getIClient() {
 		return iClient;
 	}
 

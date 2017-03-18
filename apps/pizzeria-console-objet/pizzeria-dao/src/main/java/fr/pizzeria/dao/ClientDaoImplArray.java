@@ -8,78 +8,80 @@ import fr.pizzeria.model.Livreur;
 import fr.pizzeria.model.MangeurDePizzas;
 
 /**
- * @author PaolaLamb
- * Implémentation de l'interface dao client
+ * @author PaolaLamb Implémentation de l'interface dao client
  */
-public class ClientDaoImplArray implements DaoClient{
-	private List<MangeurDePizzas> clientList = new ArrayList<>() ;
-	private List<Livreur> deliverList = new ArrayList<>() ;
-	
-	
+public class ClientDaoImplArray implements DaoClient {
+	private List<Client> clientList = new ArrayList<>();
+	private List<Livreur> deliverList = new ArrayList<>();
+
 
 	/**
 	 * Constructeur sans paramètre, création de base
 	 */
 	public ClientDaoImplArray() {
-		this.clientList.add(new Client(1, "Jacques", "Pierre", 100.00)) ;
-		this.clientList.add(new Client(2, "Mars", "Roger", 0.00)) ;
-		this.clientList.add(new Client(3, "Clark", "Sydney", 55.00)) ;
-		this.clientList.add(new Livreur(4, "Yorv", "Viktor", 150.00)) ;
+		this.clientList.add(new Client(1, "Jacques", "Pierre", 100.00));
+		this.clientList.add(new Client(2, "Mars", "Roger", 0.00));
+		this.clientList.add(new Client(3, "Clark", "Sydney", 55.00));
+		this.clientList.add(new Client(4, "Yorv", "Viktor", 150.00)) ;
 		
-		this.deliverList.add(new Livreur(1, "Yorv", "Viktor", 150.00)) ;
+		this.deliverList.add(new Livreur(1, "Yorv", "Viktor"));
 	}
-
-
 
 	/**
 	 * @param clientList
 	 */
-	public ClientDaoImplArray(List<MangeurDePizzas> clientList) {
+	public ClientDaoImplArray(List<Client> clientList) {
 		super();
 		this.clientList = clientList;
 	}
 
-
-
 	@Override
-	public List<MangeurDePizzas> findAll() {
-		return clientList ;		
+	public List<Client> findAll() {
+		return clientList;
 	}
-	
 	
 
 	@Override
 	public List<Livreur> findAllLivreur() {
 		return deliverList;
 	}
-	
-	
+
 	@Override
-	public void ajouterNouveauClient(Client personne, String livreur) {
+	public void ajouterNouveauClient(Client personne) {
 		clientList.add(personne);
-		if(livreur.equals("oui")) {
-			deliverList.add(new Livreur(deliverList.size()+1, personne.getNom(), personne.getPrenom(), personne.getSolde())) ;
-		}
+
 	}
 
-
+	@Override
+	public void ajouterNouveauLivreur(Livreur livreur) {
+		deliverList.add(livreur);
+	}
 
 	@Override
 	public void crediterCompteClient(int choix, double montant) {
-		clientList.get(choix).crediterCompte(montant); 
+		clientList.get(choix).crediterCompte(montant);
 	}
-
-
 
 	@Override
 	public void debiterCompteClient(int choix, double montant) {
-		clientList.get(choix).debiterCompte(montant);		
+		clientList.get(choix).debiterCompte(montant);
 	}
-	
+
 	@Override
+	public void delete(Client client) {
+		clientList.remove(client.getId());
+	}
+
+	public void delete(Livreur livreur) {
+		clientList.remove(livreur.getId());
+	}
+
 	public int nbClient() {
-		return clientList.size() ;
+		return clientList.size();
 	}
 	
+	public int nbLivreur() {
+		return deliverList.size();
+	}
 
 }

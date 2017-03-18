@@ -32,7 +32,7 @@ public class OptionCrediterCompte extends OptionMenu {
 		System.out.println("Veuillez choisir le client à créditer :");
 		choix = ihm.getScanner().nextInt() ;
 		
-		int clientListSize = ihm.getiClient().nbClient() ;
+		int clientListSize = ihm.getIClient().nbClient() ;
 		if(choix>clientListSize) {
 			System.out.println("/!\\/!\\ Client introuvable /!\\/!\\ \nVeuillez saisir un client valide :") ;
 			choix = ihm.getScanner().nextInt() ;
@@ -41,7 +41,7 @@ public class OptionCrediterCompte extends OptionMenu {
 		System.out.println("Veuillez choisir le montant à créditer");
 		montant = ihm.getScanner().nextDouble() ;
 		
-		ihm.getiClient().crediterCompteClient(choix-1, montant);
+		ihm.getIClient().crediterCompteClient(choix-1, montant);
 	}
 
 }

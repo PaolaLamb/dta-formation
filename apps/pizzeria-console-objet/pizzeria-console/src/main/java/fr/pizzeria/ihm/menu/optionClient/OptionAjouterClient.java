@@ -30,23 +30,9 @@ public class OptionAjouterClient extends OptionMenu {
 		System.out.println("Veuillez entrer le prénom du client :");
 		String prenom = ihm.getScanner().next() ;
 		
-		System.out.println("Le client est-il également livreur ? (oui/non) :");
-		String livreur = ihm.getScanner().next() ;
-		
-		if(livreur.equals("oui")) {
-			ihm.getiClient().ajouterNouveauClient(new Client(ihm.getiClient().nbClient() + 1, nom, prenom, 0.0), livreur);
-		}
-		else if(livreur.equals("non")) {
-			ihm.getiClient().ajouterNouveauClient(new Client(ihm.getiClient().nbClient() + 1, nom, prenom, 0.0), livreur);
-		}
-		else { 
-			System.out.println("/!\\/!\\ Entrée invalide /!\\/!\\ \nRecommencez :");
-			execute();
-		}
-				
-		
-		
-		
+			
+		ihm.getIClient().ajouterNouveauClient(new Client(ihm.getIClient().nbClient() + 1, nom, prenom, 0.0));
+			
 	}
 
 	

@@ -31,7 +31,7 @@ public class OptionDebiterCompte extends OptionMenu{
 		System.out.println("Veuillez choisir le client à débiter :");
 		choix = ihm.getScanner().nextInt() ;
 		
-		int clientListSize = ihm.getiClient().nbClient() ;
+		int clientListSize = ihm.getIClient().nbClient() ;
 		if(choix>clientListSize) {
 			System.out.println("/!\\/!\\ Client introuvable /!\\/!\\ \nVeuillez saisir un client valide :") ;
 			choix = ihm.getScanner().nextInt() ;
@@ -40,7 +40,7 @@ public class OptionDebiterCompte extends OptionMenu{
 		System.out.println("Veuillez choisir le montant à débiter");
 		montant = ihm.getScanner().nextDouble() ;
 		
-		ihm.getiClient().debiterCompteClient(choix-1, montant);
+		ihm.getIClient().debiterCompteClient(choix-1, montant);
 	}
 
 }

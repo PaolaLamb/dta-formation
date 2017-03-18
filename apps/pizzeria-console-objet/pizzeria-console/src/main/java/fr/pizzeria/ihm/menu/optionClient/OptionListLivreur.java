@@ -23,7 +23,7 @@ public class OptionListLivreur extends OptionMenu{
 
 	@Override
 	public void execute() {
-		ihm.getiClient().findAllLivreur().stream().forEach(System.out::println) ;
+		ihm.getIClient().findAllLivreur().stream().forEach(System.out::println) ;
 	}
 	
 	

@@ -24,7 +24,7 @@ public class OptionListClient extends OptionMenu {
 
 	@Override
 	public void execute() {
-		ihm.getiClient().findAll().stream().forEach(System.out::println) ;
+		ihm.getIClient().findAll().stream().forEach(System.out::println) ;
 	}
 
 }

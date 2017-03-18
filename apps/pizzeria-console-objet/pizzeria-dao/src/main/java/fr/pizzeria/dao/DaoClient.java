@@ -19,7 +19,7 @@ public interface DaoClient {
 	/**
 	 * @return la liste des clients
 	 */
-	List<MangeurDePizzas> findAll() ;
+	List<Client> findAll() ;
 	
 	
 	/**
@@ -33,7 +33,10 @@ public interface DaoClient {
 	 * @param personne
 	 * ajoute un nouveau client
 	 */
-	void ajouterNouveauClient(Client personne, String livreur) ;
+	void ajouterNouveauClient(Client personne) ;
+	
+	
+	void ajouterNouveauLivreur(Livreur livreur);
 	
 	/**
 	 * @param choix
@@ -48,4 +51,12 @@ public interface DaoClient {
 	 * débite le compte du client
 	 */
 	void debiterCompteClient(int choix, double montant) ;
+	
+	/**
+	 * @param client
+	 * Supprime le client
+	 */
+	void delete(Client client) ;
+
+	
 }
