@@ -1,12 +1,8 @@
 package fr.pizzeria.console;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import fr.pizzeria.dao.PizzaDaoImplArray;
 import fr.pizzeria.ihm.menu.Menu;
 import fr.pizzeria.ihm.menu.tools.IhmTools;
-import fr.pizzeria.model.Client;
 
 /**
  * @author PaolaLamb

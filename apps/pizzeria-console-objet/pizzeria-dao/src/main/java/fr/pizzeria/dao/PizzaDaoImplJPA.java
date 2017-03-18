@@ -1,6 +1,5 @@
 package fr.pizzeria.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -8,8 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
-import javax.persistence.RollbackException;
+import javax.persistence.PersistenceException;
+import javax.persistence.TypedQuery;
 
 import fr.pizzeria.exception.SaveException;
 import fr.pizzeria.exception.UpdatePizzaException;
@@ -30,38 +29,36 @@ public class PizzaDaoImplJPA implements DaoPizza<Pizza, String> {
 	public PizzaDaoImplJPA() {
 		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 		this.entityMF = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT);
-		this.em = entityMF.createEntityManager();
-
 	}
 	
 	
 
 	@Override
 	public List<Pizza> findAll() {
-		List<Pizza> pizzaList = new ArrayList<>() ;
-		Query pizzas = em.createNamedQuery("Pizza.findAll") ;
-		for(Object obj : pizzas.getResultList()) {
-			pizzaList.add((Pizza) obj) ;
-		}
-		Pizza.setNbPizza(Pizza.getNbPizza()+1);
-		return pizzaList ;
+		em = entityMF.createEntityManager();
+		TypedQuery<Pizza> pizzas = em.createNamedQuery("Pizza.findAll", Pizza.class) ;
+		em.close();
+		return pizzas.getResultList();
 	}
 
 	@Override
 	public void saveNew(Pizza pizza) {
+		em = entityMF.createEntityManager();
 		EntityTransaction et = em.getTransaction();
 		try {
 			et.begin();
 			em.persist(pizza);
 			et.commit();
-		} catch (RollbackException e) {
+		} catch (PersistenceException e) {
 			et.rollback();
 			throw new SaveException(e);
 		}
+		em.close();
 	}
 
 	@Override
 	public void update(String codePizza, Pizza newPizza) {
+		em = entityMF.createEntityManager();
 		Pizza pizza = (Pizza) em.createNamedQuery("Pizza.findByCode").setParameter("codePizza", codePizza).getSingleResult();
 		
 		if (pizza != null) {
@@ -78,29 +75,27 @@ public class PizzaDaoImplJPA implements DaoPizza<Pizza, String> {
 			et.begin();
 			em.merge(pizza);
 			et.commit();
-		} catch (RollbackException e) {
+		} catch (PersistenceException e) {
 			et.rollback();
 			throw new UpdatePizzaException(e);
 		}
+		em.close();
 	}
 
 	@Override
 	public void delete(String codePizza) {
-		List<Pizza> listPizzas = new ArrayList<>();
-		Query query = em.createNamedQuery("Pizza.findByCode").setParameter("codePizza", codePizza);
-		for (Object obj : query.getResultList()) {
-			listPizzas.add((Pizza) obj);
-		}
-		Pizza p = listPizzas.get(0);
-
+		em = entityMF.createEntityManager();
+		Pizza pizza = (Pizza) em.createNamedQuery("Pizza.findByCode").setParameter("codePizza", codePizza).getSingleResult();
+		
 		EntityTransaction et = em.getTransaction();
 		try {
 			et.begin();
-			em.remove(p);
+			em.remove(pizza);
 			et.commit();
-		} catch (RollbackException e) {
+		} catch (PersistenceException e) {
 			et.rollback();
 			throw new SaveException(e);
 		}
+		em.close();
 	}
 }

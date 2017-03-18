@@ -5,7 +5,6 @@ import java.util.List;
 
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Livreur;
-import fr.pizzeria.model.MangeurDePizzas;
 
 /**
  * @author PaolaLamb Implémentation de l'interface dao client
