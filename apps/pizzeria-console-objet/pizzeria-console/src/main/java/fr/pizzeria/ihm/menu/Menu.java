@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import fr.pizzeria.ihm.menu.optionClient.OptionAjouterClient;
+import fr.pizzeria.ihm.menu.optionClient.OptionAjouterLivreur;
 import fr.pizzeria.ihm.menu.optionClient.OptionCrediterCompte;
 import fr.pizzeria.ihm.menu.optionClient.OptionDebiterCompte;
 import fr.pizzeria.ihm.menu.optionClient.OptionListClient;
@@ -40,6 +41,7 @@ public class Menu {
 		OptionMenu optionExp = new OptionMostExpensivePizza(ihm);
 		OptionMenu optionListeClient = new OptionListClient(ihm) ;
 		OptionMenu optionAjouterClient = new OptionAjouterClient(ihm) ;
+		OptionMenu optionAjouterLivreur = new OptionAjouterLivreur(ihm) ;
 		OptionMenu optionCrediter = new OptionCrediterCompte(ihm) ;
 		OptionMenu optionDebiter = new OptionDebiterCompte(ihm) ;
 		OptionMenu optionListeLivreur = new OptionListLivreur(ihm) ;
@@ -52,9 +54,10 @@ public class Menu {
 		option.put(6, optionExp);
 		option.put(7, optionListeClient) ;
 		option.put(8, optionAjouterClient) ;
-		option.put(9, optionCrediter) ;
-		option.put(10, optionDebiter) ;
-		option.put(11, optionListeLivreur) ;
+		option.put(9, optionAjouterLivreur) ;
+		option.put(10, optionCrediter) ;
+		option.put(11, optionDebiter) ;
+		option.put(12, optionListeLivreur) ;
 		this.options = option;
 
 	}
