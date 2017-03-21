@@ -1,13 +1,10 @@
 package fr.pizzeria.model;
 
-
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-
 
 /**
  * @author Paola Création du modèle livreur qui étend la classe abstraite
@@ -23,7 +20,6 @@ public class Livreur extends MangeurDePizzas {
 		commandes = new HashSet<>();
 	}
 
-
 	/**
 	 * @param id
 	 * @param nom
@@ -36,7 +32,6 @@ public class Livreur extends MangeurDePizzas {
 
 	@Override
 	public String toString() {
-		return this.id + " -> " + this.prenom + " " + this.nom ;
+		return this.id + " -> " + this.prenom + " " + this.nom;
 	}
-
-	
+}

@@ -2,18 +2,18 @@ package fr.pizzeria.ihm.tools;
 
 import java.util.Scanner;
 
-import fr.pizzeria.dao.client.ConsoleClientDaoImplJPA;
-import fr.pizzeria.dao.client.DaoConsoleClient;
+import fr.pizzeria.dao.ClientDaoImplArray;
+import fr.pizzeria.dao.DaoClient;
 
 public class IhmTools {
 	private Scanner scan = new Scanner(System.in);
-	private DaoConsoleClient daoClient = new ConsoleClientDaoImplJPA();
+	private DaoClient daoClient = new ClientDaoImplArray();
 
 	public Scanner getScan() {
 		return scan;
 	}
 
-	public DaoConsoleClient getDaoClient() {
+	public DaoClient getDaoClient() {
 		return daoClient;
 	}
 

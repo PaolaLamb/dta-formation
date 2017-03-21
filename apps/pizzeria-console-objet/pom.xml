@@ -106,8 +106,11 @@
 				<version>5.2.8.Final</version>
 				<scope>runtime</scope>
 			</dependency>
-
-
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>3.0-alpha-1</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -122,5 +125,6 @@
 		<module>pizzeria-model</module>
 		<module>pizzeria-dao</module>
 		<module>pizzeria-console</module>
+		<module>pizzeria-admin-app</module>
 	</modules>
 </project>

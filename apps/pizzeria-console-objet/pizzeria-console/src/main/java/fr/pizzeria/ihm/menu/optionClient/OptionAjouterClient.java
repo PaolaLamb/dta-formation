@@ -27,12 +27,10 @@ public class OptionAjouterClient extends OptionMenu {
 		String nom = ihm.getScanner().next();
 
 		System.out.println("Veuillez entrer le prénom du client :");
-		String prenom = ihm.getScanner().next() ;
-		
-			
+		String prenom = ihm.getScanner().next();
+
 		ihm.getIClient().ajouterNouveauClient(new Client(ihm.getIClient().nbClient() + 1, nom, prenom, 0.0));
-			
-=
+
 	}
 
 }

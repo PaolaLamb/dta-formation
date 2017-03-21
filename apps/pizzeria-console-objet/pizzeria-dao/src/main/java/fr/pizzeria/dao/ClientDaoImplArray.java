@@ -14,7 +14,6 @@ public class ClientDaoImplArray implements DaoClient {
 	private List<Client> clientList = new ArrayList<>();
 	private List<Livreur> deliverList = new ArrayList<>();
 
-
 	/**
 	 * Constructeur sans paramètre, création de base
 	 */
@@ -22,9 +21,9 @@ public class ClientDaoImplArray implements DaoClient {
 		this.clientList.add(new Client(1, "Jacques", "Pierre", 100.00));
 		this.clientList.add(new Client(2, "Mars", "Roger", 0.00));
 		this.clientList.add(new Client(3, "Clark", "Sydney", 55.00));
-		this.clientList.add(new Livreur(4, "Yorv", "Viktor", 150.00));
+		this.clientList.add(new Client(4, "Yorv", "Viktor", 150.00));
 
-		this.deliverList.add(new Livreur(1, "Yorv", "Viktor", 150.00));
+		this.deliverList.add(new Livreur(1, "Yorv", "Viktor"));
 
 	}
 
@@ -41,7 +40,6 @@ public class ClientDaoImplArray implements DaoClient {
 	public List<Client> findAll() {
 		return clientList;
 	}
-
 
 	@Override
 	public List<Livreur> findAllLivreur() {
@@ -81,7 +79,6 @@ public class ClientDaoImplArray implements DaoClient {
 		return clientList.size();
 	}
 
-	
 	public int nbLivreur() {
 		return deliverList.size();
 	}
