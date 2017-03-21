@@ -1,4 +1,4 @@
-package fr.pizzeria.dao;
+package fr.pizzeria.dao.admin;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import java.util.List;
  * @param <S>
  * @param <C>
  */
-public interface DaoPizza<S, C> {
+public interface DaoGestionPizza<S, C> {
 	/**
 	 * @return la liste des pizza
 	 */

@@ -2,6 +2,8 @@ package fr.pizzeria.console;
 
 import fr.pizzeria.dao.PizzaDaoImplArray;
 
+import fr.pizzeria.dao.admin.PizzaDaoImplJPA;
+
 import fr.pizzeria.ihm.menu.Menu;
 import fr.pizzeria.ihm.menu.tools.IhmTools;
 

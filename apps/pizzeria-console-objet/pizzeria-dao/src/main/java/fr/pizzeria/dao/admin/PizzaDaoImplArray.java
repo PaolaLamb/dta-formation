@@ -1,4 +1,4 @@
-package fr.pizzeria.dao;
+package fr.pizzeria.dao.admin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import fr.pizzeria.model.Pizza;
  * @author PaolaLamb
  *
  */
-public class PizzaDaoImplArray implements DaoPizza<Pizza, String> {
+public class PizzaDaoImplArray implements DaoGestionPizza<Pizza, String> {
 	private List<Pizza> pizzasList;
 
 	/**

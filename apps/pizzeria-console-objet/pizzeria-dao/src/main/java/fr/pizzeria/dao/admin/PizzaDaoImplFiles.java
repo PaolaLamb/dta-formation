@@ -1,4 +1,4 @@
-package fr.pizzeria.dao;
+package fr.pizzeria.dao.admin;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -18,7 +18,7 @@ import fr.pizzeria.model.Pizza;
  * @author PaolaLamb
  *
  */
-public class PizzaDaoImplFiles implements DaoPizza<Pizza, String> {
+public class PizzaDaoImplFiles implements DaoGestionPizza<Pizza, String> {
 
 
 

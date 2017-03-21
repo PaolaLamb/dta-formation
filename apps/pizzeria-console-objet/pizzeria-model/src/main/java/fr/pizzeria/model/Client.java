@@ -81,4 +81,12 @@ public class Client extends MangeurDePizzas {
 	}
 
 
+	public Client(String nom, String prenom, String email, String password) {
+		super.prenom = prenom;
+		super.nom = nom;
+		this.email = email;
+		this.password = password;
+
+	}
+
 }

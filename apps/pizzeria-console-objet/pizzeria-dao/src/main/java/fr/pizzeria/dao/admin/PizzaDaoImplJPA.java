@@ -1,4 +1,4 @@
-package fr.pizzeria.dao;
+package fr.pizzeria.dao.admin;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ import fr.pizzeria.model.Pizza;
  * @author PaolaLamb
  *
  */
-public class PizzaDaoImplJPA implements DaoPizza<Pizza, String> {
+public class PizzaDaoImplJPA implements DaoGestionPizza<Pizza, String> {
 	private EntityManagerFactory entityMF;
 	private static final String PERSISTENCE_UNIT = "pu-pizzeria-console";
 	EntityManager em;

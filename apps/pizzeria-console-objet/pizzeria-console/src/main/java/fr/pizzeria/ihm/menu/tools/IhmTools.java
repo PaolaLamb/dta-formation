@@ -5,6 +5,7 @@ import java.util.Scanner;
 import fr.pizzeria.dao.ClientDaoImplArray;
 import fr.pizzeria.dao.DaoClient;
 import fr.pizzeria.dao.DaoPizza;
+
 import fr.pizzeria.model.Pizza;
 
 
@@ -15,15 +16,15 @@ import fr.pizzeria.model.Pizza;
 public class IhmTools {
 
 	private Scanner scanner = new Scanner(System.in);
-	private DaoPizza<Pizza, String> iPizza ;
-	private DaoClient iClient = new ClientDaoImplArray();
+	private DaoGestionPizza<Pizza, String> iPizza ;
+	private DaoGestionClient iClient = new ClientDaoImplArray();
 
 
 	/**
 	 * @param iPizza
 	 * @param iClient
 	 */
-	public IhmTools(DaoPizza<Pizza, String> iPizza) {
+	public IhmTools(DaoGestionPizza<Pizza, String> iPizza) {
 		super();
 		this.iPizza = iPizza;
 	}
@@ -31,7 +32,7 @@ public class IhmTools {
 	/**
 	 * @return dao pizza
 	 */
-	public DaoPizza<Pizza, String> getiPizza() {
+	public DaoGestionPizza<Pizza, String> getiPizza() {
 		return iPizza;
 	}
 
@@ -45,7 +46,9 @@ public class IhmTools {
 	/**
 	 * @return dao client
 	 */
+
 	public DaoClient getIClient() {
+
 		return iClient;
 	}
 

@@ -1,4 +1,4 @@
-package fr.pizzeria.dao;
+package fr.pizzeria.dao.admin;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import fr.pizzeria.model.Livreur;
  * @author PaolaLamb
  * Interface dao Client
  */
-public interface DaoClient {
+public interface DaoGestionClient {
 	/**
 	 * @return le nombre de client
 	 */ 
@@ -50,12 +50,10 @@ public interface DaoClient {
 	 * débite le compte du client
 	 */
 	void debiterCompteClient(int choix, double montant) ;
-	
+
 	/**
 	 * @param client
 	 * Supprime le client
 	 */
-	void delete(Client client) ;
-
-	
+	void delete(Client client) ;	
 }

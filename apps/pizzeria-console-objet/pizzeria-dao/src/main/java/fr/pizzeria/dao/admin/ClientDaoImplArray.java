@@ -1,4 +1,4 @@
-package fr.pizzeria.dao;
+package fr.pizzeria.dao.admin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,6 @@ import fr.pizzeria.model.Livreur;
  * @author PaolaLamb Implémentation de l'interface dao client
  */
 public class ClientDaoImplArray implements DaoClient {
-
 	private List<Client> clientList = new ArrayList<>();
 	private List<Livreur> deliverList = new ArrayList<>();
 

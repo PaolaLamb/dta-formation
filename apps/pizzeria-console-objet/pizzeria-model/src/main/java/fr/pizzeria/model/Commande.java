@@ -1,6 +1,6 @@
 package fr.pizzeria.model;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -24,10 +24,10 @@ public class Commande {
 	private int numeroCommande;
 
 	@Column(name = "statut", nullable = false, unique = false)
-	private String statut;
+	private int statut;
 
 	@Column(name = "date_commande", nullable = false, unique = false)
-	private Date dateCommande;
+	private LocalDate dateCommande;
 
 	@Column(name = "livreur_ID", length = 20, nullable = false, unique = true, insertable = false, updatable = false)
 	private int livreurID;

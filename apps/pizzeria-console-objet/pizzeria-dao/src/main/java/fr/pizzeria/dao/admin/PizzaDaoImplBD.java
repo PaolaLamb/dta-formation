@@ -1,4 +1,4 @@
-package fr.pizzeria.dao;
+package fr.pizzeria.dao.admin;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,7 +22,7 @@ import fr.pizzeria.model.Pizza;
  * @author PaolaLamb
  *
  */
-public class PizzaDaoImplBD implements DaoPizza<Pizza, String> {
+public class PizzaDaoImplBD implements DaoGestionPizza<Pizza, String> {
 	ResourceBundle bundle = ResourceBundle.getBundle("jdbc");
 
 	Connection co;

@@ -10,6 +10,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import fr.pizzeria.dao.admin.PizzaDaoImplArray;
 import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.CategoriePizza;
