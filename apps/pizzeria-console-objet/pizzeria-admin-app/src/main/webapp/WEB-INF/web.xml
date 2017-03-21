@@ -3,15 +3,25 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>pizzeria-admin-web</display-name>
-  <servlet>
-  	<servlet-name>PizzaServletWebApi</servlet-name>
-  	<display-name>PizzaServletWebApi</display-name>
-  	<description></description>
-  	<servlet-class>fr.pizzeria.admin.web.PizzaServletWebApi</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>PizzaServletWebApi</servlet-name>
-  	<url-pattern>/api/servlet/pizzas</url-pattern>
-  </servlet-mapping>
+ 	 <display-name>pizzeria-admin-web</display-name>
+ 	 <servlet>
+  		<servlet-name>PizzaServletWebApi</servlet-name>
+  		<servlet-class>fr.pizzeria.admin.web.PizzaServletWebApi</servlet-class>
+	 </servlet>
+	 <servlet>
+  		<servlet-name>ListerPizzas</servlet-name>
+  		<servlet-class>fr.pizzeria.admin.web.ListerPizzaController</servlet-class>
+  	 </servlet>
+  
+  
+  
+  	 <servlet-mapping>
+  		<servlet-name>PizzaServletWebApi</servlet-name>
+  		<url-pattern>/api/servlet/pizzas</url-pattern>
+  	 </servlet-mapping>
+  	 
+  	 <servlet-mapping>
+  		<servlet-name>ListerPizzas</servlet-name>
+  		<url-pattern>/pizzas/list</url-pattern>
+  	 </servlet-mapping>
 </web-app>
