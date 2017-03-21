@@ -3,6 +3,7 @@ apps/.recommenders
 apps/Servers
 apps/RemoteSystemsTempFiles
 apps/.sonarlint
+apps/Server*
 
 apps/*/.settings/
 apps/*/.classpath
