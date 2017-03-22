@@ -4,24 +4,62 @@
 
 <web-app>
  	 <display-name>pizzeria-admin-web</display-name>
+ 	 <filter>
+ 	 	<filter-name>LoginFilter</filter-name>
+ 	 	<filter-class>fr.pizzeria.admin.web.filtre.LoginFilter</filter-class>
+ 	 </filter>
+ 	 <filter-mapping>
+ 	 	<filter-name>LoginFilter</filter-name>
+ 	 	<url-pattern>/*</url-pattern>
+ 	 </filter-mapping>
+ 	
+ 	
+ 	
+ 	
  	 <servlet>
-  		<servlet-name>PizzaServletWebApi</servlet-name>
-  		<servlet-class>fr.pizzeria.admin.web.PizzaServletWebApi</servlet-class>
+  		<servlet-name>NouvellePizza</servlet-name>
+  		<servlet-class>fr.pizzeria.admin.web.controller.NouvellePizzaController</servlet-class>
 	 </servlet>
 	 <servlet>
   		<servlet-name>ListerPizzas</servlet-name>
-  		<servlet-class>fr.pizzeria.admin.web.ListerPizzaController</servlet-class>
+  		<servlet-class>fr.pizzeria.admin.web.controller.ListerPizzaController</servlet-class>
   	 </servlet>
+	 <servlet>
+	 	<servlet-name>EditerPizza</servlet-name>
+	 	<servlet-class>fr.pizzeria.admin.web.controller.EditerPizzaController</servlet-class>
+	 </servlet>
+	 <servlet>
+	 	<servlet-name>SupprimerPizza</servlet-name>
+
+	 	<servlet-class>fr.pizzeria.admin.web.controller.SupprimerPizzaController</servlet-class>
+	 </servlet>
+	 <servlet>
+	 	<servlet-name>Login</servlet-name>
+	 	<servlet-class>fr.pizzeria.admin.web.controller.LoginController</servlet-class>
+	 </servlet>
   
   
   
   	 <servlet-mapping>
-  		<servlet-name>PizzaServletWebApi</servlet-name>
-  		<url-pattern>/api/servlet/pizzas</url-pattern>
+  		<servlet-name>NouvellePizza</servlet-name>
+  		<url-pattern>/pizzas/new</url-pattern>
   	 </servlet-mapping>
   	 
   	 <servlet-mapping>
   		<servlet-name>ListerPizzas</servlet-name>
   		<url-pattern>/pizzas/list</url-pattern>
+  	 </servlet-mapping>
+  	 
+  	 <servlet-mapping>
+  	 	<servlet-name>EditerPizza</servlet-name>
+  	 	<url-pattern>/pizzas/edit</url-pattern>
+  	 </servlet-mapping>
+  	 <servlet-mapping>
+  	 	<servlet-name>SupprimerPizza</servlet-name>
+  	 	<url-pattern>/pizzas/delete</url-pattern>
+  	 </servlet-mapping>
+  	 <servlet-mapping>
+  	 	<servlet-name>Login</servlet-name>
+  	 	<url-pattern>/login</url-pattern>
   	 </servlet-mapping>
 </web-app>

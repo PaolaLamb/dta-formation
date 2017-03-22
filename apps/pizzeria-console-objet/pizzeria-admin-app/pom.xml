@@ -10,7 +10,7 @@
 	</parent>
 	<artifactId>paola-pizzeria-admin-app</artifactId>
 	<packaging>war</packaging>
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -38,7 +38,7 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 
 	<dependencies>
 		<dependency>
@@ -52,6 +52,10 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
 		</dependency>
 	</dependencies>
 </project>
