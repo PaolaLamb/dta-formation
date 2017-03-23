@@ -18,6 +18,9 @@
 <script src="<c:url value='/js/bootstrap.min.js'></c:url>"></script>
 </head>
 <body>
+
+	<c:if test='${!empty erreur}'>${erreur}</c:if>
+
 	<div class="container">
 		<form class="form-horizontal" method="POST" >
 			<fieldset>

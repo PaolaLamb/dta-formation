@@ -4,10 +4,12 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@WebServlet("/login")
 public class LoginController extends HttpServlet {
 
 	@Override
@@ -29,8 +31,13 @@ public class LoginController extends HttpServlet {
 		if ("admin".equals(userID) && "admin".equals(password)) {
 			request.getSession().setAttribute("isConnected", "connected");
 			response.sendRedirect(request.getContextPath() + "/pizzas/list");
+
 		} else {
-			response.sendRedirect(request.getContextPath() + "/login");
+			request.setAttribute("erreur", "Mauvais identifiants");
+			response.setStatus(400);
+			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/login.jsp");
+			dispatcher.forward(request, response);
+
 		}
 	}
 

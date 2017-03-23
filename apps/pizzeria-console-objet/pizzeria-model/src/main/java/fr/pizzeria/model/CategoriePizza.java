@@ -1,5 +1,7 @@
 package fr.pizzeria.model;
 
+import org.apache.commons.lang3.text.WordUtils;
+
 /**
  * @author PaolaLamb
  *
@@ -9,16 +11,15 @@ public enum CategoriePizza {
 
 	private String pizzaCategory;
 	private String libelle;
-	
+	private String niceName;
+
 	private CategoriePizza(String categoriePizza) {
 		this.pizzaCategory = categoriePizza;
 	}
 
-
 	public String getLibelle() {
 		return libelle;
 	}
-
 
 	@Override
 	public String toString() {
@@ -35,6 +36,13 @@ public enum CategoriePizza {
 				return v;
 		throw new IllegalArgumentException();
 
+	}
+
+	/**
+	 * @return a good looking name
+	 */
+	public String getNiceName() {
+		return WordUtils.capitalize(name().toLowerCase().replace("_", " "));
 	}
 
 }

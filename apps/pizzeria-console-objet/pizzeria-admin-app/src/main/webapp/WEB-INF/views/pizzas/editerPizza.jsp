@@ -24,7 +24,7 @@
 	<div class="container">
 		<header>
 			<h1>Gestion des pizzas</h1>
-
+			<a href="<c:url value='/pizzas/list'></c:url>"><< Retour à l'accueil</a>
 		</header>
 
 
@@ -38,7 +38,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="textinput">Nom</label>
 					<div class="col-md-4">
-						<input id="textinput" name="textinput" type="text" value="${pizza.nom}" class="form-control input-md" required="">
+						<input id="textinput" name="libelle" type="text" value="${pizza.nom}" class="form-control input-md" required="">
 					</div>
 				</div>
 
@@ -46,7 +46,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="textinput">Référence</label>
 					<div class="col-md-4">
-						<input id="textinput" name="textinput" type="text" value="${pizza.code}"  class="form-control input-md" required="">
+						<input id="textinput" name="reference" type="text" value="${pizza.code}"  class="form-control input-md" required="">
 					</div>
 				</div>
 
@@ -54,7 +54,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="textinput">Prix</label>
 					<div class="col-md-4">
-						<input id="textinput" name="textinput" type="number" value="${pizza.prix}" class="form-control input-md" required="">
+						<input id="textinput" name="prix" type="number" value="${pizza.prix}" class="form-control input-md" required="">
 					</div>
 				</div>
 

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +15,7 @@ import fr.pizzeria.exception.SaveException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+@WebServlet("/pizzas/new")
 public class NouvellePizzaController extends HttpServlet {
 	private static final String NEW_PIZZA_VIEW = "/WEB-INF/views/pizzas/nouvellePizza.jsp";
 	DaoPizza<Pizza, String> dao = PizzaTool.DAO_PIZZA;;
@@ -34,8 +36,9 @@ public class NouvellePizzaController extends HttpServlet {
 		String code = request.getParameter("reference");
 		String nom = request.getParameter("libelle");
 		String prix = request.getParameter("prix");
-		String categorie = request.getParameter("categorie").toUpperCase();
-		Pizza pizza = new Pizza(code, nom, Double.valueOf(prix), CategoriePizza.valueOf(categorie));
+		String categorie = request.getParameter("radios").toUpperCase();
+
+		Pizza pizza = new Pizza(code, nom, Double.parseDouble(prix), CategoriePizza.valueOf(categorie));
 		try {
 			dao.saveNew(pizza);
 		} catch (SaveException e) {

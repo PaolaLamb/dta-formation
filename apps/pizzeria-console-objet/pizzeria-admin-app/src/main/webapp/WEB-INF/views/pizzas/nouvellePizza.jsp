@@ -20,25 +20,25 @@
 
 <body>
 	
-	<c:if test='${!empty errorMsg}'><c:out value='attention aux espaces'/></c:if>
+	<c:if test='${!empty errorMsg}'><c:out value='attention aux espaces, entrez un nombre entier'/></c:if>
 	
 	<div class="container">
 		<header>
 			<h1>Gestion des pizzas</h1>
-			<h2>Nouvelle pizza</h2>	
+			<a href="<c:url value='/pizzas/list'></c:url>"><< Retour à l'accueil</a>
 		</header>
 		
 		<form class="form-horizontal" method="POST">
 			<fieldset>
 
 				<!-- Form Name -->
-				<legend>Modifier la pizza ${pizza.nom}</legend>
+				<legend>Nouvelle pizza</legend>
 
 				<!-- Text input-->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="textinput">Nom</label>
 					<div class="col-md-4">
-						<input id="textinput" name="textinput" type="text" value="<c:if test='${!empty pizza}'><c:out value='${pizza.nom}'/></c:if>" class="form-control input-md" required="">
+						<input id="textinput" name="libelle" type="text" value="<c:if test='${!empty pizza}'><c:out value='${pizza.nom}'/></c:if>" class="form-control input-md" required="required">
 					</div>
 				</div>
 
@@ -46,7 +46,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="textinput">Référence</label>
 					<div class="col-md-4">
-						<input id="textinput" name="textinput" type="text" value="<c:if test='${!empty pizza}'><c:out value='${pizza.code}'/></c:if>"  class="form-control input-md" required="">
+						<input id="textinput" name="reference" type="text" value="<c:if test='${!empty pizza}'><c:out value='${pizza.code}'/></c:if>"  class="form-control input-md" required="required">
 					</div>
 				</div>
 
@@ -54,7 +54,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="textinput">Prix</label>
 					<div class="col-md-4">
-						<input id="textinput" name="textinput" type="number" value="<c:if test='${!empty pizza}'><c:out value='${pizza.prix}'/></c:if>" class="form-control input-md" required="">
+						<input id="textinput" name="prix" type="number" value="<c:if test='${!empty pizza}'><c:out value='${pizza.prix}'/></c:if>" class="form-control input-md" required="required">
 					</div>
 				</div>
 

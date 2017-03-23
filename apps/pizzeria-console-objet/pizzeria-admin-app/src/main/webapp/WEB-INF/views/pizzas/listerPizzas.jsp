@@ -45,11 +45,12 @@
 						<td>${pizza.code}</td>
 						<td>${pizza.nom}</td>
 						<td>${pizza.prix}</td>
-						<td>${pizza.categoriePizza.libelle}</td>
+						<td>${pizza.categoriePizza.niceName}</td>
 						
-						<td><a href="<c:url value='/pizzas/edit?code=${pizza.code}'></c:url>"><input type="button" value="Editer"></a>
-							<a href="<c:url value='/pizzas/edit?code=${pizza.code}'></c:url>"><input type="button" value="Supprimer" onclick=""></a>
-							</td>
+						<td>
+							<a href="<c:url value='/pizzas/edit?code=${pizza.code}'></c:url>" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Editer</a>
+							<a href="<c:url value='/pizzas/delete?code=${pizza.code}'></c:url>" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Supprimer</a>
+						</td>
 					</tr>
 
 				</c:forEach>
