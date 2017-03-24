@@ -20,46 +20,61 @@
 <body>
 	<div class="container">
 		<header>
-			<h1>Ici, on compte les sessions</h1>
+			<h1>Ici, on compte les sessions et on regarde les changements effectués</h1>
 			<a href="<c:url value='/pizzas/list'></c:url>"><< Retour à l'accueil</a>
 		</header>
 
-		${compteur} sessions sont ouvertes 
+		${compteur} session(s) ouverte(s)
 
 
 	<table class="table" id="creations">
 		<thead>
 			<tr align=center>
-				<th>Pizza Créées</th>
-				<th>Heure et Date</th>
+				<th>Pizzas Créées</th>
+				<th>Date et Heure</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="creation" items="${listEventCreation}">
+			<c:forEach var="creation" items="${listCreation}">
 				<tr>
 					<td>${creation.pizza}</td>
 					<td>${creation.dateTime}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
-	</table>
 	
-		<table class="table" id="modif">
+
 		<thead>
 			<tr align=center>
-				<th>Pizza Créées</th>
-				<th>Heure et Date</th>
+				<th>Pizzas Modifiées</th>
+				<th>Date et Heure</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="modif" items="${listEventModif}">
+			<c:forEach var="modif" items="${listModifs}">
 				<tr>
 					<td>${modif.pizza}</td>
 					<td>${modif.dateTime}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
+
+		<thead>
+			<tr align=center>
+				<th>Pizzas Supprimées</th>
+				<th>Date et Heure</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="suppr" items="${listSupprs}">
+				<tr>
+					<td>${suppr.pizza}</td>
+					<td>${suppr.dateTime}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
 	</table>
+		
 		
 
 

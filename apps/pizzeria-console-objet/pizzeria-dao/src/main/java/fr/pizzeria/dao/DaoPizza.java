@@ -33,5 +33,7 @@ public interface DaoPizza<S, C> {
 	 */
 	void delete(C codePlat);
 
-	Optional<Pizza> obtainOne(String codePizza);
+	default Optional<Pizza> obtainOne(String codePizza) {
+		return Optional.empty();
+	}
 }

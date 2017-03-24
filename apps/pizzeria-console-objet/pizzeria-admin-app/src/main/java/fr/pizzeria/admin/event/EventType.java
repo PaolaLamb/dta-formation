@@ -6,14 +6,9 @@ public enum EventType {
 	CREATION("creation"), MODIFICATION("modif"), SUPPRESSION("suppr");
 
 	private String eventType;
-	private String libelle;
 
 	private EventType(String eventType) {
 		this.eventType = eventType;
-	}
-
-	public String getLibelle() {
-		return libelle;
 	}
 
 	@Override
