@@ -27,7 +27,7 @@
 		${compteur} sessions sont ouvertes 
 
 
-	<table class="table" id="events">
+	<table class="table" id="creations">
 		<thead>
 			<tr align=center>
 				<th>Pizza Créées</th>
@@ -35,15 +35,29 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="event" items="${listEvent}">
+			<c:forEach var="creation" items="${listEventCreation}">
 				<tr>
-					<td>${event.pizza}</td>
-					<td>${event.dateTime}</td>
+					<td>${creation.pizza}</td>
+					<td>${creation.dateTime}</td>
 				</tr>
 			</c:forEach>
-
-
-
+		</tbody>
+	</table>
+	
+		<table class="table" id="modif">
+		<thead>
+			<tr align=center>
+				<th>Pizza Créées</th>
+				<th>Heure et Date</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="modif" items="${listEventModif}">
+				<tr>
+					<td>${modif.pizza}</td>
+					<td>${modif.dateTime}</td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 		

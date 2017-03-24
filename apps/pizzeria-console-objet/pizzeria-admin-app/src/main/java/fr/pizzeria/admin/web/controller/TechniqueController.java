@@ -17,7 +17,11 @@ import fr.pizzeria.admin.event.EventPizza;
 public class TechniqueController extends HttpServlet {
 
 	@Inject
-	private List<EventPizza> pizzaEvent;
+	private List<EventPizza> creationEvent;
+	@Inject
+	private List<EventPizza> modifEvent;
+	@Inject
+	private List<EventPizza> supprEvent;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -26,7 +30,9 @@ public class TechniqueController extends HttpServlet {
 		Integer compteur = (Integer) request.getSession().getServletContext().getAttribute("compteur");
 
 		request.setAttribute("compteur", compteur);
-		request.setAttribute("listEvent", pizzaEvent);
+		request.setAttribute("listEventCreation", creationEvent);
+		request.setAttribute("listEventModif", modifEvent);
+		request.setAttribute("listEventSuppr", supprEvent);
 
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/technique.jsp");
 		dispatcher.forward(request, response);

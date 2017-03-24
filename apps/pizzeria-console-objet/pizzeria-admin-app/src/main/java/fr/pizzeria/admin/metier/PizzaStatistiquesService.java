@@ -5,25 +5,25 @@ import java.util.List;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
-import fr.pizzeria.admin.event.CreerPizzaEvent;
 import fr.pizzeria.admin.event.EventPizza;
-import fr.pizzeria.admin.event.ModifierPizzaEvent;
-import fr.pizzeria.admin.event.SuppressionPizzaEvent;
 
 public class PizzaStatistiquesService {
 
 	@Inject
 	private List<EventPizza> creationEvent;
+	@Inject
+	private List<EventPizza> modifEvent;
+	@Inject
+	private List<EventPizza> supprEvent;
 
-	public void ecouteMonEvent(@Observes CreerPizzaEvent event) {
-		creationEvent.add(event);
-	}
-
-	public void ecouteMonEvent(@Observes ModifierPizzaEvent event) {
-
-	}
-
-	public void ecouteMonEvent(@Observes SuppressionPizzaEvent event) {
-
+	public void ecouteMonEvent(@Observes EventPizza event) {
+		String eventType = event.getEventType().getLibelle();
+		if ("creation".equals(eventType)) {
+			creationEvent.add(event);
+		} else if ("modif".equals(eventType)) {
+			modifEvent.add(event);
+		} else {
+			supprEvent.add(event);
+		}
 	}
 }

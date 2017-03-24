@@ -11,7 +11,6 @@ public enum CategoriePizza {
 
 	private String pizzaCategory;
 	private String libelle;
-	private String niceName;
 
 	private CategoriePizza(String categoriePizza) {
 		this.pizzaCategory = categoriePizza;
