@@ -26,7 +26,8 @@
 	<div class="container">
 		<header>
 			<h1>Liste des pizzas</h1>
-			<a href="<c:url value='/pizzas/new'></c:url>"><input type="button" value="Ajouter une pizza"></a>
+			<a href="<c:url value='/pizzas/new'></c:url>" class="btn btn-primary" > <span class="glyphicon glyphicon-floppy-disk"></span> Ajouter une pizza</a>
+			<a href="<c:url value='/technique'></c:url>" class="btn btn-primary" > <span class="glyphicon glyphicon-stats"></span> Statistiques </a>
 		</header>
 
 		<table class="table" id="pizzas">

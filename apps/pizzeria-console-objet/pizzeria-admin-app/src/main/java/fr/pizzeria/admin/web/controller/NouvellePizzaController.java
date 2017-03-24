@@ -2,6 +2,7 @@ package fr.pizzeria.admin.web.controller;
 
 import java.io.IOException;
 
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.pizzeria.admin.tool.PizzaTool;
-import fr.pizzeria.dao.DaoPizza;
+import fr.pizzeria.admin.metier.PizzaService;
 import fr.pizzeria.exception.SaveException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -18,7 +18,8 @@ import fr.pizzeria.model.Pizza;
 @WebServlet("/pizzas/new")
 public class NouvellePizzaController extends HttpServlet {
 	private static final String NEW_PIZZA_VIEW = "/WEB-INF/views/pizzas/nouvellePizza.jsp";
-	DaoPizza<Pizza, String> dao = PizzaTool.DAO_PIZZA;;
+	@Inject
+	private PizzaService pizzaService;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -40,7 +41,7 @@ public class NouvellePizzaController extends HttpServlet {
 
 		Pizza pizza = new Pizza(code, nom, Double.parseDouble(prix), CategoriePizza.valueOf(categorie));
 		try {
-			dao.saveNew(pizza);
+			pizzaService.saveNew(pizza);
 		} catch (SaveException e) {
 			response.setStatus(400);
 			request.setAttribute("errorMsg", e.getMessage());

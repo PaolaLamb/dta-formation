@@ -21,11 +21,31 @@
 	<div class="container">
 		<header>
 			<h1>Ici, on compte les sessions</h1>
+			<a href="<c:url value='/pizzas/list'></c:url>"><< Retour à l'accueil</a>
 		</header>
 
 		${compteur} sessions sont ouvertes 
 
 
+	<table class="table" id="events">
+		<thead>
+			<tr align=center>
+				<th>Pizza Créées</th>
+				<th>Heure et Date</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="event" items="${listEvent}">
+				<tr>
+					<td>${event.pizza}</td>
+					<td>${event.dateTime}</td>
+				</tr>
+			</c:forEach>
+
+
+
+		</tbody>
+	</table>
 		
 
 

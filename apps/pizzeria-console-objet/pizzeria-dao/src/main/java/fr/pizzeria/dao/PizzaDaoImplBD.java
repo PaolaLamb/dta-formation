@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -82,7 +83,7 @@ public class PizzaDaoImplBD implements DaoPizza<Pizza, String> {
 	}
 
 	@Override
-	public void update(String codePizza, Pizza pizza)  {
+	public void update(String codePizza, Pizza pizza) {
 		try (Connection connection = initializeConnection();
 				PreparedStatement prepStatement = connection.prepareStatement(
 						"UPDATE pizza SET libelle=?, reference=?, prix=?, categorie=? WHERE reference=?");) {
@@ -99,7 +100,7 @@ public class PizzaDaoImplBD implements DaoPizza<Pizza, String> {
 	}
 
 	@Override
-	public void delete(String codePizza)  {
+	public void delete(String codePizza) {
 
 		try (Connection connection = initializeConnection();
 				PreparedStatement prepStatement = connection.prepareStatement("DELETE FROM pizza WHERE reference=?");) {
@@ -110,5 +111,16 @@ public class PizzaDaoImplBD implements DaoPizza<Pizza, String> {
 			throw new DeletePizzaException(e);
 		}
 
+	}
+
+	@Override
+	public Optional<Pizza> obtainOne(String codePizza) {
+		for (Pizza pizza : findAll()) {
+			if (codePizza.equals(pizza.getCode())) {
+				return Optional.of(pizza);
+			}
+		}
+
+		return Optional.empty();
 	}
 }

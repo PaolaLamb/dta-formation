@@ -1,6 +1,9 @@
 package fr.pizzeria.dao;
 
 import java.util.List;
+import java.util.Optional;
+
+import fr.pizzeria.model.Pizza;
 
 /**
  * @author PaolaLamb
@@ -30,4 +33,5 @@ public interface DaoPizza<S, C> {
 	 */
 	void delete(C codePlat);
 
+	Optional<Pizza> obtainOne(String codePizza);
 }

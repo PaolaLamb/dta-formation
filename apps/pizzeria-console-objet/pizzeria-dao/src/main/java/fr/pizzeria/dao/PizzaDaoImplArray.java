@@ -72,4 +72,15 @@ public class PizzaDaoImplArray implements DaoPizza<Pizza, String> {
 
 	}
 
+	@Override
+	public Optional<Pizza> obtainOne(String codePizza) {
+		for (Pizza pizza : pizzasList) {
+			if (codePizza.equals(pizza.getCode())) {
+				return Optional.of(pizza);
+			}
+		}
+
+		return Optional.empty();
+	}
+
 }

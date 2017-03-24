@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import fr.pizzeria.exception.DeletePizzaException;
 import fr.pizzeria.exception.SaveException;
@@ -19,8 +20,6 @@ import fr.pizzeria.model.Pizza;
  *
  */
 public class PizzaDaoImplFiles implements DaoPizza<Pizza, String> {
-
-
 
 	@Override
 	public List<Pizza> findAll() {
@@ -46,7 +45,8 @@ public class PizzaDaoImplFiles implements DaoPizza<Pizza, String> {
 	@Override
 	public void saveNew(Pizza newPizza) {
 		try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("data", newPizza.getCode() + ".txt"))) {
-			writer.write(newPizza.getCode() + ";" + newPizza.getNom() + ";" + newPizza.getPrix() + ";" + newPizza.getCategoriePizza().toString());
+			writer.write(newPizza.getCode() + ";" + newPizza.getNom() + ";" + newPizza.getPrix() + ";"
+					+ newPizza.getCategoriePizza().toString());
 		} catch (IOException e) {
 			throw new SaveException(e);
 		}
@@ -69,7 +69,15 @@ public class PizzaDaoImplFiles implements DaoPizza<Pizza, String> {
 
 	}
 
+	@Override
+	public Optional<Pizza> obtainOne(String codePizza) {
+		for (Pizza pizza : findAll()) {
+			if (codePizza.equals(pizza.getCode())) {
+				return Optional.of(pizza);
+			}
+		}
 
-
+		return Optional.empty();
+	}
 
 }

@@ -3,6 +3,7 @@ package fr.pizzeria.admin.web.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,14 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.pizzeria.admin.tool.PizzaTool;
-import fr.pizzeria.dao.DaoPizza;
+import fr.pizzeria.admin.metier.PizzaService;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 @WebServlet("/pizzas/edit")
 public class EditerPizzaController extends HttpServlet {
-	DaoPizza<Pizza, String> dao = PizzaTool.DAO_PIZZA;
+	@Inject
+	private PizzaService pizzaService;
 	private String code;
 
 	/**
@@ -27,7 +28,7 @@ public class EditerPizzaController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		List<Pizza> pizzas = dao.findAll();
+		List<Pizza> pizzas = pizzaService.findAll();
 
 		this.code = (String) request.getParameter("code");
 
@@ -54,7 +55,8 @@ public class EditerPizzaController extends HttpServlet {
 		String categorie = request.getParameter("radios").toUpperCase();
 		System.out.println(codeN + nom + prix + categorie);
 
-		dao.update(this.code, new Pizza(codeN, nom, Double.parseDouble(prix), CategoriePizza.valueOf(categorie)));
+		pizzaService.update(this.code,
+				new Pizza(codeN, nom, Double.parseDouble(prix), CategoriePizza.valueOf(categorie)));
 
 		response.sendRedirect(request.getContextPath() + "/pizzas/list");
 	}
