@@ -35,75 +35,24 @@
 					super pizzeria</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="<c:url value='/pizzas/new'></c:url>"> <span
+							class="glyphicon glyphicon-floppy-disk"></span> Ajouter une pizza
+					</a></li>
+					<li><a href="<c:url value='/technique'></c:url>"> <span
+							class="glyphicon glyphicon-stats"></span> Statistiques
+					</a></li>
+				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="<c:url value='/logout'></c:url>">Déconnexion</a></li>
+					<li><a href="<c:url value='/logout'></c:url>"><button
+								type="button" class="btn btn-success">Connexion</button></a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
 		</nav>
 
-
-		<header>
-			<h2>Ici, on compte les sessions et on regarde les changements
-				effectués</h2>
-		</header>
-
-		${compteur} session(s) ouverte(s)
-
-
-		<table class="table" id="creations">
-			<thead>
-				<tr align=center>
-					<th>Pizzas Créées</th>
-					<th>Date et Heure</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="creation" items="${listCreation}">
-					<tr>
-						<td>${creation.pizza}</td>
-						<td>${creation.dateTime}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-
-
-			<thead>
-				<tr align=center>
-					<th>Pizzas Modifiées</th>
-					<th>Date et Heure</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="modif" items="${listModifs}">
-					<tr>
-						<td>${modif.pizza}</td>
-						<td>${modif.dateTime}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-
-			<thead>
-				<tr align=center>
-					<th>Pizzas Supprimées</th>
-					<th>Date et Heure</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="suppr" items="${listSupprs}">
-					<tr>
-						<td>${suppr.pizza}</td>
-						<td>${suppr.dateTime}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-
-
-
-
+		<h2>Merci de votre visite, à bientôt !!</h2>
 	</div>
-
 
 </body>
 </html>

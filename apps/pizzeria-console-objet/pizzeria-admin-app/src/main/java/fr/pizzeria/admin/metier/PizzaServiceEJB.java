@@ -6,7 +6,6 @@ import java.util.Optional;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 
 import fr.pizzeria.model.Pizza;
 
@@ -17,13 +16,11 @@ public class PizzaServiceEJB {
 	private EntityManager em;
 
 	public List<Pizza> findAll() {
-		TypedQuery<Pizza> pizzas = em.createNamedQuery("Pizza.findAll", Pizza.class);
-		return pizzas.getResultList();
+		return em.createNamedQuery("Pizza.findAll", Pizza.class).getResultList();
 	}
 
 	public void saveNew(Pizza pizza) {
 		em.persist(pizza);
-
 	}
 
 	public void update(String codePizza, Pizza newPizza) {
