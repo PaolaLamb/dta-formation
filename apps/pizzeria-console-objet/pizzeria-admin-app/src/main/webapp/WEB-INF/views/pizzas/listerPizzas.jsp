@@ -33,8 +33,8 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="<c:url value='/pizzas/list'></c:url>"> Ma
-					super pizzeria</a>
+				<a class="navbar-brand" href="<c:url value='/pizzas/list'></c:url>">
+					Ma super pizzeria</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
@@ -80,11 +80,10 @@
 
 						<td><a
 							href="<c:url value='/pizzas/edit?code=${pizza.code}'></c:url>"
-							class="btn btn-primary"><span
+							class="btn btn-primary btn-sm"><span
 								class="glyphicon glyphicon-pencil"></span> Editer</a> <a
 							href="<c:url value='/pizzas/delete?code=${pizza.code}'></c:url>"
-							class="btn btn-danger"><span
-								class="glyphicon glyphicon-remove"></span> Supprimer</a></td>
+							class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span> Supprimer</a></td>
 					</tr>
 
 				</c:forEach>

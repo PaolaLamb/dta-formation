@@ -41,7 +41,6 @@ public class TechniqueController extends HttpServlet {
 		request.setAttribute("listCreation", creations);
 		request.setAttribute("listModifs", modifs);
 		request.setAttribute("listSupprs", supprs);
-
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/technique.jsp");
 		dispatcher.forward(request, response);
 	}
