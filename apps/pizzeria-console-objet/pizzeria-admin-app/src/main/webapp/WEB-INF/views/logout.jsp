@@ -44,8 +44,7 @@
 					</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="<c:url value='/logout'></c:url>"><button
-								type="button" class="btn btn-success">Connexion</button></a></li>
+					<li><a href="<c:url value='/login'></c:url>">Connexion</a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->

@@ -33,7 +33,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="<c:url value='/pizzas/list'></c:url>">Ma
+				<a class="navbar-brand" href="<c:url value='/pizzas/list'></c:url>"> Ma
 					super pizzeria</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
@@ -46,8 +46,7 @@
 					</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="<c:url value='/logout'></c:url>"><button
-								type="button" class="btn btn-danger">Déconnexion</button></a></li>
+					<li><a href="<c:url value='/logout'></c:url>">Déconnexion</a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->

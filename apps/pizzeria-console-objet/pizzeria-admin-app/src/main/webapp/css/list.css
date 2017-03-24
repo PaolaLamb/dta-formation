@@ -9,3 +9,7 @@ nav {
 	padding-left: 50 px ;
 	padding-right: 50px ;
 }
+
+.navbar-brand {
+	font-size : 25px ;
+}

@@ -23,7 +23,6 @@
 
 <body>
 	<div class="container">
-
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
@@ -38,8 +37,7 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="<c:url value='/logout'></c:url>"><button
-								type="button" class="btn btn-danger">Déconnexion</button></a></li>
+					<li><a href="<c:url value='/logout'></c:url>">Déconnexion</a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -112,7 +110,7 @@
 				</div>
 
 				<div class="form-group" align="center">
-					<input type="submit" value="Ajouter" />
+					<input type="submit" value="Ajouter" type="button" class="btn btn-success" />	
 				</div>
 
 			</fieldset>

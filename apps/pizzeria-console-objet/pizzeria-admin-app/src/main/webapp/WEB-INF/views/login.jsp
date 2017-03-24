@@ -20,18 +20,16 @@
 <script src="<c:url value='/js/bootstrap.min.js'></c:url>"></script>
 </head>
 <body>
-	<div class="container">
+	<div class="container">	
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
 					aria-controls="navbar">
 					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
+						class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="<c:url value='/pizzas/list'></c:url>">Ma
-					super pizzeria</a>
+				<a class="navbar-brand" href="<c:url value='/pizzas/list'></c:url>">Ma super pizzeria </a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
@@ -43,14 +41,13 @@
 					</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="<c:url value='/logout'></c:url>"><button
-								type="button" class="btn btn-success">Connexion</button></a></li>
+					<li><a href="<c:url value='/login'></c:url>">Connexion</a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
 		</nav>
 
-		<c:if test='${!empty erreur}'>${erreur}</c:if>
+		<c:if test='${!empty erreur}'><div class="alert alert-danger" role="alert">Mauvais Identifiants</div></c:if>
 
 		<form class="form-horizontal" method="POST">
 			<fieldset>
@@ -80,7 +77,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for=""></label>
 					<div class="col-md-4">
-						<input type="submit" value="Se connecter" />
+						<input type="submit" value="Se connecter" type="button" class="btn btn-success" />	
 					</div>
 				</div>
 
