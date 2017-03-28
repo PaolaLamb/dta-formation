@@ -1,19 +1,18 @@
 package fr.pizzeria.ihm.menu.optionClient;
 
+import fr.pizzeria.dao.DaoClient;
 import fr.pizzeria.ihm.menu.OptionMenu;
-import fr.pizzeria.ihm.menu.tools.IhmTools;
 
 /**
- * @author Paola
- * Action du menu afficher la liste des livreurs
+ * @author Paola Action du menu afficher la liste des livreurs
  */
-public class OptionListLivreur extends OptionMenu{
+public class OptionListLivreur extends OptionMenu {
 
-	/**
-	 * @param ihm
-	 */
-	public OptionListLivreur(IhmTools ihm) {
-		super(ihm);
+	private DaoClient dao;
+
+	public OptionListLivreur(DaoClient dao) {
+		super();
+		this.dao = dao;
 	}
 
 	@Override
@@ -23,9 +22,7 @@ public class OptionListLivreur extends OptionMenu{
 
 	@Override
 	public void execute() {
-		ihm.getIClient().findAllLivreur().stream().forEach(System.out::println) ;
+		this.dao.findAllLivreur().stream().forEach(System.out::println);
 	}
-	
-	
 
 }

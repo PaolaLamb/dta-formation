@@ -1,12 +1,13 @@
 package fr.pizzeria.ihm.menu.optionPizza;
 
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import fr.pizzeria.dao.DaoPizza;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.ihm.menu.OptionMenu;
-import fr.pizzeria.ihm.menu.tools.IhmTools;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -16,12 +17,13 @@ import fr.pizzeria.model.Pizza;
  */
 public class OptionMajPizza extends OptionMenu {
 
-	/**
-	 * @param dao
-	 * @param scan
-	 */
-	public OptionMajPizza(IhmTools ihm) {
-		super(ihm);
+	private Scanner scanner;
+	private DaoPizza<Pizza, String> dao;
+
+	public OptionMajPizza(Scanner scanner, DaoPizza<Pizza, String> dao) {
+		super();
+		this.scanner = scanner;
+		this.dao = dao;
 	}
 
 	@Override
@@ -32,34 +34,34 @@ public class OptionMajPizza extends OptionMenu {
 	@Override
 	public void execute() {
 		System.out.println("Veuillez saisir le code de la pizza à modifier");
-		String codePizza = ihm.getScanner().next();
+		String codePizza = this.scanner.next();
 
 		if (codePizza != "99") {
 			Pizza newPizza = new Pizza();
 			System.out.println("Veuillez saisir le code");
-			newPizza.setCode(ihm.getScanner().next());
+			newPizza.setCode(this.scanner.next());
 			System.out.println("Veuillez saisir le nom");
-			newPizza.setNom(ihm.getScanner().next());
+			newPizza.setNom(this.scanner.next());
 			System.out.println("Veuillez saisir le prix");
-			newPizza.setPrix(ihm.getScanner().nextDouble());
+			newPizza.setPrix(this.scanner.nextDouble());
 
 			boolean arg = false;
 			while (!arg) {
 				System.out.println("Veuillez saisir la catégorie de la pizza (Viande/Poisson/Sans_Viande)");
-				String categorie = ihm.getScanner().next();
+				String categorie = this.scanner.next();
 				try {
 					newPizza.setCategoriePizza(CategoriePizza.valueOf(categorie.toUpperCase()));
 					arg = true;
 				} catch (IllegalArgumentException e) {
-					Logger.getAnonymousLogger().log(Level.SEVERE,"/!\\/!\\ Entrée non valide /!\\/!\\", e );
+					Logger.getAnonymousLogger().log(Level.SEVERE, "/!\\/!\\ Entrée non valide /!\\/!\\", e);
 				}
 
 			}
 
 			try {
-				ihm.getiPizza().update(codePizza, newPizza);
+				this.dao.update(codePizza, newPizza);
 			} catch (StockageException e) {
-				throw new UpdatePizzaException("Modification(s) de la pizza échouée(s)",e);
+				throw new UpdatePizzaException("Modification(s) de la pizza échouée(s)", e);
 			}
 		}
 	}

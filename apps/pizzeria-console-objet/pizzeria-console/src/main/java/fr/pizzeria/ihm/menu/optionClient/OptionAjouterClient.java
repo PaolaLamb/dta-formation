@@ -1,7 +1,9 @@
 package fr.pizzeria.ihm.menu.optionClient;
 
+import java.util.Scanner;
+
+import fr.pizzeria.dao.DaoClient;
 import fr.pizzeria.ihm.menu.OptionMenu;
-import fr.pizzeria.ihm.menu.tools.IhmTools;
 import fr.pizzeria.model.Client;
 
 /**
@@ -9,11 +11,13 @@ import fr.pizzeria.model.Client;
  */
 public class OptionAjouterClient extends OptionMenu {
 
-	/**
-	 * @param ihm
-	 */
-	public OptionAjouterClient(IhmTools ihm) {
-		super(ihm);
+	private Scanner scanner;
+	private DaoClient dao;
+
+	public OptionAjouterClient(Scanner scanner, DaoClient dao) {
+		super();
+		this.scanner = scanner;
+		this.dao = dao;
 	}
 
 	@Override
@@ -24,12 +28,12 @@ public class OptionAjouterClient extends OptionMenu {
 	@Override
 	public void execute() {
 		System.out.println("Veuillez entrer le nom du client :");
-		String nom = ihm.getScanner().next();
+		String nom = this.scanner.next();
 
 		System.out.println("Veuillez entrer le prénom du client :");
-		String prenom = ihm.getScanner().next();
+		String prenom = this.scanner.next();
 
-		ihm.getIClient().ajouterNouveauClient(new Client(ihm.getIClient().nbClient() + 1, nom, prenom, 0.0));
+		dao.ajouterNouveauClient(new Client(dao.nbClient() + 1, nom, prenom, 0.0));
 
 	}
 

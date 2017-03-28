@@ -2,9 +2,9 @@ package fr.pizzeria.console;
 
 import java.util.logging.Level;
 
-import fr.pizzeria.dao.PizzaDaoImplJPA;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import fr.pizzeria.ihm.menu.Menu;
-import fr.pizzeria.ihm.menu.tools.IhmTools;
 
 /**
  * @author PaolaLamb
@@ -12,22 +12,21 @@ import fr.pizzeria.ihm.menu.tools.IhmTools;
  */
 public class PizzeriaAdminConsoleApp {
 
-	/**
-	 * constructor to hide the implicit public one.
-	 */
-	private PizzeriaAdminConsoleApp() {
-
-	}
-
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
-		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
-		IhmTools ihm = new IhmTools(new PizzaDaoImplJPA());
 
-		new Menu(ihm).executer();
+		java.util.logging.Logger.getLogger("org").setLevel(Level.SEVERE);
+		try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application-config.xml",
+				"dao-memoire-config.xml")) {
+			Menu menu = (Menu) context.getBean("menu");
+			menu.executer();
+		}
 
-	}
+		/*
+		 * java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.
+		 * SEVERE); IhmTools ihm = new IhmTools(new PizzaDaoImplJPA());
+		 * 
+		 * new Menu(ihm).executer();
+		 * 
+		 */}
 
 }

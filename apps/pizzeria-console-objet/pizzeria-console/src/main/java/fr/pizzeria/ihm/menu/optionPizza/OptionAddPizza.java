@@ -1,12 +1,13 @@
 package fr.pizzeria.ihm.menu.optionPizza;
 
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import fr.pizzeria.dao.DaoPizza;
 import fr.pizzeria.exception.SaveException;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.menu.OptionMenu;
-import fr.pizzeria.ihm.menu.tools.IhmTools;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -15,17 +16,18 @@ import fr.pizzeria.model.Pizza;
  *
  */
 public class OptionAddPizza extends OptionMenu {
-	
-	/**
-	 * @param dao
-	 * @param scan
-	 */
-	public OptionAddPizza(IhmTools ihm) {
-		super(ihm);
+
+	private Scanner scanner;
+	private DaoPizza<Pizza, String> dao;
+
+	public OptionAddPizza(Scanner scanner, DaoPizza<Pizza, String> dao) {
+		super();
+		this.scanner = scanner;
+		this.dao = dao;
 	}
 
 	@Override
-	public String getLibelle() {	
+	public String getLibelle() {
 		return "Ajouter une pizza";
 	}
 
@@ -33,28 +35,29 @@ public class OptionAddPizza extends OptionMenu {
 	public void execute() {
 		Pizza newPizza = new Pizza();
 		System.out.println("Veuillez saisir le code");
-		newPizza.setCode(ihm.getScanner().next());
+		newPizza.setCode(this.scanner.next());
 		System.out.println("Veuillez saisir le nom");
-		newPizza.setNom(ihm.getScanner().next());
+		newPizza.setNom(this.scanner.next());
 		System.out.println("Veuillez saisir le prix");
-		newPizza.setPrix(ihm.getScanner().nextDouble());
+		newPizza.setPrix(this.scanner.nextDouble());
 
 		boolean arg = false;
 		while (!arg) {
 			System.out.println("Veuillez saisir la catégorie de la pizza (Viande/Poisson/Sans_Viande)");
-			String categorie = ihm.getScanner().next();
+			String categorie = this.scanner.next();
 			try {
 				newPizza.setCategoriePizza(CategoriePizza.valueOf(categorie.toUpperCase()));
 				arg = true;
 			} catch (IllegalArgumentException e) {
-				Logger.getAnonymousLogger().log(Level.INFO,"/!\\/!\\ Entrée non valide /!\\/!\\", e );
+				Logger.getAnonymousLogger().log(Level.INFO, "/!\\/!\\ Entrée non valide /!\\/!\\", e);
 			}
 
 			try {
-				ihm.getiPizza().saveNew(newPizza);
+				this.dao.saveNew(newPizza);
 			} catch (StockageException e) {
-				throw new SaveException("Ajout de la nouvelle pizza échoué",e);
+				throw new SaveException("Ajout de la nouvelle pizza échoué", e);
 			}
 		}
 	}
+
 }

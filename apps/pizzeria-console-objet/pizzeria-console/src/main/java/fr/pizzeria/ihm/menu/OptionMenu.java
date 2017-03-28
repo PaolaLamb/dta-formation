@@ -1,24 +1,18 @@
 package fr.pizzeria.ihm.menu;
 
-import fr.pizzeria.ihm.menu.tools.IhmTools;
-
 /**
  * @author PaolaLamb
  *
  */
 public abstract class OptionMenu {
-	protected IhmTools ihm ;
 
 	/**
 	 * @param dao
 	 * @param scan
 	 */
-	public OptionMenu(IhmTools ihm) {
-		super();
-		this.ihm = ihm ;
+	public OptionMenu() {
+
 	}
-	
-	
 
 	/**
 	 * @return le libellé de l'option choisie

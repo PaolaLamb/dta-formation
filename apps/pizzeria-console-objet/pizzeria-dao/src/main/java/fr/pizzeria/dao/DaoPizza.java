@@ -13,7 +13,7 @@ import fr.pizzeria.model.Pizza;
  */
 public interface DaoPizza<S, C> {
 	/**
-	 * @return la liste des pizza
+	 * @return la liste des pizzas
 	 */
 	List<S> findAll();
 

@@ -78,12 +78,11 @@
 						<td>${pizza.prix}</td>
 						<td>${pizza.categoriePizza.niceName}</td>
 
-						<td><a
-							href="<c:url value='/pizzas/edit?code=${pizza.code}'></c:url>"
-							class="btn btn-primary btn-sm"><span
-								class="glyphicon glyphicon-pencil"></span> Editer</a> <a
-							href="<c:url value='/pizzas/delete?code=${pizza.code}'></c:url>"
-							class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span> Supprimer</a></td>
+						<td><a href="<c:url value='/pizzas/edit?code=${pizza.code}'></c:url>"
+							class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editer</a> 
+							<a href="<c:url value='/pizzas/delete?code=${pizza.code}'></c:url>"
+							class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span> Supprimer</a>
+						</td>
 					</tr>
 
 				</c:forEach>

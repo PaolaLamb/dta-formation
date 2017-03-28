@@ -1,7 +1,7 @@
 package fr.pizzeria.ihm.menu.optionPizza;
 
+import fr.pizzeria.dao.DaoPizza;
 import fr.pizzeria.ihm.menu.OptionMenu;
-import fr.pizzeria.ihm.menu.tools.IhmTools;
 import fr.pizzeria.model.Pizza;
 
 /**
@@ -10,12 +10,11 @@ import fr.pizzeria.model.Pizza;
  */
 public class OptionListePizza extends OptionMenu {
 
-	/**
-	 * @param dao
-	 * @param scan
-	 */
-	public OptionListePizza(IhmTools ihm) {
-		super(ihm);
+	private DaoPizza<Pizza, String> dao;
+
+	public OptionListePizza(DaoPizza<Pizza, String> dao) {
+		super();
+		this.dao = dao;
 	}
 
 	@Override
@@ -25,7 +24,7 @@ public class OptionListePizza extends OptionMenu {
 
 	@Override
 	public void execute() {
-		ihm.getiPizza().findAll().forEach(pizza -> System.out.println(pizza.getCode() + " -> " + pizza.getNom() + " ("
+		this.dao.findAll().forEach(pizza -> System.out.println(pizza.getCode() + " -> " + pizza.getNom() + " ("
 				+ pizza.getPrix() + "€ ) " + pizza.getCategoriePizza()));
 
 		System.out.println(Pizza.getNbPizza() + " ont été créées lors de cette session");

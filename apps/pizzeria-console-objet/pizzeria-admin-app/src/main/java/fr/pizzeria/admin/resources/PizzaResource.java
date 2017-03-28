@@ -29,6 +29,7 @@ public class PizzaResource {
 	}
 
 	@POST
+
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void newPizza(Pizza pizza) {
 		pizzaEJB.saveNew(pizza);
@@ -36,6 +37,7 @@ public class PizzaResource {
 
 	@Path("/{code}")
 	@PUT
+	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void updatePizza(@PathParam("code") String codePizza, Pizza newPizza) {
 		pizzaEJB.update(codePizza, newPizza);

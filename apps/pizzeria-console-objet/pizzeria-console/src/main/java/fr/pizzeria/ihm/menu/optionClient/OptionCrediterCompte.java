@@ -1,47 +1,51 @@
 package fr.pizzeria.ihm.menu.optionClient;
 
+import java.util.Scanner;
+
+import fr.pizzeria.dao.DaoClient;
 import fr.pizzeria.ihm.menu.OptionMenu;
-import fr.pizzeria.ihm.menu.tools.IhmTools;
 
 /**
- * @author PaolaLamb
- * Action du menu créditer client
+ * @author PaolaLamb Action du menu créditer client
  *
  */
 public class OptionCrediterCompte extends OptionMenu {
-	OptionListClient clientList = new OptionListClient(ihm) ;
-	double montant ;
-	int choix ;
-	
-	/**
-	 * @param ihm
-	 */
-	public OptionCrediterCompte(IhmTools ihm) {
-		super(ihm);
+
+	private Scanner scanner;
+	private DaoClient dao;
+	OptionListClient clientList;
+	double montant;
+	int choix;
+
+	public OptionCrediterCompte(Scanner scanner, DaoClient dao, OptionListClient clientList) {
+		super();
+		this.scanner = scanner;
+		this.dao = dao;
+		this.clientList = clientList;
 	}
 
 	@Override
 	public String getLibelle() {
-		return "Créditer le compte d'un client" ;
+		return "Créditer le compte d'un client";
 	}
 
 	@Override
 	public void execute() {
 
-		clientList.execute() ;
+		clientList.execute();
 		System.out.println("Veuillez choisir le client à créditer :");
-		choix = ihm.getScanner().nextInt() ;
-		
-		int clientListSize = ihm.getIClient().nbClient() ;
-		if(choix>clientListSize) {
-			System.out.println("/!\\/!\\ Client introuvable /!\\/!\\ \nVeuillez saisir un client valide :") ;
-			choix = ihm.getScanner().nextInt() ;
+		choix = this.scanner.nextInt();
+
+		int clientListSize = this.dao.nbClient();
+		if (choix > clientListSize) {
+			System.out.println("/!\\/!\\ Client introuvable /!\\/!\\ \nVeuillez saisir un client valide :");
+			choix = this.scanner.nextInt();
 		}
-		
+
 		System.out.println("Veuillez choisir le montant à créditer");
-		montant = ihm.getScanner().nextDouble() ;
-		
-		ihm.getIClient().crediterCompteClient(choix-1, montant);
+		montant = this.scanner.nextDouble();
+
+		this.dao.crediterCompteClient(choix - 1, montant);
 	}
 
 }
