@@ -2,6 +2,9 @@ package fr.pizzeria.ihm.menu.optionClient;
 
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import fr.pizzeria.dao.DaoClient;
 import fr.pizzeria.ihm.menu.OptionMenu;
 import fr.pizzeria.model.Client;
@@ -10,11 +13,14 @@ import fr.pizzeria.model.Livreur;
 /**
  * @author PaolaLamb Action du menu ajouter un client
  */
+
+@Controller
 public class OptionAjouterLivreur extends OptionMenu {
 
 	private Scanner scanner;
 	private DaoClient dao;
 
+	@Autowired
 	public OptionAjouterLivreur(Scanner scanner, DaoClient dao) {
 		super();
 		this.scanner = scanner;

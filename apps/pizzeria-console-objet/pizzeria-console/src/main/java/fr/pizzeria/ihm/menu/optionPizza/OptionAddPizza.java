@@ -4,6 +4,9 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import fr.pizzeria.dao.DaoPizza;
 import fr.pizzeria.exception.SaveException;
 import fr.pizzeria.exception.StockageException;
@@ -15,11 +18,14 @@ import fr.pizzeria.model.Pizza;
  * @author PaolaLamb
  *
  */
+
+@Controller
 public class OptionAddPizza extends OptionMenu {
 
 	private Scanner scanner;
 	private DaoPizza<Pizza, String> dao;
 
+	@Autowired
 	public OptionAddPizza(Scanner scanner, DaoPizza<Pizza, String> dao) {
 		super();
 		this.scanner = scanner;

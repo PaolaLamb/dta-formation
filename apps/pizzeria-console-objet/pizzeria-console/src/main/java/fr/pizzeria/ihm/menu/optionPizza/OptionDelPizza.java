@@ -2,6 +2,9 @@ package fr.pizzeria.ihm.menu.optionPizza;
 
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import fr.pizzeria.dao.DaoPizza;
 import fr.pizzeria.exception.DeletePizzaException;
 import fr.pizzeria.exception.StockageException;
@@ -12,11 +15,14 @@ import fr.pizzeria.model.Pizza;
  * @author PaolaLamb
  *
  */
+
+@Controller
 public class OptionDelPizza extends OptionMenu {
 
 	private Scanner scanner;
 	private DaoPizza<Pizza, String> dao;
 
+	@Autowired
 	public OptionDelPizza(Scanner scanner, DaoPizza<Pizza, String> dao) {
 		super();
 		this.scanner = scanner;

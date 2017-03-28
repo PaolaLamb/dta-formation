@@ -1,9 +1,12 @@
 package fr.pizzeria.ihm.menu;
 
+import org.springframework.stereotype.Controller;
+
 /**
  * @author PaolaLamb
  *
  */
+@Controller
 public abstract class OptionMenu {
 
 	/**

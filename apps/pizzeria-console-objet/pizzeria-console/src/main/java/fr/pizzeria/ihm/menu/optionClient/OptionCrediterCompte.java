@@ -2,6 +2,9 @@ package fr.pizzeria.ihm.menu.optionClient;
 
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import fr.pizzeria.dao.DaoClient;
 import fr.pizzeria.ihm.menu.OptionMenu;
 
@@ -9,6 +12,8 @@ import fr.pizzeria.ihm.menu.OptionMenu;
  * @author PaolaLamb Action du menu créditer client
  *
  */
+
+@Controller
 public class OptionCrediterCompte extends OptionMenu {
 
 	private Scanner scanner;
@@ -17,6 +22,7 @@ public class OptionCrediterCompte extends OptionMenu {
 	double montant;
 	int choix;
 
+	@Autowired
 	public OptionCrediterCompte(Scanner scanner, DaoClient dao, OptionListClient clientList) {
 		super();
 		this.scanner = scanner;

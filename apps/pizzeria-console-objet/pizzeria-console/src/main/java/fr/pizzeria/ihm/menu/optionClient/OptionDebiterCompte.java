@@ -2,12 +2,17 @@ package fr.pizzeria.ihm.menu.optionClient;
 
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import fr.pizzeria.dao.DaoClient;
 import fr.pizzeria.ihm.menu.OptionMenu;
 
 /**
  * @author PaolaLamb Action de l'option du menu débiter client
  */
+
+@Controller
 public class OptionDebiterCompte extends OptionMenu {
 
 	private Scanner scanner;
@@ -16,6 +21,7 @@ public class OptionDebiterCompte extends OptionMenu {
 	double montant;
 	int choix;
 
+	@Autowired
 	public OptionDebiterCompte(Scanner scanner, DaoClient dao, OptionListClient clientList) {
 		super();
 		this.scanner = scanner;

@@ -1,5 +1,8 @@
 package fr.pizzeria.ihm.menu.optionPizza;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import fr.pizzeria.dao.DaoPizza;
 import fr.pizzeria.ihm.menu.OptionMenu;
 import fr.pizzeria.model.Pizza;
@@ -8,10 +11,13 @@ import fr.pizzeria.model.Pizza;
  * @author PaolaLamb
  *
  */
+
+@Controller
 public class OptionListePizza extends OptionMenu {
 
 	private DaoPizza<Pizza, String> dao;
 
+	@Autowired
 	public OptionListePizza(DaoPizza<Pizza, String> dao) {
 		super();
 		this.dao = dao;
