@@ -7,11 +7,13 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import fr.pizzeria.dao.DaoPizza;
 import fr.pizzeria.dao.PizzaMapper;
 import fr.pizzeria.model.Pizza;
 
+@Repository
 public class PizzaDaoImplJdbcTemplate implements DaoPizza<Pizza, String> {
 
 	private JdbcTemplate jdbcTemplate;

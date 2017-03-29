@@ -24,21 +24,20 @@ public class PizzaDaoImplJdbcTemplateTest {
 	private DaoPizza<Pizza, String> pizzaDao;
 
 	@Test
-	public void test_findAll_saveNew_update_delete() {
-		pizzaDao.saveNew(new Pizza(0, "PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE));
+	public void test_findAll_saveNew() {
+		pizzaDao.saveNew(new Pizza(0, "TEST", "test", 12.50, CategoriePizza.VIANDE));
 		List<Pizza> pizzaList = pizzaDao.findAll();
 		assertTrue(pizzaList.size() > 0);
-		assertTrue(pizzaList.stream().anyMatch(p -> "PEP".equals(p.getCode())));
+		assertTrue(pizzaList.stream().anyMatch(p -> "TEST".equals(p.getCode())));
 
-		Pizza pizza = new Pizza(1, "CHE", "chèvre", 12.0, CategoriePizza.SANS_VIANDE);
-		pizzaDao.update("PEP", pizza);
+		Pizza pizza = new Pizza(1, "TESTNEW", "testnew", 12.0, CategoriePizza.SANS_VIANDE);
+		pizzaDao.update("TEST", pizza);
 		pizzaList = pizzaDao.findAll();
-		assertTrue(pizzaList.stream().anyMatch(p -> "CHE".equals(p.getCode())));
+		assertTrue(pizzaList.stream().anyMatch(p -> "TESTNEW".equals(p.getCode())));
 
-		pizzaDao.delete("CHE");
+		pizzaDao.delete("TESTNEW");
 		pizzaList = pizzaDao.findAll();
 		assertFalse(pizzaList.contains(pizza));
-
 	}
 
 }
