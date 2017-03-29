@@ -1,4 +1,4 @@
-package fr.pizzeria.dao;
+package fr.pizzeria.dao.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,6 +10,7 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
+import fr.pizzeria.dao.DaoPizza;
 import fr.pizzeria.exception.SaveException;
 import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.Pizza;

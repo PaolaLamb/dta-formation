@@ -46,8 +46,6 @@ public class Pizza {
 	@Column(name = "categorie", nullable = true, unique = false)
 	private CategoriePizza categoriePizza;
 
-	private static Integer nbPizzas = 0;
-
 	@Column(name = "url_image", nullable = true, unique = false)
 	private String urlImage;
 
@@ -71,7 +69,6 @@ public class Pizza {
 		this.nom = nom;
 		this.prix = prix;
 		this.categoriePizza = categoriePizza;
-		nbPizzas++;
 	}
 
 	/**
@@ -83,7 +80,6 @@ public class Pizza {
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;
-		nbPizzas++;
 	}
 
 	/**
@@ -97,7 +93,6 @@ public class Pizza {
 		this.nom = nom;
 		this.prix = prix;
 		this.categoriePizza = categorie;
-		nbPizzas++;
 	}
 
 	public Integer getId() {
@@ -130,14 +125,6 @@ public class Pizza {
 
 	public void setPrix(Double prix) {
 		this.prix = prix;
-	}
-
-	public static Integer getNbPizza() {
-		return nbPizzas;
-	}
-
-	public static void setNbPizza(Integer nbPizza) {
-		Pizza.nbPizzas = nbPizza;
 	}
 
 	public CategoriePizza getCategoriePizza() {

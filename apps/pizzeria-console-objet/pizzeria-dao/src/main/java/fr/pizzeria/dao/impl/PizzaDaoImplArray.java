@@ -1,9 +1,10 @@
-package fr.pizzeria.dao;
+package fr.pizzeria.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import fr.pizzeria.dao.DaoPizza;
 import fr.pizzeria.exception.SaveException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -51,7 +52,6 @@ public class PizzaDaoImplArray implements DaoPizza<Pizza, String> {
 		} else {
 			pizzasList.add(pizza);
 		}
-		Pizza.setNbPizza(Pizza.getNbPizza() + 1);
 	}
 
 	@Override
@@ -67,7 +67,6 @@ public class PizzaDaoImplArray implements DaoPizza<Pizza, String> {
 		Optional<Pizza> resultat = pizzasList.stream().filter(p -> p.getCode().equals(codePizza)).findAny();
 		resultat.ifPresent(p -> {
 			pizzasList.remove(p);
-			Pizza.setNbPizza(Pizza.getNbPizza() - 1);
 		});
 
 	}

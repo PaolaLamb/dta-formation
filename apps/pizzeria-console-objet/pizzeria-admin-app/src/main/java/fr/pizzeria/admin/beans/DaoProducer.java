@@ -4,7 +4,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 
 import fr.pizzeria.dao.DaoPizza;
-import fr.pizzeria.dao.PizzaDaoImplArray;
+import fr.pizzeria.dao.impl.PizzaDaoImplArray;
 import fr.pizzeria.model.Pizza;
 
 public class DaoProducer {

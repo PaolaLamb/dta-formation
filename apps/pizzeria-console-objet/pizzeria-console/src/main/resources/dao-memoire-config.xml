@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="daoPizza" class="fr.pizzeria.dao.PizzaDaoImplArray"></bean>
-	<bean id="daoClient" class="fr.pizzeria.dao.ClientDaoImplArray"></bean>
+	<bean id="daoPizza" class="fr.pizzeria.dao.impl.PizzaDaoImplArray"></bean>
+	<bean id="daoClient" class="fr.pizzeria.dao.impl.ClientDaoImplArray"></bean>
 	
 </beans>

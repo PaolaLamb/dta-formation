@@ -7,11 +7,12 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-import fr.pizzeria.dao.ClientDaoImplArray;
 import fr.pizzeria.dao.DaoClient;
 import fr.pizzeria.dao.DaoPizza;
-import fr.pizzeria.dao.PizzaDaoImplArray;
+import fr.pizzeria.dao.impl.ClientDaoImplArray;
+import fr.pizzeria.dao.impl.PizzaDaoImplJdbcTemplate;
 import fr.pizzeria.ihm.menu.Menu;
 import fr.pizzeria.model.Pizza;
 
@@ -19,9 +20,19 @@ import fr.pizzeria.model.Pizza;
 @ComponentScan("fr.pizzeria.ihm")
 public class PizzeriaAppStringConfig {
 
+	/*
+	 * @Bean public DaoPizza<Pizza, String> implementationDaoPizza() { return
+	 * new PizzaDaoImplArray(); }
+	 */
+
 	@Bean
-	public DaoPizza<Pizza, String> implementationDaoPizza() {
-		return new PizzaDaoImplArray();
+	public DaoPizza<Pizza, String> implementationPizzaDao() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
+		dataSource.setUrl("jdbc:mariadb://localhost:3306/pizzeria?useSSL=false");
+		dataSource.setUsername("root");
+		dataSource.setPassword("");
+		return new PizzaDaoImplJdbcTemplate(dataSource);
 	}
 
 	@Bean

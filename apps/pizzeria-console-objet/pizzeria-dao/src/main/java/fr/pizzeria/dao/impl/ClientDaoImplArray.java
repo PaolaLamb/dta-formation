@@ -1,8 +1,9 @@
-package fr.pizzeria.dao;
+package fr.pizzeria.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.pizzeria.dao.DaoClient;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.Livreur;
 

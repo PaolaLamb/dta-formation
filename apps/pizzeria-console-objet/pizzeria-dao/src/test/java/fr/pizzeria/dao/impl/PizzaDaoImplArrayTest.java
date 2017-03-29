@@ -1,4 +1,4 @@
-package fr.pizzeria.dao;
+package fr.pizzeria.dao.impl;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
@@ -10,6 +10,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import fr.pizzeria.dao.impl.PizzaDaoImplArray;
 import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.CategoriePizza;

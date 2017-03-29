@@ -21,14 +21,6 @@ public class PizzeriaAdminConsoleApp {
 			menu.executer();
 		}
 
-		/*
-		 * java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.
-		 * SEVERE); IhmTools ihm = new IhmTools(new PizzaDaoImplJPA());
-		 * 
-		 * new Menu(ihm).executer();
-		 * 
-		 */
-
 	}
 
 }

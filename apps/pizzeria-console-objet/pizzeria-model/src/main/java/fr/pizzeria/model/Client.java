@@ -1,15 +1,15 @@
 package fr.pizzeria.model;
 
 
-import fr.pizzeria.exception.CrediterException;
-import fr.pizzeria.exception.DebiterException;
-
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+
+import fr.pizzeria.exception.CrediterException;
+import fr.pizzeria.exception.DebiterException;
 
 
 /**

@@ -1,4 +1,4 @@
-package fr.pizzeria.dao;
+package fr.pizzeria.dao.impl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import fr.pizzeria.dao.DaoPizza;
 import fr.pizzeria.exception.DeletePizzaException;
 import fr.pizzeria.exception.SaveException;
 import fr.pizzeria.exception.UpdatePizzaException;
@@ -23,7 +24,7 @@ import fr.pizzeria.model.Pizza;
  * @author PaolaLamb
  *
  */
-public class PizzaDaoImplBD implements DaoPizza<Pizza, String> {
+public class PizzaDaoImplJdbc implements DaoPizza<Pizza, String> {
 	ResourceBundle bundle = ResourceBundle.getBundle("jdbc");
 
 	Connection co;
