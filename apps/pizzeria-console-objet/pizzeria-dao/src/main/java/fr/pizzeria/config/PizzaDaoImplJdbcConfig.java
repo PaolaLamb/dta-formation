@@ -3,13 +3,15 @@ package fr.pizzeria.config;
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
+import fr.pizzeria.dao.impl.spring.PizzaDaoImplJdbcTemplate;
+
 @Configuration
-@ComponentScan("fr.pizzeria.dao")
+@Import(PizzaDaoImplJdbcTemplate.class)
 public class PizzaDaoImplJdbcConfig {
 
 	@Bean
