@@ -19,22 +19,18 @@ import fr.pizzeria.model.Pizza;
 public class EditerPizzaController extends HttpServlet {
 	@Inject
 	private PizzaService pizzaService;
-	private String code;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		List<Pizza> pizzas = pizzaService.findAll();
 
-		this.code = (String) request.getParameter("code");
+		String code = request.getParameter("code");
 
-		if (this.code != "null") {
+		if (code != "null") {
 			for (Pizza pizza : pizzas) {
-				if (this.code.equals(pizza.getCode())) {
+				if (code.equals(pizza.getCode())) {
 					request.setAttribute("pizza", pizza);
 				}
 			}
@@ -49,14 +45,15 @@ public class EditerPizzaController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		String code = request.getParameter("code");
+
 		String codeN = request.getParameter("reference");
 		String nom = request.getParameter("libelle");
 		String prix = request.getParameter("prix");
 		String categorie = request.getParameter("radios").toUpperCase();
 		System.out.println(codeN + nom + prix + categorie);
 
-		pizzaService.update(this.code,
-				new Pizza(codeN, nom, Double.parseDouble(prix), CategoriePizza.valueOf(categorie)));
+		pizzaService.update(code, new Pizza(codeN, nom, Double.parseDouble(prix), CategoriePizza.valueOf(categorie)));
 
 		response.sendRedirect(request.getContextPath() + "/pizzas/list");
 	}

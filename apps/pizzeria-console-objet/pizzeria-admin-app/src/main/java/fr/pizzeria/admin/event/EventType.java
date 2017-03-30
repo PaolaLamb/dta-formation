@@ -5,15 +5,15 @@ import org.apache.commons.lang3.text.WordUtils;
 public enum EventType {
 	CREATION("creation"), MODIFICATION("modif"), SUPPRESSION("suppr");
 
-	private String eventType;
+	private String type;
 
-	private EventType(String eventType) {
-		this.eventType = eventType;
+	private EventType(String type) {
+		this.type = type;
 	}
 
 	@Override
 	public String toString() {
-		return eventType;
+		return type;
 	}
 
 	/**

@@ -1,4 +1,4 @@
-package fr.pizzeria.dao;
+package fr.pizzeria.config;
 
 import javax.sql.DataSource;
 
@@ -10,7 +10,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 @Configuration
 @ComponentScan("fr.pizzeria.dao")
-public class DaoConfigJdbcTemplate {
+public class PizzaDaoImplJdbcConfig {
 
 	@Bean
 	public DataSource dataSource() {

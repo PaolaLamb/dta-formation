@@ -1,4 +1,4 @@
-package fr.pizzeria.dao;
+package fr.pizzeria.config;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.RowMapper;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
-public class PizzaMapper implements RowMapper<Pizza> {
+public class PizzaDaoImplJdbcMapper implements RowMapper<Pizza> {
 
 	@Override
 	public Pizza mapRow(ResultSet rs, int rowNum) throws SQLException {

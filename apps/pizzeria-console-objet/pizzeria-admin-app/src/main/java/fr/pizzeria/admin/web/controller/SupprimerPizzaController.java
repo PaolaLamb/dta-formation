@@ -15,14 +15,13 @@ import fr.pizzeria.admin.metier.PizzaService;
 public class SupprimerPizzaController extends HttpServlet {
 	@Inject
 	private PizzaService pizzaService;
-	private String code;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		this.code = (String) request.getParameter("code");
-		pizzaService.delete(this.code);
+		String code = request.getParameter("code");
+		pizzaService.delete(code);
 
 		response.sendRedirect(request.getContextPath() + "/pizzas/list");
 	}

@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 import fr.pizzeria.dao.DaoPizza;
 import fr.pizzeria.exception.DeletePizzaException;
 import fr.pizzeria.exception.SaveException;
-import fr.pizzeria.exception.UpdatePizzaException;
+import fr.pizzeria.exception.UpdateException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -96,7 +96,7 @@ public class PizzaDaoImplJdbc implements DaoPizza<Pizza, String> {
 			prepStatement.executeUpdate();
 			prepStatement.close();
 		} catch (SQLException e) {
-			throw new UpdatePizzaException(e);
+			throw new UpdateException(e);
 		}
 	}
 

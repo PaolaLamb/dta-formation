@@ -4,14 +4,14 @@ package fr.pizzeria.exception;
  * @author PaolaLamb
  *
  */
-public class UpdatePizzaException extends StockageException {
+public class UpdateException extends StockageException {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * 
 	 */
-	public UpdatePizzaException() {
+	public UpdateException() {
 		super("\n /!\\/!\\ la pizza n'existe pas /!\\/!\\ \n");
 	}
 
@@ -19,21 +19,21 @@ public class UpdatePizzaException extends StockageException {
 	 * @param message
 	 * @param cause
 	 */
-	public UpdatePizzaException(String message, Throwable cause) {
+	public UpdateException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
 	/**
 	 * @param message
 	 */
-	public UpdatePizzaException(String message) {
+	public UpdateException(String message) {
 		super(message);
 	}
 
 	/**
 	 * @param cause
 	 */
-	public UpdatePizzaException(Throwable cause) {
+	public UpdateException(Throwable cause) {
 		super(cause);
 	}
 	

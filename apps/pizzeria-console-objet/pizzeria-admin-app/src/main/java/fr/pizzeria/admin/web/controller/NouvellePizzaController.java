@@ -1,6 +1,8 @@
 package fr.pizzeria.admin.web.controller;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -43,6 +45,7 @@ public class NouvellePizzaController extends HttpServlet {
 		try {
 			pizzaService.saveNew(pizza);
 		} catch (SaveException e) {
+			Logger.getAnonymousLogger().log(Level.SEVERE, "Problème lors de la sauvegarde de la nouvelle pizza");
 			response.setStatus(400);
 			request.setAttribute("errorMsg", e.getMessage());
 			request.setAttribute("pizza", pizza);

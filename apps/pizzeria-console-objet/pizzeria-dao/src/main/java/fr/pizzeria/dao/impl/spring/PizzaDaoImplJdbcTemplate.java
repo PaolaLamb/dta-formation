@@ -1,4 +1,4 @@
-package fr.pizzeria.dao.impl;
+package fr.pizzeria.dao.impl.spring;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import fr.pizzeria.config.PizzaDaoImplJdbcMapper;
 import fr.pizzeria.dao.DaoPizza;
-import fr.pizzeria.dao.PizzaMapper;
 import fr.pizzeria.model.Pizza;
 
 @Repository
@@ -26,7 +26,7 @@ public class PizzaDaoImplJdbcTemplate implements DaoPizza<Pizza, String> {
 	@Override
 	public List<Pizza> findAll() {
 		String sql = "SELECT * FROM pizza";
-		return this.jdbcTemplate.query(sql, new PizzaMapper());
+		return this.jdbcTemplate.query(sql, new PizzaDaoImplJdbcMapper());
 	}
 
 	@Override

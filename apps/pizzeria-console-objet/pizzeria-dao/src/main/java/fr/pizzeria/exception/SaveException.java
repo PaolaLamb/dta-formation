@@ -12,7 +12,7 @@ public class SaveException extends StockageException {
 	 * 
 	 */
 	public SaveException() {
-		super("\n /!\\/!\\ Le nom de code est invalide /!\\/!\\ \n");
+		super("\n /!\\/!\\ Le nom de code existe déjà /!\\/!\\ \n");
 	}
 
 	/**
@@ -36,5 +36,5 @@ public class SaveException extends StockageException {
 	public SaveException(Throwable cause) {
 		super(cause);
 	}
-	
+
 }

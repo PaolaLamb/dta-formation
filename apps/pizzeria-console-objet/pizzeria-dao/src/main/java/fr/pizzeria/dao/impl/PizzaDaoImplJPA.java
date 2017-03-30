@@ -12,7 +12,7 @@ import javax.persistence.TypedQuery;
 
 import fr.pizzeria.dao.DaoPizza;
 import fr.pizzeria.exception.SaveException;
-import fr.pizzeria.exception.UpdatePizzaException;
+import fr.pizzeria.exception.UpdateException;
 import fr.pizzeria.model.Pizza;
 
 /**
@@ -82,7 +82,7 @@ public class PizzaDaoImplJPA implements DaoPizza<Pizza, String> {
 			et.commit();
 		} catch (PersistenceException e) {
 			et.rollback();
-			throw new UpdatePizzaException(e);
+			throw new UpdateException(e);
 		}
 		em.close();
 	}

@@ -15,7 +15,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import fr.pizzeria.dao.DaoClient;
 import fr.pizzeria.dao.DaoPizza;
 import fr.pizzeria.dao.impl.ClientDaoImplArray;
-import fr.pizzeria.dao.impl.PizzaDaoImplJdbcTemplate;
+import fr.pizzeria.dao.impl.spring.PizzaDaoImplJdbcTemplate;
 import fr.pizzeria.ihm.menu.Menu;
 import fr.pizzeria.model.Pizza;
 

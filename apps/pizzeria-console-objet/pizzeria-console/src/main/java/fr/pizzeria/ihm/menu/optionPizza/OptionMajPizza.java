@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 
 import fr.pizzeria.dao.DaoPizza;
 import fr.pizzeria.exception.StockageException;
-import fr.pizzeria.exception.UpdatePizzaException;
+import fr.pizzeria.exception.UpdateException;
 import fr.pizzeria.ihm.menu.OptionMenu;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -67,7 +67,7 @@ public class OptionMajPizza extends OptionMenu {
 			try {
 				this.dao.update(codePizza, newPizza);
 			} catch (StockageException e) {
-				throw new UpdatePizzaException("Modification(s) de la pizza échouée(s)", e);
+				throw new UpdateException("Modification(s) de la pizza échouée(s)", e);
 			}
 		}
 	}

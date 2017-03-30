@@ -11,14 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import fr.pizzeria.config.PizzaDaoImplJdbcConfig;
+import fr.pizzeria.config.PizzaDaoImplOrmConfig;
 import fr.pizzeria.dao.DaoPizza;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = PizzaDaoImplJdbcConfig.class)
-public class PizzaDaoImplJdbcTemplateTest {
+@ContextConfiguration(classes = PizzaDaoImplOrmConfig.class)
+public class PizzaDaoImplOrmTest {
 
 	@Autowired
 	private DaoPizza<Pizza, String> pizzaDao;
