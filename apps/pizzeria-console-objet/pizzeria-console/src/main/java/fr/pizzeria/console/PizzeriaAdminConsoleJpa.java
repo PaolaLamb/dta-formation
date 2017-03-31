@@ -1,49 +1,39 @@
 package fr.pizzeria.console;
 
-import java.util.Scanner;
 import java.util.logging.Level;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
+import org.springframework.transaction.PlatformTransactionManager;
 
-import fr.pizzeria.dao.DaoClient;
 import fr.pizzeria.dao.DaoPizza;
-import fr.pizzeria.dao.impl.ClientDaoImplArray;
 import fr.pizzeria.dao.impl.spring.PizzaDaoImplDataJpa;
-import fr.pizzeria.dao.impl.spring.PizzaDaoImplJdbcTemplate;
 import fr.pizzeria.ihm.menu.Menu;
 import fr.pizzeria.model.Pizza;
 
 @Configuration
 @ComponentScan("fr.pizzeria.ihm")
-public class PizzeriaAppStringConfig {
+public class PizzeriaAdminConsoleJpa {
 
 	@Bean
 	public DaoPizza<Pizza, String> implementationDaoPizza() {
 		return new PizzaDaoImplDataJpa();
 	}
 
-	/*
-	 * @Bean public DaoPizza<Pizza, String> implementationPizzaDao() {
-	 * DataSource dataSource = new
-	 * EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2)
-	 * .addScript("init-schema.sql").build();
-	 * 
-	 * return new PizzaDaoImplJdbcTemplate(dataSource); }
-	 */
-
 	@Bean
-	public Scanner scanner() {
-		return new Scanner(System.in);
+	public PlatformTransactionManager transactionManager() {
+		return new JpaTransactionManager();
 	}
 
 	@Bean
-	public DaoClient implementationDaoClient() {
-		return new ClientDaoImplArray();
+	public LocalEntityManagerFactoryBean entityManagerFactory() {
+		LocalEntityManagerFactoryBean emf = new LocalEntityManagerFactoryBean();
+		emf.setPersistenceUnitName("pizzeria-pu");
+		return emf;
 	}
 
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package fr.pizzeria.admin.resources;
+package fr.pizzeria.admin.rest;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

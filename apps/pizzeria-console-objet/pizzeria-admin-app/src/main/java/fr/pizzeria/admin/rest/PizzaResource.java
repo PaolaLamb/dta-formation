@@ -1,4 +1,4 @@
-package fr.pizzeria.admin.resources;
+package fr.pizzeria.admin.rest;
 
 import java.util.List;
 
@@ -29,7 +29,6 @@ public class PizzaResource {
 	}
 
 	@POST
-
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void newPizza(Pizza pizza) {
 		pizzaEJB.saveNew(pizza);
