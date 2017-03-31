@@ -15,6 +15,7 @@ import fr.pizzeria.config.PizzaDaoImplDataJpaConfig;
 import fr.pizzeria.dao.DaoPizza;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
+import fr.pizzeria.repository.PerfRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = PizzaDaoImplDataJpaConfig.class)
@@ -23,22 +24,28 @@ public class PizzaDaoImplDataJpaTest {
 	@Autowired
 	private DaoPizza<Pizza, String> pizzaDao;
 
+	@Autowired
+	private PerfRepository perfRep;
+
 	@Test
 	public void findAllTest() {
-		pizzaDao.saveNew(new Pizza(0, "TEST", "test", 12.50, CategoriePizza.VIANDE));
-		List<Pizza> pizzaList = pizzaDao.findAll();
-
+		pizzaDao.saveNew(new Pizza("", "test", 12.50, CategoriePizza.VIANDE)); // 1
+		pizzaDao.saveNew(new Pizza("TEST2", "test2", 14.50, CategoriePizza.POISSON)); // 2
+		List<Pizza> pizzaList = pizzaDao.findAll(); // 3
 		assertTrue(pizzaList.size() > 0);
 
-		Pizza newPizza = new Pizza("TESTNEW", "testnew", 12.0, CategoriePizza.SANS_VIANDE);
-		pizzaDao.update("TEST", newPizza);
+		Pizza newPizza = new Pizza("TESTNEW", "testnew", 12.0, CategoriePizza.SANS_VIANDE); // 4
+		pizzaDao.update("TES", newPizza);
 
-		pizzaList = pizzaDao.findAll();
+		pizzaList = pizzaDao.findAll(); // 5
 		assertTrue(pizzaList.stream().anyMatch(p -> "TESTNEW".equals(p.getCode())));
 		assertFalse(pizzaList.stream().anyMatch(p -> "TEST".equals(p.getCode())));
 
-		pizzaDao.delete("TESTNEW");
-		pizzaList = pizzaDao.findAll();
+		pizzaDao.delete("TESTNEW"); // 6
+		pizzaList = pizzaDao.findAll(); // 7
 		assertFalse(pizzaList.contains(newPizza));
+
+		assertTrue(perfRep.findAll().size() == 7);
+
 	}
 }

@@ -45,7 +45,7 @@ public class NouvellePizzaController extends HttpServlet {
 		try {
 			pizzaService.saveNew(pizza);
 		} catch (SaveException e) {
-			Logger.getAnonymousLogger().log(Level.SEVERE, "Problème lors de la sauvegarde de la nouvelle pizza");
+			Logger.getAnonymousLogger().log(Level.SEVERE, "Problème lors de la sauvegarde de la nouvelle pizza", e);
 			response.setStatus(400);
 			request.setAttribute("errorMsg", e.getMessage());
 			request.setAttribute("pizza", pizza);
