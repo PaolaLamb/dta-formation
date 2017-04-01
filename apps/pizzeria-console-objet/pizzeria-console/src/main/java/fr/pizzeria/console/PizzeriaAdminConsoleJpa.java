@@ -40,7 +40,7 @@ public class PizzeriaAdminConsoleJpa {
 		java.util.logging.Logger.getLogger("org").setLevel(Level.SEVERE);
 
 		try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
-				PizzeriaAppStringConfig.class)) {
+				PizzeriaAppJdbcConsole.class)) {
 			Menu menu = context.getBean(Menu.class);
 			menu.executer();
 		}

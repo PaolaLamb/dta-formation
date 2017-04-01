@@ -8,10 +8,8 @@
 		<title>Liste des ingrédients</title>
 	</head>
 	<body>
-			<div class="container">
-			test 
-			${ingreList}
-		
+		<div class="container">
+	
 			<header>
 			<h2>Liste des Ingrédients</h2>
 			<a href="<c:url value='/mvc/ingredient/new'></c:url>" class="btn btn-primary btn-sm">Ajouter un ingrédient</a> 
@@ -36,9 +34,9 @@
 							<td>${ingredient.prix}</td>
 							<td>${ingredient.quantity}</td>
 	
-							<td><a href="<c:url value='/pizzas/edit?code=${pizza.code}'></c:url>"
+							<td><a href="<c:url value='/mvc/ingredient/id'></c:url>"
 								class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editer</a> 
-								<a href="<c:url value='/pizzas/delete?code=${pizza.code}'></c:url>"
+								<a href="<c:url value='/mvc/ingredient/delete?nom=${ingredient.nom}'></c:url>"
 								class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span> Supprimer</a>
 							</td>
 						</tr>

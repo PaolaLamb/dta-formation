@@ -6,4 +6,8 @@ import fr.pizzeria.stock.Ingredient;
 
 public interface IngredientRepository extends JpaRepository<Ingredient, Integer> {
 
+	
+	Ingredient findIngredientById(Integer id) ;
+	
+	int findIdByNom(String reference) ;
 }

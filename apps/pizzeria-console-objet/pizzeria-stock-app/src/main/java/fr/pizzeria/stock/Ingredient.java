@@ -14,7 +14,7 @@ public class Ingredient {
 	@Column(name = "id", nullable = false)
 	private Integer id;
 
-	@Column(name = "nom")
+	@Column(name = "nom", unique = true)
 	private String nom;
 
 	@Column(name = "prix")
