@@ -19,9 +19,8 @@ public class EditerIngredientController {
 	private IngredientRepository ingreRep;
 
 	@RequestMapping(value = "/ingredient/{id}", method = RequestMethod.GET)
-	public String post(@PathVariable Integer id) {
-		Ingredient oldIngredient = ingreRep.findIngredientById(id) ;
-		
+	public String post(@PathVariable String id) {
+				
 		return "editerIngredient";
 	}
 
