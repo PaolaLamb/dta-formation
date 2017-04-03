@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.pizzeria.console.PizzeriaAppJdbcConsole;
 import fr.pizzeria.dao.DaoPizza;
+import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -23,6 +24,7 @@ public class PizzaDaoTest {
 
 	@Test
 	public void testFindAll() {
+		pizzaDao.saveNew(new Pizza("TEST", "test", 12, CategoriePizza.VIANDE));
 		List<Pizza> pizzaList = pizzaDao.findAll();
 		assertTrue(pizzaList.size() > 0);
 	}
