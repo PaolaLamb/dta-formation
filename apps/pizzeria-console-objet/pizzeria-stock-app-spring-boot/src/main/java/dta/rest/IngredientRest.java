@@ -1,8 +1,9 @@
-package fr.pizzeria.stock.rest;
+package dta.rest;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,8 +13,9 @@ import fr.pizzeria.model.Ingredient;
 import fr.pizzeria.stock.repository.IngredientRepository;
 
 @RestController
-@RequestMapping("/api/rest/ingredient")
-public class IngrResource {
+@RequestMapping("/rest/ingredients")
+@EnableJpaRepositories("fr.pizzeria.stock.repository")
+public class IngredientRest {
 
 	@Autowired
 	private IngredientRepository ingreRep;

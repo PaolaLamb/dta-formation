@@ -54,6 +54,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
+				<version>3.0.1</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
@@ -85,6 +86,18 @@
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>paola-pizzeria-stock-app</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>paola-pizzeria-stock-app-spring-boot</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			
+			
+			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>${junit.version}</version>
@@ -112,6 +125,11 @@
 				<artifactId>hibernate-entitymanager</artifactId>
 				<version>5.1.0.Final</version>
 			</dependency>
+			<dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>5.1.0.Final</version>
+            </dependency>
 			<dependency>
 				<groupId>javax</groupId>
 				<artifactId>javaee-api</artifactId>
@@ -159,6 +177,7 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 
 	<modules>
@@ -167,5 +186,6 @@
 		<module>pizzeria-console</module>
 		<module>pizzeria-admin-app</module>
 		<module>pizzeria-stock-app</module>
+		<module>pizzeria-stock-app-spring-boot</module>
 	</modules>
 </project>

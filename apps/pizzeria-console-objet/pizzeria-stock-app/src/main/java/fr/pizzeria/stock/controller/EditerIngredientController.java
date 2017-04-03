@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import fr.pizzeria.stock.Ingredient;
+import fr.pizzeria.model.Ingredient;
 import fr.pizzeria.stock.repository.IngredientRepository;
 
 @Controller

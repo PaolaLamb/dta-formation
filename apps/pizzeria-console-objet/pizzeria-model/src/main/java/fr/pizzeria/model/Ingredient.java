@@ -1,4 +1,4 @@
-package fr.pizzeria.stock;
+package fr.pizzeria.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +20,7 @@ public class Ingredient {
 	@Column(name = "prix")
 	private Double prix;
 
-	@Column(name = "quantité", nullable = false)
+	@Column(name = "quantite", nullable = false)
 	private Integer quantity;
 
 	public Ingredient(String nom, Double prix, Integer quantity) {
