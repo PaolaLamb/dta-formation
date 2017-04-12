@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/page/ingredients")
+@RequestMapping("/page")
 public class IngredientsController {
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(path = "/ingredients", method = RequestMethod.GET)
 	public String helloWorld() {
 		return "ingredients";
 	}
