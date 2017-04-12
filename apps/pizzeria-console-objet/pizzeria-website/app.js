@@ -13,7 +13,7 @@ $(document).ready(function() {
             + "<td>" + pizza.categoriePizza + "</td>"
             + "</tr>" ; 
         }) ;
-        $('.pizzas tbody').html(bodyLines) ;
+        $('tbody').html(bodyLines) ;
     }) ;
 }) ;
 

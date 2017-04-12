@@ -2,17 +2,68 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Accueil</title>
+
+
 <script src="webjars/jquery/3.2.0/jquery.js"></script>
-<link rel="stylesheet" 	href="webjars/bootstrap/3.3.7-1/bootstrap.css">
+
+<link rel="stylesheet"
+	href="webjars/bootstrap/3.3.7-1/css/bootstrap.css">
+
+<script>
+	var API_INGREDIENTS = "http://localhost:8080/rest/ingredients";
+
+	$(document).ready(function() {
+	    $.ajax({
+	        url: API_INGREDIENTS
+	    }).then(function(data) {
+	        var bodyLines = data.map(function(ingredient){
+	            return "<tr>" 
+	            + "<td>" + ingredient.id + "</td>"
+	            + "<td>" + ingredient.nom + "</td>"
+	            + "<td>" + ingredient.prix + "</td>"
+	            + "<td>" + ingredient.quantity + "</td>"
+	            + "</tr>" ; 
+	        }) ;
+	        $('tbody').html(bodyLines) ;
+	    }) ;
+	}) ;
+
+
+</script>
 </head>
 <body>
-	<div class="jumbotron" >
-		
-		
-		
-		
+	<div class="container">
+		<div class="jumbotron">
+
+			<h1>Bonjour Mr l'administrateur !</h1>
+			<p>Cette application vous permet d'administrer des ingrédients et
+				bien d'autres chose ;-)</p>
+
+			<button class="btn btn-primary">Cliquez ici pour administrer</button>
+
+
+
+		</div>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nom</th>
+					<th>Prix</th>
+					<th>Quantité</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+
+
+
+
 	</div>
+
 
 </body>
 </html>

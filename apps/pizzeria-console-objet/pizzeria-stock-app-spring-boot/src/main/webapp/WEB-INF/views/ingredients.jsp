@@ -4,15 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-
 <script src="webjars/jquery/3.2.0/jquery.js"></script>
-<link rel="stylesheet" 	href="webjars/bootstrap/3.3.7-1/bootstrap.css">
-
+<link rel="stylesheet"
+	href="webjars/bootstrap/3.3.7-1/css/bootstrap.css">
+<title>	Ingrédients	</title>
 </head>
 <body>
-
-	hello
 
 </body>
 </html>
